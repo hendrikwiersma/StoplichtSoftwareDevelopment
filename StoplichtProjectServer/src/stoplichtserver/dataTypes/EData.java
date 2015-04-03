@@ -1,4 +1,4 @@
-package dataTypes;
+package stoplichtserver.dataTypes;
 
 
 public interface EData {
