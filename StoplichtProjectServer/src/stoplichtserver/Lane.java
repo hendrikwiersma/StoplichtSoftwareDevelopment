@@ -1,5 +1,8 @@
 package stoplichtserver;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import stoplichtserver.dataTypes.ELight;
 import stoplichtserver.dataTypes.ELightId;
 
@@ -42,7 +45,11 @@ public class Lane {
     public void setLight(ELight lightState) {
         
         this.lightState = lightState;
-        p.sendTrafficlight(id, lightState);
+        try {
+            p.sendTrafficlight(id, lightState);
+        } catch (IOException ex) {
+            Logger.getLogger(Lane.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
