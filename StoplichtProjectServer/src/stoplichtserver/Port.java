@@ -15,17 +15,20 @@ public class Port extends Thread {
     public static final int MESSAGE_LENGTH = 4;
 
     private volatile boolean receiving = true;
-
+    
     private ServerSocket server;
     private Socket socket;
     private JTextArea area;
+    private Crossroad c;
+    
+    private boolean sendCar = false;
 
     DataOutputStream out;
 
     public Port(JTextArea area) {
 
         this.area = area;
-
+        
     }
 
     @Override
@@ -66,7 +69,12 @@ public class Port extends Thread {
                         area.append("Just connected to " + socket.getRemoteSocketAddress());
                         out = new DataOutputStream(socket.getOutputStream());
 
-                        sendTestData();
+                        if (sendCar) {
+                            
+                            sendTestData();
+                            sendCar = false;
+                        
+                        }
 
                     } catch (SocketTimeoutException s) {
 
@@ -100,26 +108,23 @@ public class Port extends Thread {
 
     private void sendTestData() throws IOException {
 
-        sendVehicle(EDirection.NOORD, EDirection.VENTWEG, EType.VOETGANGER);
-        sendVehicle(EDirection.OOST, EDirection.NOORD, EType.FIETS);
-        sendVehicle(EDirection.ZUID, EDirection.OOST, EType.BUS);
-        sendVehicle(EDirection.WEST, EDirection.ZUID, EType.AUTO);
-
-        sendTrafficlight(new EId(0), ELight.ROOD);
-        sendTrafficlight(new EId(200), ELight.GROEN);
-        sendTrafficlight(new EId(255), ELight.ORANJE);
+        sendVehicle(EDirection.ZUID, EDirection.WEST, EType.AUTO);
+        area.append("sending car");
+        //sendTrafficlight(new EId(0), ELight.ROOD);
+        //sendTrafficlight(new EId(200), ELight.GROEN);
+        //sendTrafficlight(new EId(255), ELight.ORANJE);
 
     }
 
     public void sendVehicle(EDirection start, EDirection dest, EType vehicle) throws IOException {
 
-        sendPacket(EMode.TRAFFICLIGHT_MODE, start, dest, vehicle);
+        sendPacket(EMode.VEHICLE_MODE, start, dest, vehicle);
 
     }
 
-    public void sendTrafficlight(EId id, ELight light) throws IOException {
+    public void sendTrafficlight(ELightId id, ELight light) throws IOException {
 
-        sendPacket(EMode.VEHICLE_MODE, id, light, new EId(0));
+        sendPacket(EMode.TRAFFICLIGHT_MODE, id, light, new ELightId((byte)0x00));
 
     }
 
@@ -137,28 +142,40 @@ public class Port extends Thread {
         switch ((int) data[0]) {
 
             case 0:
-                receiveVehicle(EDirection.create(data[1]), EDirection.create(data[2]), EType.create(data[3]));
+                signOn(new ELightId(data[1]), new EDist(data[2]));
                 break;
             case 1:
-                receiveTrafficlight(new EId(data[1]), ELight.create(data[2]));
+                signOff(new ELightId(data[1]));
                 break;
 
         }
 
     }
 
-    private void receiveVehicle(EDirection start, EDirection dest, EType vehicle) {
+    private void signOn(ELightId id, EDist distance){
 
-        System.out.println(start.string() + ", " + dest.string() + ", " + vehicle.string());
-
+        c.addCar(id, distance);
+        
+    }
+    
+    private void signOff(ELightId id) {
+        
+        c.removeCar(id);
+        
     }
 
-    private void receiveTrafficlight(EId id, ELight light) {
-
-        System.out.println(id.string() + ", " + light.string());
-
+    public void setCrossroad(Crossroad c) {
+        
+        this.c = c;
+        
     }
-
+    
+    public void sendCar() {
+        
+        sendCar = true;
+    
+    }
+    
     public void closeServer() {
 
         area.append("Terminated" + '\n');

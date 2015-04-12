@@ -17,7 +17,9 @@ public class Panel extends JFrame {
 
     JPanel contentPanel;
     JTextArea area;
-    JButton button;
+    JButton btnSendCar;
+    JButton btnClose;
+    Crossroad crossroad;
 
     ServerSocket server;
     Socket client;
@@ -36,9 +38,26 @@ public class Panel extends JFrame {
 
         Port port = new Port(area);
         port.start();
+        
+        crossroad = new Crossroad(port);
+        
+        port.setCrossroad(crossroad);
+        
+        btnSendCar = new JButton("send new car");
+        btnSendCar.addActionListener(new ActionListener() {
 
-        button = new JButton("close stream");
-        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                port.sendCar();
+
+            }
+
+        });
+        contentPanel.add(btnSendCar);
+        
+        btnClose = new JButton("close stream");
+        btnClose.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,7 +67,7 @@ public class Panel extends JFrame {
             }
 
         });
-        contentPanel.add(button);
+        contentPanel.add(btnClose);
 
         this.pack();
         this.setVisible(true);

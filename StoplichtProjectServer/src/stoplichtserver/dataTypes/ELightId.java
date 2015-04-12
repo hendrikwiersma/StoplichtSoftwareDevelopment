@@ -1,13 +1,13 @@
 package stoplichtserver.dataTypes;
 
 
-public class EId implements EData{
+public class ELightId implements EData{
 	
 	private byte b;
 	
-	public EId(int b) {
+	public ELightId(byte b) {
 		
-		this.b = (byte)b;
+		this.b = b;
 		
 	}
 	

@@ -9,6 +9,7 @@ public class Main {
         Panel panel = new Panel();
         panel.setLocationRelativeTo(null);
         panel.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
     }
 
 }

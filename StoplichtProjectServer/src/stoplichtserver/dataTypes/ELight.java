@@ -3,7 +3,7 @@ package stoplichtserver.dataTypes;
 
 public enum ELight implements EData {
 	
-	ROOD((byte)0x00, "Rood"), ORANJE((byte)0x01, "Oranje"), GROEN((byte)0x02, "Groen");
+	RED((byte)0x00, "Rood"), ORANGE((byte)0x01, "Oranje"), GREEN((byte)0x02, "Groen");
 	
 	private byte b;
 	private String s;
@@ -33,9 +33,9 @@ public enum ELight implements EData {
 		
 		switch ((int)type) {
 			
-			case 0: return ROOD;
-			case 1: return ORANJE;
-			case 2: return GROEN;
+			case 0: return RED;
+			case 1: return ORANGE;
+			case 2: return GREEN;
 			
 		}
 		
