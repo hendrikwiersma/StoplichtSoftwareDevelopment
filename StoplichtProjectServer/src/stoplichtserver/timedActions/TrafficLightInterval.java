@@ -5,6 +5,7 @@
  */
 package stoplichtserver.timedActions;
 
+import java.sql.Timestamp;
 import stoplichtserver.Crossroad;
 import stoplichtserver.dataTypes.ELightId;
 
@@ -15,12 +16,12 @@ import stoplichtserver.dataTypes.ELightId;
 public class TrafficLightInterval implements TimedAction{
 
     private Crossroad k;
-    private ELightId id;
+    private Timestamp t;
     
-    public TrafficLightInterval(Crossroad kruispunt, ELightId lightId) {
+    public TrafficLightInterval(Crossroad kruispunt, Timestamp timestamp) {
         
         k = kruispunt;
-        id = lightId;
+        t = timestamp;
         
     }
     
@@ -29,6 +30,13 @@ public class TrafficLightInterval implements TimedAction{
         
         k.canSetLights = true;
         k.setLights();
+        
+    }
+
+    @Override
+    public Timestamp getTimestamp() {
+        
+        return t;
         
     }
     

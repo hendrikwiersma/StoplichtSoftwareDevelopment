@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import stoplichtserver.dataTypes.*;
 
 public class Port extends Thread {
 
-    public static final int PORT_NUMER = 1000;
+    public static final int PORT_NUMER = 10000;
     public static final int MESSAGE_LENGTH = 4;
 
     private volatile boolean receiving = true;
@@ -21,7 +23,7 @@ public class Port extends Thread {
     private JTextArea area;
     private Crossroad c;
     
-    private boolean sendCar = false;
+    private boolean sendCar = true;
 
     DataOutputStream out;
 
@@ -110,9 +112,6 @@ public class Port extends Thread {
 
         sendVehicle(EDirection.ZUID, EDirection.WEST, EType.AUTO);
         area.append("sending car");
-        //sendTrafficlight(new EId(0), ELight.ROOD);
-        //sendTrafficlight(new EId(200), ELight.GROEN);
-        //sendTrafficlight(new EId(255), ELight.ORANJE);
 
     }
 
@@ -139,12 +138,14 @@ public class Port extends Thread {
 
     private void receivePacket(byte[] data) {
 
-        switch ((int) data[0]) {
+        System.err.println("data0:" + data[0]+ ", data1:" + data[1]+", data2:"+data[2]);
+        
+        switch ((int) data[2]) {
 
-            case 0:
-                signOn(new ELightId(data[1]), new EDist(data[2]));
-                break;
             case 1:
+                signOn(new ELightId(data[1]));
+                break;
+            case 0:
                 signOff(new ELightId(data[1]));
                 break;
 
@@ -152,14 +153,16 @@ public class Port extends Thread {
 
     }
 
-    private void signOn(ELightId id, EDist distance){
+    private void signOn(ELightId id){
 
-        c.addCar(id, distance);
+        System.out.println("add car on light: " + id.string());
+        c.addCar(id);
         
     }
     
     private void signOff(ELightId id) {
         
+        System.out.println("remove car on light: " + id.string());
         c.removeCar(id);
         
     }
@@ -172,7 +175,11 @@ public class Port extends Thread {
     
     public void sendCar() {
         
-        sendCar = true;
+        try {
+            sendTestData();
+        } catch (IOException ex) {
+            Logger.getLogger(Port.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }
     

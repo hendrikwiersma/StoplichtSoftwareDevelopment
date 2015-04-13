@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stoplichtserver.timedActions;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,28 +9,49 @@ import java.util.logging.Logger;
  */
 public class Timer implements Runnable{
 
-    private int ms;
-    private TimedAction ta;
+    private ArrayList<TimedAction> ta;
     
-    public Timer(int miliseconds, TimedAction timedAction) {
+    public Timer() {
         
-        ms = miliseconds;
-        ta = timedAction;
+        ta = new ArrayList<>();
         
     }
     
     @Override
     public void run() {
         
-        try {
+        while(true) {
             
-            Thread.sleep(ms);
+            try {
+
+                Thread.sleep(1000);
+
+            } catch (InterruptedException e) {}
+
+            Timestamp ts = new Timestamp(System.currentTimeMillis());
             
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
+            for (int i = ta.size() - 1; i >= 0; i--) {
+
+                TimedAction t = ta.get(i);
+                
+                if (ts.after(t.getTimestamp())) {
+                    
+                    System.err.println("exe");
+                    t.exe();
+                    ta.remove(t);
+                    
+                }
+                    
+            }
+        
         }
         
-        ta.exe();
+    }
+    
+    public void addAction(TimedAction action) {
+        
+        System.err.println("add");
+        ta.add(action);
         
     }
     

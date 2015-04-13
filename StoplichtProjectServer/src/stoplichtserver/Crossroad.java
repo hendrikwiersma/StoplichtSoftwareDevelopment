@@ -5,7 +5,7 @@
  */
 package stoplichtserver;
 
-import stoplichtserver.dataTypes.EDist;
+import java.sql.Timestamp;
 import stoplichtserver.dataTypes.ELightId;
 import stoplichtserver.dataTypes.ELight;
 import stoplichtserver.timedActions.Timer;
@@ -17,14 +17,28 @@ import stoplichtserver.timedActions.TrafficLightRed;
  */
 public class Crossroad {
     
-    public static final int TIME_TILL_RED = 100;
-    public static final int TIME_TILL_RESET = 20;
-    public static final int TRAFFIC_LIGHTS = 10;
+    public static final int TIME_TILL_RED = 5000;
+    public static final int TIME_TILL_RESET = 2000;
+    public static final int TRAFFIC_LIGHTS = 50;
     
     private Lane[] lanes = new Lane[TRAFFIC_LIGHTS];
-    public boolean canSetLights = true;
-       
-    public void addCar(ELightId id, EDist distance) {
+    public volatile boolean canSetLights = true;
+    public Timer t = new Timer();
+    public Thread thread = new Thread(t);
+     
+    public Crossroad(Port p) {
+        
+        for (int i = 0; i < lanes.length; i++) {
+            
+            lanes[i] = new Lane(new ELightId((byte)i), p);
+            
+        }
+
+        thread.start();
+        
+    }
+    
+    public void addCar(ELightId id) {
         
         Lane l = lanes[id.value()];
         l.addCar();
@@ -33,18 +47,8 @@ public class Crossroad {
         
     }
     
-    public Crossroad(Port p) {
-        
-        for (int i = 0; i < lanes.length; i++) {
-            
-            lanes[i] = new Lane(new ELightId((byte)i), p);
-            
-        }
-        
-    }
-    
     public void removeCar(ELightId id) {
-        
+
         Lane l = lanes[id.value()];
         l.removeCar();
         
@@ -73,10 +77,10 @@ public class Crossroad {
     private void activateLane(Lane l) {
         
         canSetLights = false;
-        
+
         l.setLight(ELight.GREEN);
-        Timer t = new Timer(TIME_TILL_RED, new TrafficLightRed(this, l));
-        t.run();
+        Timestamp time = new Timestamp(System.currentTimeMillis() + TIME_TILL_RED);
+        t.addAction(new TrafficLightRed(this, l, time));
        
     }
     
