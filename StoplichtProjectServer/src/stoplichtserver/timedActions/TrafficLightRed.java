@@ -29,7 +29,7 @@ public class TrafficLightRed implements TimedAction {
     public void exe() {
        
        System.err.println("to red");
-       l.setLight(ELight.RED);
+       l.setLightState(ELight.RED);
        
         Timestamp time = new Timestamp(System.currentTimeMillis() + TIME_TILL_RESET);
         c.t.addAction(new TrafficLightInterval(c, time));

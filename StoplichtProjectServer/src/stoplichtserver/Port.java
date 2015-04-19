@@ -6,31 +6,48 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import stoplichtserver.dataTypes.*;
 
+/**
+ * interaction between server and client all sending / receiving happens here
+ *
+ * @author Bauke
+ */
 public class Port extends Thread {
 
     public static final int PORT_NUMER = 10000;
     public static final int MESSAGE_LENGTH = 4;
 
     private volatile boolean receiving = true;
-    
+
     private ServerSocket server;
     private Socket socket;
     private JTextArea area;
     private Crossroad c;
-    
-    private boolean sendCar = true;
 
     DataOutputStream out;
 
+    /**
+     * create new server
+     *
+     * @param area log
+     */
     public Port(JTextArea area) {
 
         this.area = area;
-        
+
+    }
+
+    /**
+     * set crossroad (post init)
+     *
+     * @param c
+     */
+    public void setCrossroad(Crossroad c) {
+
+        this.c = c;
+
     }
 
     @Override
@@ -52,14 +69,10 @@ public class Port extends Thread {
 
                         receivePacket(data);
 
-                    } catch (SocketTimeoutException s) {
-
-                        area.append("Socket timed out!" + '\n');
-                        break;
-
-                    } catch (IOException e) {
+                    } catch (Exception e) {
 
                         break;
+
                     }
 
                 } else {
@@ -70,13 +83,6 @@ public class Port extends Thread {
                         socket = server.accept();
                         area.append("Just connected to " + socket.getRemoteSocketAddress());
                         out = new DataOutputStream(socket.getOutputStream());
-
-                        if (sendCar) {
-                            
-                            sendTestData();
-                            sendCar = false;
-                        
-                        }
 
                     } catch (SocketTimeoutException s) {
 
@@ -98,32 +104,52 @@ public class Port extends Thread {
 
         } finally {
 
-            try {
-                server.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            closeServer();
 
         }
 
     }
 
-    private void sendTestData() throws IOException {
+    /**
+     * send new vehicle
+     *
+     * @param start
+     * @param dest
+     * @param vehicle
+     */
+    public void sendVehicle(EDirection start, EDirection dest, EType vehicle) {
 
-        sendVehicle(EDirection.ZUID, EDirection.WEST, EType.AUTO);
-        area.append("sending car");
+        try {
+
+            sendPacket(EMode.VEHICLE_MODE, start, dest, vehicle);
+
+        } catch (IOException e) {
+
+            System.err.println("Failed sending vehicle state:" + e.getMessage());
+            area.append("Could not send vehicle" + '\n');
+
+        }
 
     }
 
-    public void sendVehicle(EDirection start, EDirection dest, EType vehicle) throws IOException {
+    /**
+     * send trafficlight state
+     *
+     * @param id
+     * @param light
+     */
+    public void sendTrafficlight(ELightId id, ELight light) {
 
-        sendPacket(EMode.VEHICLE_MODE, start, dest, vehicle);
+        try {
 
-    }
+            sendPacket(EMode.TRAFFICLIGHT_MODE, id, light, new ELightId((byte) 0x00));
 
-    public void sendTrafficlight(ELightId id, ELight light) throws IOException {
+        } catch (IOException e) {
 
-        sendPacket(EMode.TRAFFICLIGHT_MODE, id, light, new ELightId((byte)0x00));
+            System.err.println("Failed sending trafficlight state:" + e.getMessage());
+            area.append("Could not send trafficlight state" + '\n');
+
+        }
 
     }
 
@@ -138,60 +164,62 @@ public class Port extends Thread {
 
     private void receivePacket(byte[] data) {
 
-        System.err.println("data0:" + data[0]+ ", data1:" + data[1]+", data2:"+data[2]);
-        
+        System.err.println("data0:" + data[0] + ", data1:" + data[1] + ", data2:" + data[2]);
+
         switch ((int) data[2]) {
 
             case 1:
-                signOn(new ELightId(data[1]));
+                addWaitingCar(new ELightId(data[1]));
                 break;
             case 0:
-                signOff(new ELightId(data[1]));
+                removeWaitingCar(new ELightId(data[1]));
                 break;
 
         }
 
     }
 
-    private void signOn(ELightId id){
+    private void addWaitingCar(ELightId id) {
 
         System.out.println("add car on light: " + id.string());
         c.addCar(id);
-        
+
     }
-    
-    private void signOff(ELightId id) {
-        
+
+    private void removeWaitingCar(ELightId id) {
+
         System.out.println("remove car on light: " + id.string());
         c.removeCar(id);
-        
+
     }
 
-    public void setCrossroad(Crossroad c) {
-        
-        this.c = c;
-        
-    }
-    
+    /**
+     * send a new car
+     */
     public void sendCar() {
-        
-        try {
-            sendTestData();
-        } catch (IOException ex) {
-            Logger.getLogger(Port.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+
+        sendVehicle(EDirection.ZUID, EDirection.WEST, EType.AUTO);
+
     }
-    
+
+    /**
+     * exit server
+     */
     public void closeServer() {
 
-        area.append("Terminated" + '\n');
         receiving = false;
+
         try {
+
             server.close();
+            area.append("Server closed" + '\n');
+
         } catch (IOException e) {
+
+            area.append("Failed closing server" + '\n');
+
         }
-        
+
     }
 
 }

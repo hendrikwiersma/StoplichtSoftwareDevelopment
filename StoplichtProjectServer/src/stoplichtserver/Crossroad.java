@@ -9,15 +9,17 @@ import java.sql.Timestamp;
 import stoplichtserver.dataTypes.ELightId;
 import stoplichtserver.dataTypes.ELight;
 import stoplichtserver.timedActions.Timer;
-import stoplichtserver.timedActions.TrafficLightRed;
+import stoplichtserver.timedActions.TrafficLightOrange;
 
 /**
- *
+ * Crossroad consisting out of multiple Lanes
+ * 
  * @author Bauke
  */
 public class Crossroad {
     
-    public static final int TIME_TILL_RED = 5000;
+    public static final int TIME_TILL_ORANGE = 5000;
+    public static final int TIME_TILL_RED = 2000;
     public static final int TIME_TILL_RESET = 2000;
     public static final int TRAFFIC_LIGHTS = 50;
     
@@ -38,6 +40,11 @@ public class Crossroad {
         
     }
     
+    /**
+     * add a new car on specific lane
+     * 
+     * @param id 
+     */
     public void addCar(ELightId id) {
         
         Lane l = lanes[id.value()];
@@ -47,6 +54,11 @@ public class Crossroad {
         
     }
     
+    /**
+     * remove a car from lane
+     * 
+     * @param id 
+     */
     public void removeCar(ELightId id) {
 
         Lane l = lanes[id.value()];
@@ -54,6 +66,11 @@ public class Crossroad {
         
     }
     
+    /**
+     * cycle through all lanes
+     * and activate corresponding lights
+     * 
+     */
     public void setLights() {
         
         if (canSetLights) {
@@ -62,7 +79,7 @@ public class Crossroad {
                 
                 Lane l = lanes[i];
                 
-                if (l.getCars() > 0) {
+                if (l.getCarAmount() > 0) {
                     
                     activateLane(l);
                     
@@ -78,9 +95,9 @@ public class Crossroad {
         
         canSetLights = false;
 
-        l.setLight(ELight.GREEN);
+        l.setLightState(ELight.GREEN);
         Timestamp time = new Timestamp(System.currentTimeMillis() + TIME_TILL_RED);
-        t.addAction(new TrafficLightRed(this, l, time));
+        t.addAction(new TrafficLightOrange(this, l, time));
        
     }
     

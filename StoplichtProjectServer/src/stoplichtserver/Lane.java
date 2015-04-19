@@ -1,62 +1,68 @@
 package stoplichtserver;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import stoplichtserver.dataTypes.ELight;
 import stoplichtserver.dataTypes.ELightId;
 
 /**
- *
+ * single lane, with its own trafficlight and waiting list for cars
+ * 
  * @author Bauke
  */
 public class Lane {
-  
+
     private ELightId id;
     private ELight lightState = ELight.RED;
     private int cars = 0;
     private Port p;
-    
+
+    /**
+     * create a new lane
+     * 
+     * @param id light id (lane id)
+     * @param p port for sending light updates
+     */
     public Lane(ELightId id, Port p) {
-        
+
         this.id = id;
         this.p = p;
-        
+
     }
-    
+
     public void addCar() {
-        
-        cars ++;
-        
+
+        cars++;
+
     }
-    
+
     public void removeCar() {
-        
-        cars --;
-        
+
+        cars--;
+
     }
-    
-    public int getCars() {
-        
+
+    public int getCarAmount() {
+
         return cars;
-        
+
     }
-    
-    public void setLight(ELight lightState) {
-        
+
+    /**
+     * set the new light state
+     * also sends update to the client
+     * 
+     * @param lightState 
+     */
+    public void setLightState(ELight lightState) {
+
         this.lightState = lightState;
-        try {
-            p.sendTrafficlight(id, lightState);
-        } catch (IOException ex) {
-            Logger.getLogger(Lane.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        p.sendTrafficlight(id, lightState);
+
     }
-    
-    public ELight getLight() {
-        
+
+    public ELight getLightState() {
+
         return lightState;
-        
+
     }
-    
+
 }
