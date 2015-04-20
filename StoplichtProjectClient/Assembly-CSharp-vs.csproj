@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{BDFCB0F0-7CAC-F9ED-BC8C-02A41A7DB374}</ProjectGuid>
+	<ProjectGuid>{053753BB-CA69-F070-40DD-F49DB7128EAD}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,8 +46,40 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CarController\CarController.cs" />
+     <Compile Include="Assets\CarController\JointSpringSource.cs" />
+     <Compile Include="Assets\CarController\WheelColliderSource.cs" />
+     <Compile Include="Assets\CarController\WheelFrictionCurveSource.cs" />
+     <Compile Include="Assets\CarController\WheelHitSource.cs" />
+     <Compile Include="Assets\CarController2.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
+     <Compile Include="Assets\FollowCar.cs" />
+     <Compile Include="Assets\GenerateWorld.cs" />
      <Compile Include="Assets\Hotspot.cs" />
+     <Compile Include="Assets\MouseLook.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRCameraRig.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRCommon.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRDisplay.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRManager.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRPluginEvent.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRTracker.cs" />
+     <Compile Include="Assets\OVR\Scripts\OvrCapi.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRCrosshair.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGUI.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGamepadController.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRGridCube.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRMainMenu.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRPlayerController.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
+     <Compile Include="Assets\OVR\Scripts\Util\OVRVisionGuide.cs" />
+     <Compile Include="Assets\ResetCar.cs" />
+     <Compile Include="Assets\Spawnpoint.cs" />
+     <Compile Include="Assets\ViewChanger.cs" />
+     <Compile Include="Assets\bike_wheel.cs" />
+     <Compile Include="Assets\newwheelmeshscript.cs" />
+     <Compile Include="Assets\setWheel.cs" />
+     <Compile Include="Assets\steering.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

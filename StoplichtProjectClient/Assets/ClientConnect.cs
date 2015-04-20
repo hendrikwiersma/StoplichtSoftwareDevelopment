@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System;
 
 public class ClientConnect : MonoBehaviour {
+	public string ipaddress;
+	public GameObject Auto;
+	public GameObject Voetganger;
+	public GameObject Bus;
+	public GameObject Fiets;
+	public GameObject spawnpoints;
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
 	// Use this for initialization
 	void Start () {
 		print("Client Started");
-		clientSocket.Connect("127.0.0.1", 10000);
+		clientSocket.Connect(ipaddress, 10000);
 		print("Client Socket Program - Server Connected ...");
 		serverStream = clientSocket.GetStream();
 
@@ -37,6 +44,7 @@ public class ClientConnect : MonoBehaviour {
 	}
 	void SpawnVehicle(byte startpoint, byte endpoint, byte type){
 		string StartingPoint = null;
+		System.Random newrand = new System.Random ();
 		switch (startpoint)
         {
         case 0:
@@ -100,7 +108,29 @@ public class ClientConnect : MonoBehaviour {
 			break;
 		}
 		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
-		
+		List<Spawnpoint> possibleSpawnpoints = new List<Spawnpoint>();
+		foreach(Transform gameObj in spawnpoints.transform)
+		{
+			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
+			if(spawnpoint.direction.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType){
+				{
+					possibleSpawnpoints.Add(spawnpoint);
+				}
+			}
+		}
+		Spawnpoint chosenSpawnPoint = possibleSpawnpoints [newrand.Next (possibleSpawnpoints.Count)];
+		if (VehicleType == "Auto") {
+			Instantiate(Auto, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
+		}
+		else if (VehicleType == "Voetganger") {
+			Instantiate(Voetganger, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);			
+		}
+		else if (VehicleType == "Fiets") {
+			Instantiate(Fiets, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
+		}
+		else if (VehicleType == "Bus") {
+			Instantiate(Bus, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
+		}
 	}
 	void ChangeTrafficLight(byte id, byte state){
 		string State = null;
