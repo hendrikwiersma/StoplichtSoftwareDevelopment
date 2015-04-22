@@ -18,8 +18,8 @@ import stoplichtserver.timedActions.TrafficLightOrange;
  */
 public class Crossroad {
     
-    public static final int TIME_TILL_ORANGE = 5000;
-    public static final int TIME_TILL_RED = 2000;
+    public static final int TIME_TILL_ORANGE = 7000;
+    public static final int TIME_TILL_RED = 3000;
     public static final int TIME_TILL_RESET = 2000;
     public static final int TRAFFIC_LIGHTS = 50;
     
@@ -91,6 +91,10 @@ public class Crossroad {
         
     }
     
+    /**
+     * set lane to active
+     * @param l 
+     */
     private void activateLane(Lane l) {
         
         canSetLights = false;

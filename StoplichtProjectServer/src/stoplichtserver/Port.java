@@ -5,8 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
-import javax.swing.JTextArea;
 import stoplichtserver.dataTypes.*;
 
 /**
@@ -16,14 +14,14 @@ import stoplichtserver.dataTypes.*;
  */
 public class Port extends Thread {
 
-    public static final int PORT_NUMER = 10000;
     public static final int MESSAGE_LENGTH = 4;
 
-    private volatile boolean receiving = true;
+    private volatile boolean running = true;
+    private volatile boolean receiving = false;
 
     private ServerSocket server;
     private Socket socket;
-    private JTextArea area;
+    private Panel panel;
     private Crossroad c;
 
     DataOutputStream out;
@@ -33,9 +31,9 @@ public class Port extends Thread {
      *
      * @param area log
      */
-    public Port(JTextArea area) {
+    public Port(Panel panel) {
 
-        this.area = area;
+        this.panel = panel;
 
     }
 
@@ -56,12 +54,11 @@ public class Port extends Thread {
         //create the socket server object
         try {
 
-            server = new ServerSocket(PORT_NUMER);
+            while (running) {
 
-            while (receiving) {
-
-                if (socket != null && socket.isConnected()) {
-                    try {
+                if (receiving) {
+                    
+                    if (socket != null && socket.isConnected()) {
 
                         DataInputStream in = new DataInputStream(socket.getInputStream());
                         byte[] data = new byte[MESSAGE_LENGTH];
@@ -69,38 +66,30 @@ public class Port extends Thread {
 
                         receivePacket(data);
 
-                    } catch (Exception e) {
+                    } else {
 
-                        break;
-
-                    }
-
-                } else {
-
-                    try {
-
-                        area.append("Waiting for client on port " + server.getLocalPort() + "..." + '\n');
+                        try{
+                        panel.writeText("Waiting for client on port " + server.getLocalPort() + "...");
                         socket = server.accept();
-                        area.append("Just connected to " + socket.getRemoteSocketAddress());
+                        panel.writeText("Connected to " + socket.getRemoteSocketAddress());
                         out = new DataOutputStream(socket.getOutputStream());
-
-                    } catch (SocketTimeoutException s) {
-
-                        area.append("Socket timed out!");
-                        break;
-
-                    } catch (IOException e) {
-
-                        break;
+                        }catch(Exception e) {
+                            
+                            System.out.println(e.getStackTrace());
+                            
+                        }
 
                     }
                 }
+
+                Thread.sleep(10);
 
             }
 
         } catch (Exception e) {
 
             e.printStackTrace();
+            running = false;
 
         } finally {
 
@@ -126,7 +115,7 @@ public class Port extends Thread {
         } catch (IOException e) {
 
             System.err.println("Failed sending vehicle state:" + e.getMessage());
-            area.append("Could not send vehicle" + '\n');
+            panel.writeText("Could not send vehicle");
 
         }
 
@@ -147,7 +136,7 @@ public class Port extends Thread {
         } catch (IOException e) {
 
             System.err.println("Failed sending trafficlight state:" + e.getMessage());
-            area.append("Could not send trafficlight state" + '\n');
+            panel.writeText("Could not send trafficlight state");
 
         }
 
@@ -157,7 +146,7 @@ public class Port extends Thread {
 
         byte[] vehiclePacket = {a.value(), b.value(), c.value(), d.value()};
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-        System.out.println("Sending: " + a.string() + ", " + b.string() + ", " + c.string() + ", " + d.string());
+        panel.writeText("Sending: " + a.string() + ", " + b.string() + ", " + c.string() + ", " + d.string());
         out.write(vehiclePacket);
 
     }
@@ -202,24 +191,57 @@ public class Port extends Thread {
 
     }
 
-    /**
+    public void startServer() {
+
+        if (!receiving) {
+
+            panel.writeText("Server started");
+            
+            try {
+
+                server = new ServerSocket(panel.getPortNummber());
+
+            } catch (IOException ex) {
+
+                panel.writeText("Could not create server");
+                closeServer();
+
+            }
+
+            receiving = true;
+
+        }
+
+    }
+    
+     /**
      * exit server
      */
     public void closeServer() {
 
-        receiving = false;
+        if (receiving) {
 
-        try {
+            receiving = false;
 
-            server.close();
-            area.append("Server closed" + '\n');
+            try {
 
-        } catch (IOException e) {
+                server.close();
+                panel.writeText("Server closed" + '\n');
 
-            area.append("Failed closing server" + '\n');
+            } catch (IOException e) {
+
+                panel.writeText("Failed closing server");
+
+            }
 
         }
 
+    }
+    
+    public void exit() {
+        
+        running = false;
+        
     }
 
 }
