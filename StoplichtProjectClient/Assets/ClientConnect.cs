@@ -12,6 +12,7 @@ public class ClientConnect : MonoBehaviour {
 	public GameObject Bus;
 	public GameObject Fiets;
 	public GameObject spawnpoints;
+	public GameObject trafficlights;
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
 	// Use this for initialization
@@ -150,6 +151,17 @@ public class ClientConnect : MonoBehaviour {
 			break;
 		}
 		print ("Received packet: Turning the trafficlight with id " + id + " " + State);
+		foreach(Transform gameObj in trafficlights.transform)
+		{
+			trafficlightscript light = gameObj.GetComponent<trafficlightscript>();
+			if(light.ID == id){
+				{
+					print ("Executing void.");
+					light.switchlight(State);
+
+				}
+			}
+		}
 	}
 	public void SendVehicleSignal(int trafficlightid, int state){
 		byte[] outStream = {0x03, (byte)trafficlightid, (byte)state, 0x00};
