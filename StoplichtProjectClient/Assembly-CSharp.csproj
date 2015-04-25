@@ -80,6 +80,7 @@
      <Compile Include="Assets\newwheelmeshscript.cs" />
      <Compile Include="Assets\setWheel.cs" />
      <Compile Include="Assets\steering.cs" />
+     <Compile Include="Assets\trafficlight_bus.cs" />
      <Compile Include="Assets\trafficlightscript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
