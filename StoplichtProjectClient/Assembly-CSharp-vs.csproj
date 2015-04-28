@@ -39,13 +39,16 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Bezier.cs" />
+     <Compile Include="Assets\BezierControlPointMode.cs" />
+     <Compile Include="Assets\BezierCurve.cs" />
      <Compile Include="Assets\CarController\CarController.cs" />
      <Compile Include="Assets\CarController\JointSpringSource.cs" />
      <Compile Include="Assets\CarController\WheelColliderSource.cs" />
@@ -63,6 +66,7 @@
      <Compile Include="Assets\OVR\Scripts\OVRManager.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRPluginEvent.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRTracker.cs" />
+     <Compile Include="Assets\OVR\Scripts\OVRUnityVersionChecker.cs" />
      <Compile Include="Assets\OVR\Scripts\OvrCapi.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRCrosshair.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRGUI.cs" />
@@ -74,20 +78,33 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRVisionGuide.cs" />
      <Compile Include="Assets\ResetCar.cs" />
+     <Compile Include="Assets\Roadsystem\BezierSpline.cs" />
+     <Compile Include="Assets\Roadsystem\Line.cs" />
+     <Compile Include="Assets\Roadsystem\Road.cs" />
+     <Compile Include="Assets\Roadsystem\RoadEditor.cs" />
+     <Compile Include="Assets\Roadsystem\RoadWaypoint.cs" />
      <Compile Include="Assets\Spawnpoint.cs" />
      <Compile Include="Assets\ViewChanger.cs" />
      <Compile Include="Assets\bike_wheel.cs" />
+     <Compile Include="Assets\movetowaypoint.cs" />
      <Compile Include="Assets\newwheelmeshscript.cs" />
      <Compile Include="Assets\setWheel.cs" />
      <Compile Include="Assets\steering.cs" />
      <Compile Include="Assets\trafficlight_bus.cs" />
      <Compile Include="Assets\trafficlight_pedestrian.cs" />
      <Compile Include="Assets\trafficlightscript.cs" />
+     <Compile Include="Assets\waypoint.cs" />
+     <None Include="Assets\Plugins\donotdelete.txt" />
+     <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
+     <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
+     <None Include="Assets\OVR\Shaders\Unlit Transparent HUD.shader" />
+     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
+     <None Include="Assets\Plugins\x86\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>D:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
