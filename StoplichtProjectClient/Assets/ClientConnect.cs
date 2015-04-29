@@ -168,7 +168,7 @@ public class ClientConnect : MonoBehaviour {
 	public void SendVehicleSignal(int trafficlightid, int state){
 
 		// dont send if not connected
-		if (serverStream != null) {
+		//if (serverStream != null) {
 
 			byte[] outStream = {0x03, (byte)trafficlightid, (byte)state, 0x00};
 
@@ -183,7 +183,7 @@ public class ClientConnect : MonoBehaviour {
 			}
 
 			serverStream.Write (outStream, 0, outStream.Length);
-		}
+		//}
 
 	}
 

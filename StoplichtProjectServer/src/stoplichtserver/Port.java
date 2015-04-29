@@ -57,7 +57,7 @@ public class Port extends Thread {
             while (running) {
 
                 if (receiving) {
-                    
+
                     if (socket != null && socket.isConnected()) {
 
                         DataInputStream in = new DataInputStream(socket.getInputStream());
@@ -69,13 +69,16 @@ public class Port extends Thread {
                     } else {
 
                         try{
-                        panel.writeText("Waiting for client on port " + server.getLocalPort() + "...");
-                        socket = server.accept();
-                        panel.writeText("Connected to " + socket.getRemoteSocketAddress());
-                        out = new DataOutputStream(socket.getOutputStream());
-                        }catch(Exception e) {
-                            
-                            System.out.println(e.getStackTrace());
+
+                            System.out.println(server);
+                            panel.writeText("Waiting for client on port " + server.getLocalPort() + "...");
+                            socket = server.accept();
+                            panel.writeText("Connected to " + socket.getRemoteSocketAddress());
+                            out = new DataOutputStream(socket.getOutputStream());
+
+                        } catch(Exception e) {
+
+                            System.err.println(e.getMessage());
                             
                         }
 
@@ -144,10 +147,18 @@ public class Port extends Thread {
 
     private void sendPacket(EData a, EData b, EData c, EData d) throws IOException {
 
-        byte[] vehiclePacket = {a.value(), b.value(), c.value(), d.value()};
-        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-        panel.writeText("Sending: " + a.string() + ", " + b.string() + ", " + c.string() + ", " + d.string());
-        out.write(vehiclePacket);
+        if (socket != null) {
+            
+            byte[] vehiclePacket = {a.value(), b.value(), c.value(), d.value()};
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            panel.writeText("Sending: " + a.string() + ", " + b.string() + ", " + c.string() + ", " + d.string());
+            out.write(vehiclePacket);
+        
+        } else {
+            
+            System.err.println("No socket connected");
+            
+        }
 
     }
 
@@ -187,8 +198,14 @@ public class Port extends Thread {
      */
     public void sendCar() {
 
-        sendVehicle(EDirection.ZUID, EDirection.WEST, EType.AUTO);
+        sendCar(EDirection.ZUID, EDirection.WEST);
 
+    }
+    
+    public void sendCar(EDirection from, EDirection to) {
+        
+        sendVehicle(from, to, EType.AUTO);
+        
     }
 
     public void startServer() {
@@ -198,7 +215,7 @@ public class Port extends Thread {
             panel.writeText("Server started");
             
             try {
-
+                
                 server = new ServerSocket(panel.getPortNummber());
 
             } catch (IOException ex) {
