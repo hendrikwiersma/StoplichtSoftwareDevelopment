@@ -52,9 +52,11 @@
      <Compile Include="Assets\BezierCurve.cs" />
      <Compile Include="Assets\CarController\CarController.cs" />
      <Compile Include="Assets\CarController\JointSpringSource.cs" />
+     <Compile Include="Assets\CarController\Stabiliser.cs" />
      <Compile Include="Assets\CarController\WheelColliderSource.cs" />
      <Compile Include="Assets\CarController\WheelFrictionCurveSource.cs" />
      <Compile Include="Assets\CarController\WheelHitSource.cs" />
+     <Compile Include="Assets\CarController\steering.cs" />
      <Compile Include="Assets\CarController2.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
      <Compile Include="Assets\FollowCar.cs" />
@@ -90,7 +92,6 @@
      <Compile Include="Assets\movetowaypoint.cs" />
      <Compile Include="Assets\newwheelmeshscript.cs" />
      <Compile Include="Assets\setWheel.cs" />
-     <Compile Include="Assets\steering.cs" />
      <Compile Include="Assets\trafficlight_bus.cs" />
      <Compile Include="Assets\trafficlight_pedestrian.cs" />
      <Compile Include="Assets\trafficlightscript.cs" />
