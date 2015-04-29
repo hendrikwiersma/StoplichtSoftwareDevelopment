@@ -1,4 +1,5 @@
 /StoplichtProjectServer/dist/
 StoplichtProjectClient/Library/ShaderCache/
 StoplichtProjectClient/Temp/UnityLockfile
-StoplichtProjectClient/
+StoplichtProjectClient/Temp/
+StoplichtProjectClient/Library/metadata/
