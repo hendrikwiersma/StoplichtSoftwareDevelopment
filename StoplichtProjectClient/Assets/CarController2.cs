@@ -47,7 +47,7 @@ public class CarController2 : MonoBehaviour
 	public void FixedUpdate()
 	{
 		if (useSteeringWheel) {
-
+			/*
 			float valueraw = Mathf.Lerp(0, 1, (Input.GetAxisRaw ("SteerLeft") + 1) * 0.5f);
 			float value = Mathf.Lerp(0, 1, (Input.GetAxis ("SteerLeft") + 1) * 0.5f);
 
@@ -73,7 +73,7 @@ public class CarController2 : MonoBehaviour
 			} else { //Remove handbrake
 				BackRightWheel.BrakeTorque = 0;
 				BackLeftWheel.BrakeTorque = 0;
-			}
+			}*/
 		} else {
 			print ("Vertical" + Input.GetAxis ("Vertical"));
 			print ("Horizontal" + Input.GetAxis ("Horizontal"));
