@@ -151,8 +151,8 @@ public class Panel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //port.sendCar();
-                port.sendCar(EDirection.NOORD, EDirection.OOST);
+                port.sendCar();
+                //port.sendCar(EDirection.NOORD, EDirection.OOST);
 
             }
 

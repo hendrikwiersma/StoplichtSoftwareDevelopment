@@ -40,7 +40,7 @@ public class Road : MonoBehaviour {
 
 		}
 
-		Mesh mesh = filter.mesh;
+		//Mesh mesh = filter.mesh;
 		//createMesh (mesh);
 		//setMaterial ();
 	
@@ -186,7 +186,7 @@ public class Road : MonoBehaviour {
 	private void setMaterial() {
 
 		Debug.Log ("setMat");
-		Material mat = Resources.Load("asphalt_texture", typeof(Material)) as Material;
+		//Material mat = Resources.Load("asphalt_texture", typeof(Material)) as Material;
 		gameObject.GetComponent<Renderer> ().material.SetTexture(1, Resources.Load("asphalt_texture", typeof(Texture3D)) as Texture3D);
 
 
