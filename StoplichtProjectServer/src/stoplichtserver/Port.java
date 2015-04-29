@@ -69,6 +69,7 @@ public class Port extends Thread {
                     } else {
 
                         try{
+                            System.out.println(server.getInetAddress().getHostAddress());
                         panel.writeText("Waiting for client on port " + server.getLocalPort() + "...");
                         socket = server.accept();
                         panel.writeText("Connected to " + socket.getRemoteSocketAddress());

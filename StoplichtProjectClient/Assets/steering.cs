@@ -21,6 +21,7 @@ public class steering : MonoBehaviour {
 		fl.motorTorque = 10000 * Input.GetAxis ("Vertical");
 		fr.motorTorque = 10000 * Input.GetAxis ("Vertical");
 
+		//print(100.0f  * Input.GetAxis("Horizontal"));
 		fl.steerAngle = 100.0f  * Input.GetAxis("Horizontal");
 		fr.steerAngle = 100.0f  *  Input.GetAxis("Horizontal");
 	}
