@@ -28,7 +28,9 @@ public class ClientConnect : MonoBehaviour {
 	void Update () {
 		if (serverStream.DataAvailable) {
 			byte[] inStream = new byte[4];
+
 			int bytesRead = serverStream.Read (inStream, 0, inStream.Length);
+
 			switch (inStream [0]) {
 			case 1:
 				SpawnVehicle (inStream [1], inStream [2], inStream [3]);
@@ -164,12 +166,25 @@ public class ClientConnect : MonoBehaviour {
 		}
 	}
 	public void SendVehicleSignal(int trafficlightid, int state){
-		byte[] outStream = {0x03, (byte)trafficlightid, (byte)state, 0x00};
-		if (state == 0) {
-			print ("Sending packet: A car is logging in at trafficlight id " + trafficlightid);
-		} else {
-			print ("Sending packet: A car is logging out at trafficlight id " + trafficlightid);
-		}
-		serverStream.Write(outStream, 0, outStream.Length);
+
+		// dont send if not connected
+		//if (serverStream != null) {
+
+			byte[] outStream = {0x03, (byte)trafficlightid, (byte)state, 0x00};
+
+			if (state == 0) {
+
+				print ("Sending packet: A car is logging in at trafficlight id " + trafficlightid);
+
+			} else {
+
+				print ("Sending packet: A car is logging out at trafficlight id " + trafficlightid);
+
+			}
+
+			serverStream.Write (outStream, 0, outStream.Length);
+		//}
+
 	}
+
 }

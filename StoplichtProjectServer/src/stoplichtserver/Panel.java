@@ -1,6 +1,6 @@
 package stoplichtserver;
 
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -12,16 +12,19 @@ import java.io.File;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import stoplichtserver.dataTypes.EDirection;
 
 @SuppressWarnings("serial")
 public class Panel extends JFrame {
@@ -138,23 +141,32 @@ public class Panel extends JFrame {
     
     private void buttonPanel(JPanel p) {
         
-        JButton[] btn = new JButton[2];
+        ArrayList<Component> components = new ArrayList<>();
+        //components.add(Box.createRigidArea(new Dimension(1, 1)));
         
         // button creating new cars
-        btn[0] = new JButton("Send car");
-        btn[0].addActionListener(new ActionListener() {
+        JButton bt1 = new JButton("Send car");
+        bt1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                port.sendCar();
+                //port.sendCar();
+                port.sendCar(EDirection.NOORD, EDirection.OOST);
 
             }
 
         });
+        components.add(bt1);
 
-        btn[1] = new JButton("Get id");
-        btn[1].addActionListener(new ActionListener() {
+        EDirection[] directions = {EDirection.NOORD, EDirection.OOST, EDirection.ZUID, EDirection.WEST, EDirection.VENTWEG};
+        JComboBox<EDirection> from = new JComboBox<EDirection>(directions);
+        components.add(from);
+        JComboBox<EDirection> to = new JComboBox<EDirection>(directions);
+        components.add(to);
+        
+        JButton bt2 = new JButton("Get id");
+        bt2.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -164,14 +176,14 @@ public class Panel extends JFrame {
             }
 
         });
+        components.add(bt2);
         
-        p.add(Box.createRigidArea(new Dimension(5, 5)), new GBC(0,0));
+        for (int i = 0; i < components.size(); i++) {
         
-        for (int i = 0; i < btn.length; i++) {
-        
-            btn[i].setPreferredSize(new Dimension(80, 30));
-            p.add(btn[i], new GBC(0, i * 2 + 1));
-            p.add(Box.createRigidArea(new Dimension(2, 2)), new GBC(0, i * 2 + 2));
+            Component c = components.get(i);
+            c.setPreferredSize(new Dimension(80, 30));
+            p.add(Box.createRigidArea(new Dimension(2, 2)), new GBC(0, i * 2));
+            p.add(c, new GBC(0, i * 2 + 1));
         
         }
         

@@ -29,17 +29,31 @@ public class CarController : MonoBehaviour
     public Transform BackRight;
     public Transform BackLeft;
 
-	public WheelCollider FrontRightWheelCol;
-	public WheelCollider FrontLeftWheelCol;
-	public WheelCollider BackRightWheelCol;
-	public WheelCollider BackLeftWheelCol;
+	private WheelColliderSource FrontRightWheel;
+	private WheelColliderSource FrontLeftWheel;
+	private WheelColliderSource BackRightWheel;
+	private WheelColliderSource BackLeftWheel;
+	
+	public void Start() {
+		
+		FrontRightWheel = FrontRight.gameObject.AddComponent<WheelColliderSource>();
+		FrontLeftWheel = FrontLeft.gameObject.AddComponent<WheelColliderSource>();
+		BackRightWheel = BackRight.gameObject.AddComponent<WheelColliderSource>();
+		BackLeftWheel = BackLeft.gameObject.AddComponent<WheelColliderSource>();
 
-    public void Start() {
+		FrontRightWheel.WheelRadius = FrontRight.GetComponent<Renderer> ().bounds.size.y / 2;
+		FrontLeftWheel.WheelRadius = FrontLeft.GetComponent<Renderer> ().bounds.size.y / 2;
+		BackRightWheel.WheelRadius = BackRight.GetComponent<Renderer> ().bounds.size.y / 2;
+		BackLeftWheel.WheelRadius = BackLeft.GetComponent<Renderer> ().bounds.size.y / 2;
 
-		FrontRightWheelCol.radius = FrontRight.localScale.y;
-		FrontLeftWheelCol.radius = FrontLeft.localScale.y;
-		BackRightWheelCol.radius = BackRight.localScale.y;
-		BackLeftWheelCol.radius = BackLeft.localScale.y;
+		Stabiliser front = gameObject.AddComponent<Stabiliser>();
+		Stabiliser back = gameObject.AddComponent<Stabiliser> ();
+
+		front.WheelL = FrontLeftWheel;
+		front.WheelR = FrontRightWheel;
+
+		back.WheelL = BackLeftWheel;
+		back.WheelR = BackRightWheel;
 
     }
 
@@ -54,41 +68,44 @@ public class CarController : MonoBehaviour
 			print ("Steer" + value);
 			
 			//Apply the accelerator pedal
-			FrontRightWheelCol.motorTorque = AcceleratePedal * 3000.0f;
+			FrontRightWheel.MotorTorque = AcceleratePedal * 3000.0f;
 			//FrontLeftWheel.MotorTorque = Input.GetAxis ("Vertical") * -300.0f;
-			
+
 			//Turn the steering wheel
-			FrontRightWheelCol.steerAngle = Input.GetAxis ("SteerRight") * 45;
-			FrontLeftWheelCol.steerAngle = Input.GetAxis ("SteerRight") * 45;
+			FrontRightWheel.SteerAngle = Input.GetAxis ("SteerRight") * 45;
+			FrontLeftWheel.SteerAngle = Input.GetAxis ("SteerRight") * 45;
 			
 			animator.SetFloat("SteerRight",value);			
 			
-			//Apply the hand brake
+			//Apply the hand braker
 			if (Input.GetKey (KeyCode.Space)) {
-				BackRightWheelCol.brakeTorque = 200000.0f;
-				BackLeftWheelCol.brakeTorque = 200000.0f;
+				BackRightWheel.BrakeTorque = 200000.0f;
+				BackLeftWheel.BrakeTorque = 200000.0f;
 			} else { //Remove handbrake
-				BackRightWheelCol.brakeTorque = 0;
-				BackLeftWheelCol.brakeTorque = 0;
+				BackRightWheel.BrakeTorque = 0;
+				BackLeftWheel.BrakeTorque = 0;
 			}
 		} else {
-			print ("Vertical" + Input.GetAxis ("Vertical"));
-			print ("Horizontal" + Input.GetAxis ("Horizontal"));
+//			print ("Vertical" + Input.GetAxis ("Vertical"));
+//			print ("Horizontal" + Input.GetAxis ("Horizontal"));
 			//Apply the accelerator pedal
-			FrontRightWheelCol.motorTorque = Input.GetAxis ("Vertical") * 300.0f;
-			FrontLeftWheelCol.motorTorque = Input.GetAxis ("Vertical") * -300.0f;
+			FrontRightWheel.MotorTorque = Input.GetAxis ("Vertical") * 300.0f;
+			FrontLeftWheel.MotorTorque = Input.GetAxis ("Vertical") * -300.0f;
 			
 			//Turn the steering wheel
-			FrontRightWheelCol.steerAngle = Input.GetAxis ("Horizontal") * 45;
-			FrontLeftWheelCol.steerAngle = Input.GetAxis ("Horizontal") * 45 + 180;
+			FrontRightWheel.SteerAngle = Input.GetAxis ("Horizontal") * 45;
+			FrontLeftWheel.SteerAngle = Input.GetAxis ("Horizontal") * 45 + 180;
 			
 			//Apply the hand brake
-			if (Input.GetKey (KeyCode.Space)) {
-				BackRightWheelCol.brakeTorque = 200000.0f;
-				BackLeftWheelCol.brakeTorque = 200000.0f;
-			} else { //Remove handbrake
-				BackRightWheelCol.brakeTorque = 0;
-				BackLeftWheelCol.brakeTorque = 0;
+			if (Input.GetKey(KeyCode.Space))
+			{
+				BackRightWheel.BrakeTorque = 200000.0f;
+				BackLeftWheel.BrakeTorque = 200000.0f;
+			}
+			else //Remove handbrake
+			{
+				BackRightWheel.BrakeTorque = 0;
+				BackLeftWheel.BrakeTorque = 0;
 			}
 		}
     }

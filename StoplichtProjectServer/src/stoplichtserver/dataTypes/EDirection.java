@@ -3,7 +3,7 @@ package stoplichtserver.dataTypes;
 public enum EDirection implements EData {
 
 	NOORD((byte)0x00, "Noord"), OOST((byte)0x01, "Oost"), ZUID((byte)0x02, "Zuid"), WEST((byte)0x03, "West"), VENTWEG((byte)0x04, "Ventweg");
-	
+        
 	private byte b;
 	private String s;
 	
