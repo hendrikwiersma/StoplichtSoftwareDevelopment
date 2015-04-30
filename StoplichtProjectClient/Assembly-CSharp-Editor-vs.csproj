@@ -71,27 +71,6 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="RAIN">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/RAIN.dll</HintPath>
- </Reference>
- <Reference Include="RAINMetaform">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/RAINMetaform.dll</HintPath>
- </Reference>
- <Reference Include="AetherUnity">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/Editor/AetherUnity.dll</HintPath>
- </Reference>
- <Reference Include="LegionRestModel">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/Editor/LegionRestModel.dll</HintPath>
- </Reference>
- <Reference Include="RAINEditor">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/Editor/RAINEditor.dll</HintPath>
- </Reference>
- <Reference Include="RAINMetaformEditor">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/Editor/RAINMetaformEditor.dll</HintPath>
- </Reference>
- <Reference Include="RAINUpdater">
- <HintPath>C:/Users/Bauke/Documents/StoplichtSoftwareDevelopment/StoplichtProjectClient/Assets/RAIN/Editor/RAINUpdater.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
