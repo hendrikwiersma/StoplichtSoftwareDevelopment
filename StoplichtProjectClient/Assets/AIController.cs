@@ -32,7 +32,7 @@ public class AIController : MonoBehaviour {
 	public void nextWaypoint(){
 		if(waypointcounter < waypoints.Count-1){
 			waypointcounter++;
-			print(waypointcounter);
+//			print(waypointcounter);
 		}
 		else{
 			waypointcounter = 0;

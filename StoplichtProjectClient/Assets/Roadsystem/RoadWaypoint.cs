@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RoadWaypoint : MonoBehaviour {
 	void Start(){
-		print("Should get here.");
+//		print("Should get here.");
 		Instantiate(Resources.Load("waypointcollider"), transform.position, transform.rotation);
 	}
 	[SerializeField]

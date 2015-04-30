@@ -59,6 +59,7 @@
      <Compile Include="Assets\CarController\steering.cs" />
      <Compile Include="Assets\CarController2.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
+     <Compile Include="Assets\Client_Connect2.cs" />
      <Compile Include="Assets\FollowCar.cs" />
      <Compile Include="Assets\GenerateWorld.cs" />
      <Compile Include="Assets\Hotspot.cs" />
@@ -89,6 +90,7 @@
      <Compile Include="Assets\Spawnpoint.cs" />
      <Compile Include="Assets\ViewChanger.cs" />
      <Compile Include="Assets\bike_wheel.cs" />
+     <Compile Include="Assets\moveAgent.cs" />
      <Compile Include="Assets\movetowaypoint.cs" />
      <Compile Include="Assets\newwheelmeshscript.cs" />
      <Compile Include="Assets\setWheel.cs" />
