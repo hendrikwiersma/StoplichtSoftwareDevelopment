@@ -7,6 +7,7 @@ using System;
 
 public class ClientConnect : MonoBehaviour {
 	public string ipaddress;
+	public GameObject WaypointCollection;
 	public GameObject Auto;
 	public GameObject Voetganger;
 	public GameObject Bus;
@@ -21,7 +22,6 @@ public class ClientConnect : MonoBehaviour {
 		clientSocket.Connect(ipaddress, 10000);
 		print("Client Socket Program - Server Connected ...");
 		serverStream = clientSocket.GetStream();
-
 	}
 	
 	// Update is called once per frame
@@ -123,7 +123,10 @@ public class ClientConnect : MonoBehaviour {
 		}
 		Spawnpoint chosenSpawnPoint = possibleSpawnpoints [newrand.Next (possibleSpawnpoints.Count)];
 		if (VehicleType == "Auto") {
-			Instantiate(Auto, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
+			GameObject car = Instantiate(Auto, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation) as GameObject;
+			AIController controller = car.GetComponent<AIController>();
+			controller.WaypointCollection = WaypointCollection;
+
 		}
 		else if (VehicleType == "Voetganger") {
 			Instantiate(Voetganger, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);			

@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public class Road : MonoBehaviour {
+public class WaypointEditor : MonoBehaviour {
 
 	private const int stepsPerCurve = 8;
 	private const int roadWidth = 5;
@@ -40,9 +40,9 @@ public class Road : MonoBehaviour {
 
 		}
 
-		//Mesh mesh = filter.mesh;
-		//createMesh (mesh);
-		//setMaterial ();
+		Mesh mesh = filter.mesh;
+		createMesh (mesh);
+		setMaterial ();
 	
 	}
 

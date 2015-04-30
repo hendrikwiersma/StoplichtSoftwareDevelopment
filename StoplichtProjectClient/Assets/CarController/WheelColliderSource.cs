@@ -183,7 +183,7 @@ public class WheelColliderSource : MonoBehaviour
         Center =  Vector3.zero;
 
         WheelRadius = 0.5f;
-        m_suspensionDistance = 0.5f;
+        m_suspensionDistance = 0.4f;
         m_suspensionCompression = 0.0f;
         Mass = 1.0f;
 

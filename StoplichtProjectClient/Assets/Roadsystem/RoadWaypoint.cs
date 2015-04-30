@@ -2,9 +2,13 @@
 using System.Collections;
 
 public class RoadWaypoint : MonoBehaviour {
-
+	void Start(){
+		print("Should get here.");
+		Instantiate(Resources.Load("waypointcollider"), transform.position, transform.rotation);
+	}
 	[SerializeField]
 	private Vector3 _control;
+
 	public Vector3 firstControl { 
 		get { return transform.position +  _control; }
 		set { _control = value - transform.position; } 
