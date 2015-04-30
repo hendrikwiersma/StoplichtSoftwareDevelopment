@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR 
+	using UnityEditor;
+#endif
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -47,7 +49,7 @@ public class Road : MonoBehaviour {
 	}
 
 	public void onSceneGUI() {
-
+		#if UNITY_EDITOR
 		List<RoadWaypoint> wps = new List<RoadWaypoint>();
 		transform.GetComponentsInChildren<RoadWaypoint> (wps);
 
@@ -59,7 +61,7 @@ public class Road : MonoBehaviour {
 		}
 
 		RoadWaypoint prev = wps [0];
-		RoadWaypoint curr = wps [1];
+		RoadWaypoint curr = wps [1];	
 
 		for (int i = 1; i < wps.Count; i++) {
 
@@ -81,7 +83,7 @@ public class Road : MonoBehaviour {
 			prev = curr;
 
 		}
-
+		#endif
 	}
 
 	public Vector3 GetPoint (float t) {
