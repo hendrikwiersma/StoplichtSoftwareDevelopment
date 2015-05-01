@@ -234,29 +234,6 @@ public class WheelColliderSource : MonoBehaviour
         }
     }
 
-    public void OnDrawGizmosSelected()
-    {
-        Gizmos.color = GizmoColor;
-
-        //Draw the suspension
-        Gizmos.DrawLine(
-            transform.position - m_dummyWheel.up * m_wheelRadius, 
-            transform.position + (m_dummyWheel.up * (m_suspensionDistance - m_suspensionCompression))
-        );
-
-        //Draw the wheel
-        Vector3 point1;
-        Vector3 point0 = transform.TransformPoint(m_wheelRadius * new Vector3(0, Mathf.Sin(0), Mathf.Cos(0)));
-        for (int i = 1; i <= 20; ++i)
-        {
-            point1 = transform.TransformPoint(m_wheelRadius * new Vector3(0, Mathf.Sin(i / 20.0f * Mathf.PI * 2.0f), Mathf.Cos(i / 20.0f * Mathf.PI * 2.0f)));
-            Gizmos.DrawLine(point0, point1);
-            point0 = point1;
-
-        }
-        Gizmos.color = Color.white;
-    }
-
     public bool GetGroundHit(out WheelHitSource wheelHit)
     {
         wheelHit = new WheelHitSource();
