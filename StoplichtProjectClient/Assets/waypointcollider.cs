@@ -10,7 +10,7 @@ public class waypointcollider : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		//NetworkScript.SendVehicleSignal (TrafficLightID, 1);
 		print("Entered waypoint collider.");
-		AIController controller = other.gameObject.GetComponent<AIController>();
+		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
 		controller.nextWaypoint();
 	}
 	

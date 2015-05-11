@@ -50,7 +50,29 @@ public class AIController : MonoBehaviour {
 
 		float distance = Vector3.Distance (Target.transform.position, transform.position);
 		//print(20.0f * GetComponent<Rigidbody>().velocity.magnitude);
-		if(distance < 5.5f * GetComponent<Rigidbody>().velocity.magnitude){
+
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+		//fwd.y = 0;
+		RaycastHit hit;
+		bool carinfront = false;
+		if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z), fwd, out hit, 10)){
+			Debug.DrawLine (transform.position, hit.point, Color.cyan);
+			if(hit.collider.gameObject.tag == "Car"){
+				carinfront = true;
+			}
+		}
+		if(carinfront){
+			print("BRAKE");
+			RightFront.MotorTorque = 0;
+			LeftFront.MotorTorque = 0;
+			RightBack.MotorTorque = 0;
+			LeftBack.MotorTorque = 0;
+			RightFront.BrakeTorque = 3000;
+			LeftFront.BrakeTorque = 3000;
+			RightBack.BrakeTorque = 3000;
+			LeftBack.BrakeTorque = 3000;
+		}
+		else if(distance < 4.5f * GetComponent<Rigidbody>().velocity.magnitude){
 			RightFront.MotorTorque = 0;
 			LeftFront.MotorTorque = 0;
 			RightBack.MotorTorque = 0;

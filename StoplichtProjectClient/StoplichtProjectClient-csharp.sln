@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{FB196F6F-599F-BC44-E326-D518EC8B0E11}") = "StoplichtProjectClient", "Assembly-CSharp-firstpass-vs.csproj", "{DB2672F0-C189-F99F-8F54-8464DC54F729}"
+EndProject
 Project("{FB196F6F-599F-BC44-E326-D518EC8B0E11}") = "StoplichtProjectClient", "Assembly-CSharp-vs.csproj", "{053753BB-CA69-F070-40DD-F49DB7128EAD}"
 EndProject
 Project("{FB196F6F-599F-BC44-E326-D518EC8B0E11}") = "StoplichtProjectClient", "Assembly-CSharp-Editor-vs.csproj", "{9EE5A48D-17DC-175D-4442-1E6E153B949B}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB2672F0-C189-F99F-8F54-8464DC54F729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2672F0-C189-F99F-8F54-8464DC54F729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2672F0-C189-F99F-8F54-8464DC54F729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2672F0-C189-F99F-8F54-8464DC54F729}.Release|Any CPU.Build.0 = Release|Any CPU
 		{053753BB-CA69-F070-40DD-F49DB7128EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{053753BB-CA69-F070-40DD-F49DB7128EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{053753BB-CA69-F070-40DD-F49DB7128EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																															GlobalSection(MonoDevelopProperties) = preSolution
+																																																																						GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
