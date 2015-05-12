@@ -17,8 +17,9 @@ public class AIControllerWheelCol : MonoBehaviour {
 	public GameObject Target;
 	private float speed = 0.1f;
 	private float tParam = 0f;
-
 	private float steering = 0.0f;
+	bool carinfront = false;
+	bool Go = true;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +36,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 			print("Next Waypoint");
 		}
 		else{
-			waypointcounter = 0;
+			Destroy(this.gameObject);
 		}
 		Target = waypoints[waypointcounter];
 		}
@@ -53,40 +54,40 @@ public class AIControllerWheelCol : MonoBehaviour {
 
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		//fwd.y = 0;
-		RaycastHit hit;
-		bool carinfront = false;
-		if(Physics.Raycast(transform.position, fwd, out hit, 20)){
-			Debug.DrawLine (transform.position, hit.point, Color.cyan);
+		
+		RaycastHit[] allHits;
+		allHits = Physics.RaycastAll(transform.position, fwd, GetComponent<Rigidbody>().velocity.magnitude * 2);
+		bool hitsomething = false;
+		for (int i = 0; i < allHits.Length; i++) {
+			RaycastHit hit = allHits[i];
 			if(hit.collider.gameObject.tag == "Car"){
-				carinfront = true;
+				hitsomething = true;
+			}
+			else if(hit.collider.gameObject.tag == "Trafficlight"){
+				WaitingScript controller = hit.collider.gameObject.GetComponent<WaitingScript>();
+				if(controller.Go == false){
+					Go = false;
+				}
 			}
 		}
-		if(carinfront){
-			print("BRAKE");
+		if(hitsomething || Go == false){
+			float brakeforce = (GetComponent<Rigidbody>().velocity.magnitude * 100);
+			//print("BRAKE" + brakeforce);
 			RightFront.motorTorque = 0;
 			LeftFront.motorTorque = 0;
 			RightBack.motorTorque = 0;
 			LeftBack.motorTorque = 0;
-			RightFront.brakeTorque = 300;
-			LeftFront.brakeTorque = 300;
-			RightBack.brakeTorque = 300;
-			LeftBack.brakeTorque = 300;
-		}
-		else if(distance < 0.7f * GetComponent<Rigidbody>().velocity.magnitude){
-			print("Brake");
-			RightFront.motorTorque = 0;
-			LeftFront.motorTorque = 0;
-			RightBack.motorTorque = 0;
-			LeftBack.motorTorque = 0;
-			RightFront.brakeTorque = 3;
-			LeftFront.brakeTorque = 3;
-			RightBack.brakeTorque = 3;
-			LeftBack.brakeTorque = 3;
+			RightFront.brakeTorque = brakeforce;
+			LeftFront.brakeTorque = brakeforce;
+			RightBack.brakeTorque = brakeforce;
+			LeftBack.brakeTorque = brakeforce;
 		}
 		else{
-
+			carinfront = false;
+			Go = true;
+			print("Go");
 			float torque = Mathf.Clamp(distance*50, 0.0f, 1000.0f);
-			print(torque);
+			print("Giving gass");
 			RightFront.motorTorque = torque;
 			LeftFront.motorTorque = torque;
 			RightFront.brakeTorque = 0;
@@ -98,8 +99,9 @@ public class AIControllerWheelCol : MonoBehaviour {
 			LeftBack.brakeTorque = 0;
 		}
 		
-
-		steering = Mathf.Lerp(steering, newsteering, 0.1f);
+		//print("CarAngle " + carAngle);
+		//print("SteeringAngle " + steering + 180);
+		steering = newsteering;
 		RightFront.steerAngle = steering;
 		LeftFront.steerAngle = steering;
 		//print(steering);

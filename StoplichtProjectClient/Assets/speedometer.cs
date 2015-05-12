@@ -4,7 +4,8 @@ using System.Collections;
 public class speedometer : MonoBehaviour {
 	public Rigidbody rb;
 	private Vector3 initialrot;
-	private float previousMagnitude;
+	private float previousMagnitude = 0;
+
 	// Use this for initialization
 	void Start () {
 		initialrot = transform.localRotation.eulerAngles;
@@ -19,7 +20,7 @@ public class speedometer : MonoBehaviour {
 		float newMag = magnitude - previousMagnitude;
 
 		// Set rotation.
-		transform.RotateAround (transform.position, transform.up, newMag * 10);
+		transform.RotateAround (transform.position, transform.up, newMag * (180 / 36));
 
 		// Set previous magnitude so we can use it the next cycle.
 		previousMagnitude = magnitude;

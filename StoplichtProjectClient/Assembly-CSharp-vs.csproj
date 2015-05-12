@@ -110,6 +110,7 @@
      <Compile Include="Assets\Roadsystem\RoadWaypoint.cs" />
      <Compile Include="Assets\Spawnpoint.cs" />
      <Compile Include="Assets\ViewChanger.cs" />
+     <Compile Include="Assets\WaitingScript.cs" />
      <Compile Include="Assets\bike_wheel.cs" />
      <Compile Include="Assets\jump.cs" />
      <Compile Include="Assets\moveAgent.cs" />
