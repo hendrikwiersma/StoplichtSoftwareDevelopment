@@ -14,3 +14,11 @@ StoplichtProjectClient/Assets/moveAgent.cs.meta
 StoplichtProjectClient/Assets/MainScene/NavMesh.asset.meta
 StoplichtProjectClient/Assets/MainScene.meta
 StoplichtProjectClient/Assets/Client_Connect2.cs.meta
+.DS_Store
+Library
+Temp
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
