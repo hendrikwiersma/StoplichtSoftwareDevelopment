@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class trafficlightscript : MonoBehaviour {
@@ -31,5 +31,8 @@ public class trafficlightscript : MonoBehaviour {
 			print ("Invalid traffic light color.");
 		}
 	}
-
+	
+	// Update is called once per frame
+	void Update () {
+	}
 }
