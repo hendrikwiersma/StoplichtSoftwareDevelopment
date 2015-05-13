@@ -1,25 +1,32 @@
-StoplichtProjectServer/dist/
-StoplichtProjectClient/Library/ShaderCache/*
-StoplichtProjectClient/Temp/UnityLockfile
-StoplichtProjectClient/Temp/
-StoplichtProjectClient/Library/metadata/
-StoplichtProjectServer/nbproject/private/
-StoplichtProjectClient/Library/expandedItems
-StoplichtProjectClient/Library/CurrentLayout.dwlt
-StoplichtProjectClient/Library/CrashedAssetImports.txt
-StoplichtProjectClient/Library/shadercompiler-32bit-1.log
-StoplichtProjectClient/Library/shadercompiler-64bit-1.log
-StoplichtProjectClient/Assets/crossroad.rar.meta
-StoplichtProjectClient/Assets/moveAgent.cs.meta
-StoplichtProjectClient/Assets/MainScene/NavMesh.asset.meta
-StoplichtProjectClient/Assets/MainScene.meta
-StoplichtProjectClient/Assets/Client_Connect2.cs.meta
-.DS_Store
-Library
-Temp
-*.csproj
-*.pidb
-*.unityproj
-*.sln
-*.userprefs
-*.meta
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
