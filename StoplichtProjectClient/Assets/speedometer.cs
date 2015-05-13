@@ -20,7 +20,9 @@ public class speedometer : MonoBehaviour {
 		float newMag = magnitude - previousMagnitude;
 
 		// Set rotation.
-		transform.RotateAround (transform.position, transform.up, newMag * (180 / 36));
+		if(newMag != 0){
+			transform.RotateAround (transform.position, transform.up, newMag * (180 / 36) - (newMag /1.4f));
+		}
 
 		// Set previous magnitude so we can use it the next cycle.
 		previousMagnitude = magnitude;

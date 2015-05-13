@@ -7,4 +7,8 @@ public class WaitingScript : MonoBehaviour {
 	public void SetGoBool(bool boolean){
 		Go = boolean;
 	}
+	void OnTriggerExit(Collider other) {
+		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
+		controller.go = true;
+	}
 }
