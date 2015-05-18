@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 2eab921198154ec4e934bfe68d06d984
-timeCreated: 1431507781
-licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 2
   fontSize: 16
@@ -14,5 +12,3 @@ TrueTypeFontImporter:
   customCharacters: 
   fontRenderingMode: 0
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
