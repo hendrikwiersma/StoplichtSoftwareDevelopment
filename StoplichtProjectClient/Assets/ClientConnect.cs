@@ -14,6 +14,7 @@ public class ClientConnect : MonoBehaviour {
 	public GameObject Fiets;
 	public GameObject spawnpoints;
 	public GameObject trafficlights;
+	public GameObject TrafficLightStopGoBoxes;
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
 	// Use this for initialization
@@ -121,22 +122,35 @@ public class ClientConnect : MonoBehaviour {
 				}
 			}
 		}
-		Spawnpoint chosenSpawnPoint = possibleSpawnpoints [newrand.Next (possibleSpawnpoints.Count)];
-		if (VehicleType == "Auto") {
-			GameObject car = Instantiate(Auto, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation) as GameObject;
-			AIController controller = car.GetComponent<AIController>();
-			controller.WaypointCollection = WaypointCollection;
-
+		foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
+			if(currentspawnpoint.available == true){
+				currentspawnpoint.available = false;
+				if (VehicleType == "Auto") {
+					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
+					AIController controller = car.GetComponent<AIController>();
+					foreach(Transform gameObj in WaypointCollection.transform)
+					{
+						if(gameObj.transform.name == StartingPoint+EndPoint){
+							print("Spawning new car: " + gameObj.transform.name + " " + StartingPoint+EndPoint);
+							AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
+							aiscript.WaypointCollection = gameObj.gameObject;
+							aiscript.WaypointCollection2 = gameObj.gameObject;
+						}
+					}
+				}
+				else if (VehicleType == "Voetganger") {
+					Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);			
+				}
+				else if (VehicleType == "Fiets") {
+					Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);
+				}
+				else if (VehicleType == "Bus") {
+					Instantiate(Bus, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);
+				}
+				break;
+			}
 		}
-		else if (VehicleType == "Voetganger") {
-			Instantiate(Voetganger, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);			
-		}
-		else if (VehicleType == "Fiets") {
-			Instantiate(Fiets, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
-		}
-		else if (VehicleType == "Bus") {
-			Instantiate(Bus, chosenSpawnPoint.transform.position, chosenSpawnPoint.transform.rotation);
-		}
+		
 	}
 	void ChangeTrafficLight(byte id, byte state){
 		string State = null;
@@ -164,6 +178,20 @@ public class ClientConnect : MonoBehaviour {
 					print ("Executing void.");
 					light.switchlight(State);
 
+				}
+			}
+		}
+		foreach(Transform gameObj in TrafficLightStopGoBoxes.transform)
+		{
+			WaitingScript hotspot = gameObj.GetComponent<WaitingScript>();
+			if(hotspot.TrafficLightID == id){
+				{
+					if(State == "Groen"){
+						hotspot.SetGoBool(true);
+					}
+					else{
+						hotspot.SetGoBool(false);
+					}
 				}
 			}
 		}

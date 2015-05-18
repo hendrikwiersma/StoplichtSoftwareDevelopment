@@ -8,10 +8,10 @@ public class waypointcollider : MonoBehaviour {
 	
 	}
 	void OnTriggerEnter(Collider other) {
-		//NetworkScript.SendVehicleSignal (TrafficLightID, 1);
-		print("Entered waypoint collider.");
 		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
-		controller.nextWaypoint();
+		if(controller.WaypointCollection.transform.name == transform.parent.parent.name){
+			controller.nextWaypoint();
+		}
 	}
 	
 	// Update is called once per frame

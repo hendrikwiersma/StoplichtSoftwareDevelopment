@@ -6,7 +6,11 @@ public class Spawnpoint : MonoBehaviour {
 	public enum Vehicle{Auto,Fiets,Bus,Voetganger}
 	public Direction direction;
 	public Vehicle vehicle;
+	public bool available = true;
 	// Use this for initialization
+	void OnTriggerExit(Collider other) {
+		available = true;
+	}
 	void Start () {
 	
 	}

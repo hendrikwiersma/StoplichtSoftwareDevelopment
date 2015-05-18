@@ -4,7 +4,8 @@ using System.Collections;
 public class RoadWaypoint : MonoBehaviour {
 	void Start(){
 //		print("Should get here.");
-		Instantiate(Resources.Load("waypointcollider"), transform.position, transform.rotation);
+		GameObject newcube = Instantiate(Resources.Load("waypointcollider"), transform.position, transform.rotation) as GameObject;
+		newcube.transform.parent = transform;
 	}
 	[SerializeField]
 	private Vector3 _control;
