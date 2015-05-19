@@ -85,11 +85,13 @@ public class AIControllerWheelCol : MonoBehaviour {
 			}
 			else if(hit.collider.gameObject.tag == "Trafficlight"){
 				WaitingScript controller = hit.collider.gameObject.GetComponent<WaitingScript>();
-				if(controller.Go == true){
-					go = true;
-				}
-				else{
-					go = false;
+				if(controller.waypointSystem.ToString() == WaypointCollection.transform.name){
+					if(controller.Go == true){
+						go = true;
+					}
+					else{
+						go = false;
+					}
 				}
 			}
 			else{

@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR 
+#if UNITY_EDITOR 
 	using UnityEditor;
 #endif
 using UnityEngine;
@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 
 public class Road : MonoBehaviour {
-
+	public int number = 0;
 	private const int stepsPerCurve = 8;
 	private const int roadWidth = 5;
 

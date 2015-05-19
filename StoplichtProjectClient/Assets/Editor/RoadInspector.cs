@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 [CustomEditor(typeof(Road))]
 public class RoadInspector : Editor {
-	
 	private Road road;
 	private bool controlPressed = false;
 	private bool eSpace = false;
@@ -25,7 +24,7 @@ public class RoadInspector : Editor {
 	
 	// sidebar interface update (set vector boxes)
 	public override void OnInspectorGUI () {
-		
+		DrawDefaultInspector();
 		road = target as Road;
 		
 		EditorGUI.BeginChangeCheck();
@@ -34,6 +33,8 @@ public class RoadInspector : Editor {
 		GUILayout.Label ("Control click to add waypoints");
 		GUILayout.Label ("Shift click to remove waypoints");
 		GUILayout.Label ("Spacebar + click to change angle");
+
+		
 
 	}
 
