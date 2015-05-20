@@ -11,9 +11,9 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11476518}
+  - 114: {fileID: 11423044}
   m_Layer: 0
-  m_Name: SkyBox2
+  m_Name: SkyBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,11 +41,11 @@ MeshRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ca5c9e05b4b28240b63b32a91f87e14, type: 2}
-  - {fileID: 2100000, guid: 4213a5a1c6e03914aa1ecb5d27d3b3b8, type: 2}
-  - {fileID: 2100000, guid: aa1ab000904190d4fb7a2184ab6db541, type: 2}
-  - {fileID: 2100000, guid: e1e2750590f015b499e4a018a3f53b88, type: 2}
-  - {fileID: 2100000, guid: 356243e6b643d004a81b4fbb853c4f85, type: 2}
+  - {fileID: 2100000, guid: 012b938a8ed851549a67a6ae8b99a4a0, type: 2}
+  - {fileID: 2100000, guid: e82215b97ca7d6a4883ab71c4a092160, type: 2}
+  - {fileID: 2100000, guid: 7b78e16432e5796419953c2ebcddab31, type: 2}
+  - {fileID: 2100000, guid: 36092f1c968b41441a6af50886987664, type: 2}
+  - {fileID: 2100000, guid: 926b069804c42d94cbd8d823dc143456, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -83,7 +83,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11476518
+--- !u!114 &11423044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

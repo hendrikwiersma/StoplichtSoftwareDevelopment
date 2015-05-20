@@ -130,6 +130,7 @@
      <Compile Include="Assets\Roadsystem\RoadEditor.cs" />
      <Compile Include="Assets\Roadsystem\RoadWaypoint.cs" />
      <Compile Include="Assets\SkyboxController.cs" />
+     <Compile Include="Assets\SlowRotate.cs" />
      <Compile Include="Assets\SpawnPointScript.cs" />
      <Compile Include="Assets\Spawnpoint.cs" />
      <Compile Include="Assets\SwitchToScoreBoard.cs" />
