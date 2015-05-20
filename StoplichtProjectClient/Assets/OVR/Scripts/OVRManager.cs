@@ -771,6 +771,10 @@ public class OVRManager : MonoBehaviour
 
 	private void Update()
 	{
+		if (Input.GetKeyDown (KeyCode.R)) {
+			display.RecenterPose();
+			Debug.Log ("Resetting rift");
+		}
 		if (!isVRPresent)
 			return;
 
