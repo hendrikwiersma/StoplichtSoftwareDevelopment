@@ -36541,92 +36541,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyDelay: 1
---- !u!1 &1879795542
+--- !u!1 &1879795542 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: b91cfeafd3d2c6246b8d98ec0c854279, type: 2}
   m_PrefabInternal: {fileID: 93914380}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1879795546}
-  - 33: {fileID: 1879795545}
-  - 23: {fileID: 1879795544}
-  - 95: {fileID: 1879795543}
-  - 114: {fileID: 1879795547}
-  m_Layer: 0
-  m_Name: SkyBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &1879795543
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: b91cfeafd3d2c6246b8d98ec0c854279,
-    type: 2}
-  m_PrefabInternal: {fileID: 93914380}
-  m_GameObject: {fileID: 1879795542}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 745d45a3c3964174b988d7423b8ed874, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1879795544
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300000, guid: b91cfeafd3d2c6246b8d98ec0c854279,
-    type: 2}
-  m_PrefabInternal: {fileID: 93914380}
-  m_GameObject: {fileID: 1879795542}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 012b938a8ed851549a67a6ae8b99a4a0, type: 2}
-  - {fileID: 2100000, guid: e82215b97ca7d6a4883ab71c4a092160, type: 2}
-  - {fileID: 2100000, guid: 7b78e16432e5796419953c2ebcddab31, type: 2}
-  - {fileID: 2100000, guid: 36092f1c968b41441a6af50886987664, type: 2}
-  - {fileID: 2100000, guid: 926b069804c42d94cbd8d823dc143456, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &1879795545
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300000, guid: b91cfeafd3d2c6246b8d98ec0c854279,
-    type: 2}
-  m_PrefabInternal: {fileID: 93914380}
-  m_GameObject: {fileID: 1879795542}
-  m_Mesh: {fileID: 4300000, guid: 745d45a3c3964174b988d7423b8ed874, type: 3}
---- !u!4 &1879795546
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: b91cfeafd3d2c6246b8d98ec0c854279, type: 2}
-  m_PrefabInternal: {fileID: 93914380}
-  m_GameObject: {fileID: 1879795542}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -124, y: 0, z: 0}
-  m_LocalScale: {x: 923.250793, y: 923.250793, z: 923.250793}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!114 &1879795547
 MonoBehaviour:
   m_ObjectHideFlags: 0
