@@ -1487,6 +1487,8 @@ MonoBehaviour:
   _wheelTypeChoise: 1
   COM: {fileID: 400008}
   canControl: 1
+  isAI: 0
+  steeringWheel: 0
   driftMode: 0
   autoReverse: 0
   automaticGear: 1

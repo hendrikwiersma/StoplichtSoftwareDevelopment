@@ -21,8 +21,8 @@ public class RCCWheelSkidmarks : MonoBehaviour {
 
 		if(FindObjectOfType(typeof(RCCSkidmarks)))
 			skidmarks = FindObjectOfType(typeof(RCCSkidmarks)) as RCCSkidmarks;
-		else
-			Debug.Log("No skidmarks object found. Skidmarks will not be drawn. Drag ''SkidmarksManager'' from Prefabs folder, and drop on to your existing scene...");
+		//else
+			//Debug.Log("No skidmarks object found. Skidmarks will not be drawn. Drag ''SkidmarksManager'' from Prefabs folder, and drop on to your existing scene...");
 
 	}
 	

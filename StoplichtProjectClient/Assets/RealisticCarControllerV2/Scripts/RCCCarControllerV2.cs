@@ -10,6 +10,8 @@ public class RCCCarControllerV2 : MonoBehaviour {
 
 	private Rigidbody rigid;
 
+	public Animator shifterAnim;
+
 	//Mobile Controller.
 	public bool mobileController = false;
 	
@@ -83,6 +85,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	//Vehicle Mecanim.
 	public bool canControl = true;
 	public bool isAI = false;
+	public bool steeringWheel = false;
 	public bool driftMode = false;
 	public bool autoReverse = false;
 	public bool automaticGear = true;
@@ -91,8 +94,8 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	public AnimationCurve[] engineTorqueCurve;
 	[HideInInspector]
 	public float[] gearSpeed;
-	public float engineTorque = 2500.0f;
-	public float maxEngineRPM = 6000.0f;
+	public float engineTorque = 1800.0f;
+	public float maxEngineRPM = 9000.0f;
 	public float minEngineRPM = 1000.0f;
 	public float steerAngle = 40.0f;
 	public float highspeedsteerAngle = 10.0f;
@@ -101,7 +104,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	[HideInInspector]
 	public float speed;
 	public float brake = 4000.0f;
-	public float maxspeed = 180.0f;
+	public float maxspeed = 220.0f;
 	public bool useDifferantial = true;
 	private float differantialRatioRight;
 	private float differantialRatioLeft;
@@ -110,6 +113,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	
 	//Gears.
 	public int currentGear;
+	public bool inReverse;
 	public int totalGears = 6;
 	private int _totalGears
 	{
@@ -120,7 +124,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	}
 	
 	public bool changingGear = false;
-	public float gearShiftRate = 10.0f;
+	public float gearShiftRate = 30.0f;
 	
 	// Each Wheel Transform's Rotation Value.
 	private float _rotationValueFL, _rotationValueFR, _rotationValueRL, _rotationValueRR;
@@ -220,7 +224,10 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	private float steeringWheelOldAngle;
 	private int touchId = -1;
 	private Vector2 touchPos;
-	
+
+	//Traffic light stuff
+	//private StoplichtController trafficController;
+	//private byte trafficId = 0xFF;
 	
 	
 	void Start (){
@@ -450,7 +457,10 @@ public class RCCCarControllerV2 : MonoBehaviour {
 				if(steeringWheelControl)
 					SteeringWheelControlling();
 			}else{
-				KeyboardControlling();
+				if(steeringWheel){
+					SteerWheelControl();
+				}else
+					KeyboardControlling();
 			}
 			Lights();
 			ResetCar();
@@ -459,8 +469,8 @@ public class RCCCarControllerV2 : MonoBehaviour {
 
 		}
 		
-
-		WheelAlign();
+		if(!isAI)
+			WheelAlign();
 		SkidAudio();
 		WheelCamber();
 		if(chassis)
@@ -517,10 +527,18 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		steerAngle = Mathf.Lerp(defsteerAngle, highspeedsteerAngle, (speed / highspeedsteerAngleAtspeed));
 		
 		//Engine RPM.
-		EngineRPM = Mathf.Clamp((((Mathf.Abs((RearLeftWheelCollider.rpm + RearRightWheelCollider.rpm)) * gearShiftRate) + minEngineRPM)) / (currentGear+1), minEngineRPM, maxEngineRPM);
+		if (!changingGear) {
+			EngineRPM = Mathf.Clamp ((((Mathf.Abs ((RearLeftWheelCollider.rpm + RearRightWheelCollider.rpm)) * gearShiftRate) + minEngineRPM)) / (currentGear + 1), minEngineRPM, maxEngineRPM);
+		}else{
+			if(EngineRPM > 0)
+				EngineRPM -= 100;
+			else
+				EngineRPM = 0;
+		}
+
 		
 		//Reversing Bool.
-		if(motorInput <= 0  && RearLeftWheelCollider.rpm < 20 && canGoReverseNow)
+		if(inReverse && canGoReverseNow)
 			reversing = true;
 		else
 			reversing = false;
@@ -529,7 +547,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		if(autoReverse){
 			canGoReverseNow = true;
 		}else{
-			if(motorInput >= -.1f && speed < 5)
+			if(motorInput >= -.1f && speed < 15)
 				canGoReverseNow = true;
 			else if(motorInput < 0 && transform.InverseTransformDirection(rigid.velocity).z > 1) 
 				canGoReverseNow = false;
@@ -548,14 +566,14 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		#region Wheel Type Motor Torque.
 		
 		if(rwd){
-			
-			if(speed > maxspeed || Mathf.Abs(RearLeftWheelCollider.rpm) > 3000 || Mathf.Abs(RearRightWheelCollider.rpm) > 3000){
+			if(speed > maxspeed || EngineRPM > (maxEngineRPM - 100) || changingGear || Mathf.Abs(RearLeftWheelCollider.rpm) > 3000 || Mathf.Abs(RearRightWheelCollider.rpm) > 3000){
 				RearLeftWheelCollider.motorTorque = 0;
 				RearRightWheelCollider.motorTorque = 0;
 			}else if(!reversing){
 				RearLeftWheelCollider.motorTorque = (engineTorque) * (Mathf.Clamp(motorInput * differantialRatioLeft, 0f, 1f) * boostInput) * engineTorqueCurve[currentGear].Evaluate(speed);
 				RearRightWheelCollider.motorTorque = (engineTorque) * (Mathf.Clamp(motorInput * differantialRatioRight, 0f, 1f) * boostInput) * engineTorqueCurve[currentGear].Evaluate(speed);
 			}
+
 			if(reversing){
 				if(speed < 30 && Mathf.Abs(RearLeftWheelCollider.rpm) < 3000 && Mathf.Abs(RearRightWheelCollider.rpm) < 3000){
 					RearLeftWheelCollider.motorTorque = ((engineTorque)  * motorInput);
@@ -569,8 +587,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		}
 		
 		if(fwd){
-			
-			if(speed > maxspeed || Mathf.Abs(FrontLeftWheelCollider.rpm) > 3000 || Mathf.Abs(FrontRightWheelCollider.rpm) > 3000){
+			if(speed > maxspeed || EngineRPM > (maxEngineRPM - 100) || changingGear || Mathf.Abs(FrontLeftWheelCollider.rpm) > 3000 || Mathf.Abs(FrontRightWheelCollider.rpm) > 3000){
 				FrontLeftWheelCollider.motorTorque = 0;
 				FrontRightWheelCollider.motorTorque = 0;
 			}else if(!reversing){
@@ -586,7 +603,6 @@ public class RCCCarControllerV2 : MonoBehaviour {
 					FrontRightWheelCollider.motorTorque = 0;
 				}
 			}
-			
 		}
 		
 		#endregion Wheel Type
@@ -605,19 +621,26 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			
 		//Normal brake
 		}else{
-			
 			// Deacceleration.
-			if(Mathf.Abs (motorInput) <= .05f && !changingGear){
+			if(Mathf.Abs (motorInput) <= .05f && !changingGear && (!steeringWheel || (steeringWheel && Input.GetAxis("Brake") == 1f))){
 				RearLeftWheelCollider.brakeTorque = (brake) / 25f;
 				RearRightWheelCollider.brakeTorque = (brake) / 25f;
 				FrontLeftWheelCollider.brakeTorque = (brake) / 25f;
 				FrontRightWheelCollider.brakeTorque = (brake) / 25f;
 			// Braking.
-			}else if(motorInput < 0 && !reversing){
-				FrontLeftWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput));
-				FrontRightWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput));
-				RearLeftWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput / 2f));
-				RearRightWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput / 2f));
+			}else if((steeringWheel && motorInput <= 0) || (!steeringWheel && motorInput < 0 && !reversing)){
+				if(steeringWheel){
+					float brakeInput = steer_ClampMapRange((Input.GetAxis("Brake") - 1) * -1, 0f, 2f, 0f, 4000f);
+					FrontLeftWheelCollider.brakeTorque = Mathf.Abs(brakeInput);
+					FrontRightWheelCollider.brakeTorque = Mathf.Abs(brakeInput);
+					RearLeftWheelCollider.brakeTorque = Mathf.Abs(brakeInput);
+					RearRightWheelCollider.brakeTorque = Mathf.Abs(brakeInput);
+				}else{
+					FrontLeftWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput));
+					FrontRightWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput));
+					RearLeftWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput / 2f));
+					RearRightWheelCollider.brakeTorque = (brake) * (Mathf.Abs(motorInput / 2f));
+				}
 			}else{
 				RearLeftWheelCollider.brakeTorque = 0;
 				RearRightWheelCollider.brakeTorque = 0;
@@ -810,6 +833,63 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		
 	}
 	
+	public void SteerWheelControl (){
+		//Motor Input.
+		motorInput = steer_ClampMapRange ((Input.GetAxis ("Accelerate") - 1) * -1, 0f, 2f, 0f, 1f);
+
+		// Calculate the engine RPM in neutral gear.
+		if(changingGear){
+			if(motorInput != 0f){
+				if(EngineRPM < (maxEngineRPM - 100)){
+					EngineRPM += 400 * motorInput;
+				}
+			}
+
+			motorInput = 0;
+		}
+
+		// Drive backward when in reverse.
+		if (inReverse && motorInput > 0f)
+			motorInput *= -1;
+		
+		//Steering Input.
+		if(Mathf.Abs (Input.GetAxis("SteeringWheel")) > .05f)
+			steerInput = Mathf.Lerp (steerInput, Input.GetAxis("SteeringWheel"), Time.deltaTime * 10);
+		else
+			steerInput = Mathf.Lerp (steerInput, Input.GetAxis("SteeringWheel"), Time.deltaTime * 10);
+		
+		FrontLeftWheelCollider.steerAngle = (steerAngle * steerInput);
+		FrontRightWheelCollider.steerAngle = (steerAngle * steerInput);
+	}
+	
+	/* steer_ClampMapRange
+	 * 
+	 * Returns clamped value in a different (smaller or larger) range.
+	 * Takes arguments:
+	 * - rate: The original value.
+	 * - rateMin: Minimal value of the original range.
+	 * - rateMax: Maximum value of the original range.
+	 * - rangeMin: Minimal value of the target range.
+	 * - rangeMax: Maximum value of the target range.
+	 */
+	private float steer_ClampMapRange(float rate, float rateMin, float rateMax, float rangeMin, float rangeMax)
+	{
+		float multiFactor;
+		
+		// Check if the specified rate is already out of its original bounds.
+		// If so, return the range min or max.
+		if (rate > rateMax)
+			return rangeMax;
+		else if (rate < rateMin)
+			return rangeMin;
+		
+		// Determine the multiply factor (original range vs. target range).
+		multiFactor = rangeMax / rateMax;
+		
+		// Return the rate multiplied by the target range.
+		return rate * multiFactor;
+	}
+
 	public void KeyboardControlling (){
 		
 		//Motor Input.
@@ -905,27 +985,66 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			}
 			
 		}else{
-			
-			if(currentGear < _totalGears && !changingGear){
-				if(Input.GetButtonDown("RCCShiftUp")){
-					StartCoroutine("ChangingGear", currentGear + 1);
+			bool prevNeutral = changingGear;
+
+			if(steeringWheel){
+				bool inGear = false;
+				for(int i=1;i<7;i++){
+					if(Input.GetButton ("Gear" + i)){
+						inGear = true;
+						if(currentGear != i || prevNeutral){
+							Debug.Log ("Chaning gear to " + i);
+							StartCoroutine("ChangingGear", i);
+							inReverse = false;
+						}
+					}
 				}
-			}
-			
-			if(currentGear > 0){
-				if(Input.GetButtonDown("RCCShiftDown")){
-					StartCoroutine("ChangingGear", currentGear - 1);
+
+				changingGear = !inGear;
+
+				if(Input.GetButton ("GearR")){
+					currentGear = 4;
+					inReverse = true;
+					changingGear = false;
+					resetAllGearAnims();
+					shifterAnim.SetBool ("gear_r", true);
+				}
+
+				if(changingGear && !prevNeutral){
+					resetAllGearAnims();
+
+					// Play neutral anim.
+					shifterAnim.SetBool ("neutral", true);
+					Debug.Log ("In neutral.\n");
+				}
+			}else{
+				if(currentGear < _totalGears && !changingGear){
+					if(Input.GetButtonDown("RCCShiftUp")){
+						StartCoroutine("ChangingGear", currentGear + 1);
+					}
+				}
+				
+				if(currentGear > 0){
+					if(Input.GetButtonDown("RCCShiftDown")){
+						StartCoroutine("ChangingGear", currentGear - 1);
+					}
 				}
 			}
 			
 		}
 		
 	}
+
+	private void resetAllGearAnims(){
+		// Reset all gears (to false).
+		for (int i = 1; i <= 6; i++) {
+			shifterAnim.SetBool ("gear_" + i, false);
+		}
+		shifterAnim.SetBool ("gear_r", false);
+		shifterAnim.SetBool ("neutral", false);
+	}
 	
 	IEnumerator ChangingGear(int gear){
-		
-		changingGear = true;
-		
 		if(gearShiftingClips.Length >= 1){
 
 			gearShiftingSound = CreateAudioSource("gearShiftingAudio", 5f, .3f, gearShiftingClips[UnityEngine.Random.Range(0, gearShiftingClips.Length)], false, true, true);
@@ -944,11 +1063,14 @@ public class RCCCarControllerV2 : MonoBehaviour {
 //			Destroy(gearShiftingAudio, gearShiftingAudio.GetComponent<AudioSource>().clip.length);
 			
 		}
+
+		resetAllGearAnims();
+		shifterAnim.SetBool ("neutral", true);
 		
 		yield return new WaitForSeconds(.5f);
-		changingGear = false;
 		currentGear = gear;
-		
+		shifterAnim.SetBool ("neutral", false);
+		shifterAnim.SetBool ("gear_" + currentGear, true);
 	}
 	
 	public void WheelAlign (){
@@ -965,9 +1087,9 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			if(hit.transform.gameObject.layer != LayerMask.NameToLayer("Vehicle")){
 				FrontLeftWheelTransform.transform.position = hit.point + (FrontLeftWheelCollider.transform.up * FrontLeftWheelCollider.radius) * transform.localScale.y;
 				float extension = (-FrontLeftWheelCollider.transform.InverseTransformPoint(CorrespondingGroundHit.point).y - FrontLeftWheelCollider.radius) / FrontLeftWheelCollider.suspensionDistance;
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + FrontLeftWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontLeftWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontLeftWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + FrontLeftWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontLeftWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontLeftWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
 			}
 		}else{
 			FrontLeftWheelTransform.transform.position = ColliderCenterPointFL - (FrontLeftWheelCollider.transform.up * FrontLeftWheelCollider.suspensionDistance) * transform.localScale.y;
@@ -986,9 +1108,9 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			if(hit.transform.gameObject.layer != LayerMask.NameToLayer("Vehicle")){
 				FrontRightWheelTransform.transform.position = hit.point + (FrontRightWheelCollider.transform.up * FrontRightWheelCollider.radius) * transform.localScale.y;
 				float extension = (-FrontRightWheelCollider.transform.InverseTransformPoint(CorrespondingGroundHit.point).y - FrontRightWheelCollider.radius) / FrontRightWheelCollider.suspensionDistance;
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + FrontRightWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontRightWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontRightWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + FrontRightWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontRightWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - FrontRightWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
 			}
 		}else{
 			FrontRightWheelTransform.transform.position = ColliderCenterPointFR - (FrontRightWheelCollider.transform.up * FrontRightWheelCollider.suspensionDistance) * transform.localScale.y;
@@ -1007,9 +1129,9 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			if(hit.transform.gameObject.layer != LayerMask.NameToLayer("Vehicle")){
 				RearLeftWheelTransform.transform.position = hit.point + (RearLeftWheelCollider.transform.up * RearLeftWheelCollider.radius) * transform.localScale.y;
 				float extension = (-RearLeftWheelCollider.transform.InverseTransformPoint(CorrespondingGroundHit.point).y - RearLeftWheelCollider.radius) / RearLeftWheelCollider.suspensionDistance;
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + RearLeftWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearLeftWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearLeftWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + RearLeftWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearLeftWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearLeftWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
 			}
 		}else{
 			RearLeftWheelTransform.transform.position = ColliderCenterPointRL - (RearLeftWheelCollider.transform.up * RearLeftWheelCollider.suspensionDistance) * transform.localScale.y;
@@ -1027,9 +1149,9 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			if(hit.transform.gameObject.layer != LayerMask.NameToLayer("Vehicle")){
 				RearRightWheelTransform.transform.position = hit.point + (RearRightWheelCollider.transform.up * RearRightWheelCollider.radius) * transform.localScale.y;
 				float extension = (-RearRightWheelCollider.transform.InverseTransformPoint(CorrespondingGroundHit.point).y - RearRightWheelCollider.radius) / RearRightWheelCollider.suspensionDistance;
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + RearRightWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearRightWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
-				Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearRightWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point + RearRightWheelCollider.transform.up * (CorrespondingGroundHit.force / rigid.mass), extension <= 0.0 ? Color.magenta : Color.white);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearRightWheelCollider.transform.forward * CorrespondingGroundHit.forwardSlip, Color.green);
+				//Debug.DrawLine(CorrespondingGroundHit.point, CorrespondingGroundHit.point - RearRightWheelCollider.transform.right * CorrespondingGroundHit.sidewaysSlip, Color.red);
 			}
 		}else{
 			RearRightWheelTransform.transform.position = ColliderCenterPointRR - (RearRightWheelCollider.transform.up * RearRightWheelCollider.suspensionDistance) * transform.localScale.y;

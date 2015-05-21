@@ -41,7 +41,6 @@ public class RCCEditor : Editor {
 		soundIcon = Resources.Load("SoundIcon", typeof(Texture2D)) as Texture2D;
 		gaugeIcon = Resources.Load("GaugeIcon", typeof(Texture2D)) as Texture2D;
 		smokeIcon = Resources.Load("SmokeIcon", typeof(Texture2D)) as Texture2D;
-		
 	}
 	
 	public override void OnInspectorGUI () {
@@ -312,6 +311,8 @@ public class RCCEditor : Editor {
 			EditorGUILayout.Space();
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("canControl"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("isAI"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("shifterAnim"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("steeringWheel"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("driftMode"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("autoReverse"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("useDifferantial"), false);
