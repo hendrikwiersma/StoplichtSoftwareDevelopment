@@ -11,7 +11,7 @@ public class g27_wheel : MonoBehaviour {
 
 		// Set rotation.
 		float newWheelValue = wheelValue - previousWheelValue;
-		transform.RotateAround (transform.position, transform.forward, newWheelValue * 450);
+		transform.RotateAround (transform.position, -transform.up, newWheelValue * 450);
 
 		// Set previous wheel value.
 		previousWheelValue = wheelValue;

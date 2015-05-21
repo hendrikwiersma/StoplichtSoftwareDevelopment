@@ -144,6 +144,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	//Private Bools.
 	private bool reversing = false;
 	private bool headLightsOn = false;
+	private bool prevNeutral = true;
 	private float acceleration = 0f;
 	private float lastVelocity = 0f;
 	private float gearTimeMultiplier;
@@ -225,13 +226,11 @@ public class RCCCarControllerV2 : MonoBehaviour {
 	private int touchId = -1;
 	private Vector2 touchPos;
 
-	//Traffic light stuff
-	//private StoplichtController trafficController;
-	//private byte trafficId = 0xFF;
-	
-	
-	void Start (){
+	// We use this for determining when the last switch was.
+	private float timec;
+	private int newGear = -1;
 
+	void Start (){
 		SoundsInitialize();
 		TypeInit();
 		MobileGUI();
@@ -444,7 +443,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		}
 		
 	}
-	
+
 	void Update (){
 		
 		if(canControl){
@@ -478,7 +477,9 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		
 		if(dashBoard && canControl)
 			DashboardGUI();
-		
+
+		if (steeringWheel)
+			checkShifterAnim ();
 	}
 	
 	void FixedUpdate (){
@@ -962,7 +963,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			boostInput = Mathf.Clamp(boostUI.input * 2f, 1f, 1.25f);
 		
 	}
-	
+
 	public void ShiftGears (){
 		
 		if(automaticGear){
@@ -985,37 +986,36 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			}
 			
 		}else{
-			bool prevNeutral = changingGear;
-
 			if(steeringWheel){
-				bool inGear = false;
+				changingGear = true;
+				inReverse = false;
+
 				for(int i=1;i<7;i++){
 					if(Input.GetButton ("Gear" + i)){
-						inGear = true;
+						changingGear = false;
+
 						if(currentGear != i || prevNeutral){
+							newGear = -1;
 							Debug.Log ("Chaning gear to " + i);
 							StartCoroutine("ChangingGear", i);
-							inReverse = false;
+							prevNeutral = false;
+							changingGear = false;
 						}
 					}
 				}
-
-				changingGear = !inGear;
 
 				if(Input.GetButton ("GearR")){
 					currentGear = 4;
 					inReverse = true;
 					changingGear = false;
-					resetAllGearAnims();
-					shifterAnim.SetBool ("gear_r", true);
-				}
+					prevNeutral = false;
 
-				if(changingGear && !prevNeutral){
-					resetAllGearAnims();
-
-					// Play neutral anim.
-					shifterAnim.SetBool ("neutral", true);
-					Debug.Log ("In neutral.\n");
+					if(newGear == -1){
+						resetAllGearAnims();
+						shifterAnim.SetBool ("neutral", true);
+						timec = Time.realtimeSinceStartup + 0.05f;
+						newGear = 1;
+					}
 				}
 			}else{
 				if(currentGear < _totalGears && !changingGear){
@@ -1035,6 +1035,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		
 	}
 
+	// Resets all gear animations.
 	private void resetAllGearAnims(){
 		// Reset all gears (to false).
 		for (int i = 1; i <= 6; i++) {
@@ -1042,6 +1043,38 @@ public class RCCCarControllerV2 : MonoBehaviour {
 		}
 		shifterAnim.SetBool ("gear_r", false);
 		shifterAnim.SetBool ("neutral", false);
+	}
+
+	// This function is called every x frames to determine if an animation
+	// of the shifter should be played.
+	private void checkShifterAnim(){
+		if(timec > Time.realtimeSinceStartup){
+			return;
+		}
+
+		// Reset all gear animations first.
+		resetAllGearAnims ();
+
+		// Check if in gear.
+		if(!changingGear && !inReverse){
+			if(newGear != -1){
+				shifterAnim.SetBool ("gear_" + newGear, true);
+				newGear = -1;
+				timec = Time.realtimeSinceStartup + 0.1f;
+			}else{
+				shifterAnim.SetBool ("gear_" + currentGear, true);
+			}
+		}
+
+		// Check if we're in reverse.
+		if (inReverse) {
+			shifterAnim.SetBool ("gear_r", true);
+		}
+
+		// If no gear is set, we must be in neutral.
+		if(changingGear){
+			shifterAnim.SetBool ("neutral", true);
+		}
 	}
 	
 	IEnumerator ChangingGear(int gear){
@@ -1064,13 +1097,13 @@ public class RCCCarControllerV2 : MonoBehaviour {
 			
 		}
 
-		resetAllGearAnims();
+		resetAllGearAnims ();
 		shifterAnim.SetBool ("neutral", true);
+		timec = Time.realtimeSinceStartup + 0.05f;
+		newGear = gear;
 		
 		yield return new WaitForSeconds(.5f);
 		currentGear = gear;
-		shifterAnim.SetBool ("neutral", false);
-		shifterAnim.SetBool ("gear_" + currentGear, true);
 	}
 	
 	public void WheelAlign (){
