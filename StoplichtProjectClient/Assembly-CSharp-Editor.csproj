@@ -73,11 +73,11 @@
      <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
      <Compile Include="Assets\OVR\Editor\OVRShimLoader.cs" />
      <Compile Include="Assets\OVR\Moonlight\Editor\OVRMoonlightLoader.cs" />
-     <Compile Include="Assets\RealisticCarControllerV2\Editor\CurveExtension.cs" />
-     <Compile Include="Assets\RealisticCarControllerV2\Editor\KeyframeUtil.cs" />
-     <Compile Include="Assets\RealisticCarControllerV2\Editor\RCCEditor.cs" />
+     <Compile Include="Assets\Vehicle\RealisticCarControllerV2\Editor\CurveExtension.cs" />
+     <Compile Include="Assets\Vehicle\RealisticCarControllerV2\Editor\KeyframeUtil.cs" />
+     <Compile Include="Assets\Vehicle\RealisticCarControllerV2\Editor\RCCEditor.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
-     <None Include="Assets\RealisticCarControllerV2\Scripts\RCCSkidmarks.shader" />
+     <None Include="Assets\Vehicle\RealisticCarControllerV2\Scripts\RCCSkidmarks.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
