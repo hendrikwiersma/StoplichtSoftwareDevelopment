@@ -49,6 +49,11 @@ ModelImporter:
     100082: SteeringWheelCollumn
     100084: RPMGaugeStokje
     100086: SpeedGaugeStokje
+    100088: LSideMirror_001
+    100090: LSideMirror_002
+    100092: LSideMirror_003
+    100094: Cube
+    100096: Cube_001
     400000: BackInterior
     400002: BackseatArmrest
     400004: BackSideWindows
@@ -93,6 +98,11 @@ ModelImporter:
     400082: SteeringWheelCollumn
     400084: RPMGaugeStokje
     400086: SpeedGaugeStokje
+    400088: LSideMirror_001
+    400090: LSideMirror_002
+    400092: LSideMirror_003
+    400094: Cube
+    400096: Cube_001
     2300000: BackInterior
     2300002: BackseatArmrest
     2300004: BackSideWindows
@@ -136,6 +146,11 @@ ModelImporter:
     2300080: SteeringWheelCollumn
     2300082: RPMGaugeStokje
     2300084: SpeedGaugeStokje
+    2300086: LSideMirror_001
+    2300088: LSideMirror_002
+    2300090: LSideMirror_003
+    2300092: Cube
+    2300094: Cube_001
     3300000: BackInterior
     3300002: BackseatArmrest
     3300004: BackSideWindows
@@ -179,6 +194,11 @@ ModelImporter:
     3300080: SteeringWheelCollumn
     3300082: RPMGaugeStokje
     3300084: SpeedGaugeStokje
+    3300086: LSideMirror_001
+    3300088: LSideMirror_002
+    3300090: LSideMirror_003
+    3300092: Cube
+    3300094: Cube_001
     4300000: SteeringWheelCollumn
     4300002: RDoor
     4300004: RFrontSideWIndow
@@ -222,6 +242,11 @@ ModelImporter:
     4300080: Chassis
     4300082: RPMGaugeStokje
     4300084: SpeedGaugeStokje
+    4300086: LSideMirror_001
+    4300088: LSideMirror_003
+    4300090: LSideMirror_002
+    4300092: Cube
+    4300094: Cube_001
     7400000: Default Take
     9500000: //RootNode
   materials:
