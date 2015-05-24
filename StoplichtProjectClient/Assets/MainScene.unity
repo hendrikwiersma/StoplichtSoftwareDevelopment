@@ -8130,7 +8130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438176, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11474934, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: ID
@@ -10813,7 +10813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &404561958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10829,10 +10829,10 @@ MonoBehaviour:
   WaypointCollection: {fileID: 1171490427}
   Auto: {fileID: 0}
   Voetganger: {fileID: 0}
-  Bus: {fileID: 0}
+  Bus: {fileID: 1140312979}
   Fiets: {fileID: 363572412}
   spawnpoints: {fileID: 1504937132}
-  trafficlights: {fileID: 0}
+  trafficlights: {fileID: 1354790030}
   TrafficLightStopGoBoxes: {fileID: 1677199515}
 --- !u!4 &404561959
 Transform:
@@ -26847,7 +26847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438176, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11474934, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: ID
@@ -26983,7 +26983,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 438176, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11474934, guid: 7a3f6b33b0eecdd43bdb895910a247d6, type: 2}
       propertyPath: ID
@@ -29931,6 +29931,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _control: {x: 0, y: 0, z: 0}
+--- !u!1 &1140312979 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: c777623353cc1954aa1e58e3df29992a, type: 3}
+  m_PrefabInternal: {fileID: 1141991892}
 --- !u!4 &1141360135 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8424ecad33b26e04a813e7a109ff8abf, type: 3}
@@ -36831,10 +36835,10 @@ Transform:
   - {fileID: 1990454051}
   - {fileID: 393280918}
   - {fileID: 884388374}
-  - {fileID: 1112348812}
   - {fileID: 1163624641}
   - {fileID: 507801769}
   - {fileID: 2000811858}
+  - {fileID: 1112348812}
   - {fileID: 1990482070}
   - {fileID: 1502182423}
   - {fileID: 1912402280}
@@ -38240,7 +38244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 430918, guid: 57bb7f267d193c043b9aec8797a3375f, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 145970, guid: 57bb7f267d193c043b9aec8797a3375f, type: 2}
       propertyPath: m_Name
