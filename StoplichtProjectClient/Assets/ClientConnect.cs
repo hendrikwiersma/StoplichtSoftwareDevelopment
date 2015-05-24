@@ -111,7 +111,7 @@ public class ClientConnect : MonoBehaviour {
 			print("Invalid VehicleType.");
 			break;
 		}
-		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
+//		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
 		List<Spawnpoint> possibleSpawnpoints = new List<Spawnpoint>();
 		foreach(Transform gameObj in spawnpoints.transform)
 		{
@@ -123,9 +123,13 @@ public class ClientConnect : MonoBehaviour {
 			}
 		}
 		foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
+
 			if(currentspawnpoint.available == true){
 				currentspawnpoint.available = false;
-				if (VehicleType == "Auto") {
+
+				switch(VehicleType) {
+				case "Auto": 
+
 					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
 					AIController controller = car.GetComponent<AIController>();
 					foreach(Transform gameObj in WaypointCollection.transform)
@@ -137,15 +141,23 @@ public class ClientConnect : MonoBehaviour {
 							aiscript.WaypointCollection2 = gameObj.gameObject;
 						}
 					}
-				}
-				else if (VehicleType == "Voetganger") {
-					Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);			
-				}
-				else if (VehicleType == "Fiets") {
-					Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);
-				}
-				else if (VehicleType == "Bus") {
+					break;
+
+				case "Voetganger":
+					//Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;			
+					break;
+
+				case "Fiets":
+					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
+					GameObject AI = Bicycle.transform.Find("AI").gameObject;
+					Debug.Log (AI);
+					Debug.Log (AI.ToString());
+					break;
+
+				case "Bus":
 					Instantiate(Bus, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);
+					break;
+				
 				}
 				break;
 			}

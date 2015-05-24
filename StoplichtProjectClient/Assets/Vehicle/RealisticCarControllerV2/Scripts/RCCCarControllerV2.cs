@@ -1015,7 +1015,7 @@ public class RCCCarControllerV2 : MonoBehaviour {
 
 					// Play neutral anim.
 					shifterAnim.SetBool ("neutral", true);
-					Debug.Log ("In neutral.\n");
+					//Debug.Log ("In neutral.\n");
 				}
 			}else{
 				if(currentGear < _totalGears && !changingGear){

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using System.Collections;
 
 public class RoadWaypoint : MonoBehaviour {
 	void Start(){
-//		print("Should get here.");
+		//print("Should get here.");
 		GameObject newcube = Instantiate(Resources.Load("waypointcollider"), transform.position, transform.rotation) as GameObject;
 		newcube.transform.parent = transform;
 	}
@@ -29,9 +30,12 @@ public class RoadWaypoint : MonoBehaviour {
 
 	public void OnDrawGizmos()	{
 
+		//float size = HandleUtility.GetHandleSize(transform.position) / 10;
+		float size = .4f;
+
 		// bugged inialization outside code
-		Vector3 gizmoSize = new Vector3 (3, 3, 3);
-		Vector3 controlSize = new Vector3 (1, 1, 1);
+		Vector3 gizmoSize = new Vector3 (3, 3, 3) * size;
+		Vector3 controlSize = new Vector3 (1, 1, 1) * size;
 
 		Gizmos.color = Color.red;
 		Gizmos.DrawCube(transform.position, gizmoSize);
