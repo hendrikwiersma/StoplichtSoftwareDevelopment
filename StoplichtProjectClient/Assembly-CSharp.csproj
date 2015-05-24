@@ -132,6 +132,7 @@
      <Compile Include="Assets\Vehicle\Spawnpoint.cs" />
      <Compile Include="Assets\Vehicle\Speedometer_RPM.cs" />
      <Compile Include="Assets\Vehicle\bike_wheel.cs" />
+     <Compile Include="Assets\Vehicle\g27_wheel.cs" />
      <Compile Include="Assets\Vehicle\newwheelmeshscript.cs" />
      <Compile Include="Assets\Vehicle\setWheel.cs" />
      <Compile Include="Assets\Vehicle\speedometer.cs" />
@@ -150,7 +151,10 @@
      <Compile Include="Assets\Waypoints\movetowaypoint.cs" />
      <Compile Include="Assets\Waypoints\waypoint.cs" />
      <Compile Include="Assets\Waypoints\waypointcollider.cs" />
+     <Compile Include="Assets\parking_space_controller.cs" />
+     <Compile Include="Assets\parking_trigger.cs" />
      <Compile Include="Assets\reset.cs" />
+     <Compile Include="Assets\take_screenshot.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Vehicle\RealisticCarControllerV2\Scripts\RCCSkidmarks.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
