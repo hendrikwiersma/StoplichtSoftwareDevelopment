@@ -12,9 +12,10 @@ public class ClientConnect : MonoBehaviour {
 	public GameObject Voetganger;
 	public GameObject Bus;
 	public GameObject Fiets;
-	public GameObject spawnpoints;
+	public GameObject spawnpoints_;
 	public GameObject trafficlights;
 	public GameObject TrafficLightStopGoBoxes;
+	public List<GameObject> spawnpoints = new List<GameObject>();
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
 	// Use this for initialization
@@ -23,6 +24,13 @@ public class ClientConnect : MonoBehaviour {
 		clientSocket.Connect(ipaddress, 10000);
 		print("Client Socket Program - Server Connected ...");
 		serverStream = clientSocket.GetStream();
+
+		foreach (Transform s in spawnpoints_.transform) {
+
+			spawnpoints.Add(s.gameObject);
+
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -113,12 +121,15 @@ public class ClientConnect : MonoBehaviour {
 		}
 //		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
 		List<Spawnpoint> possibleSpawnpoints = new List<Spawnpoint>();
-		foreach(Transform gameObj in spawnpoints.transform)
+		foreach(GameObject gameObj in spawnpoints)
 		{
 			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
+
 			if(spawnpoint.direction.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType){
 				{
+
 					possibleSpawnpoints.Add(spawnpoint);
+
 				}
 			}
 		}
@@ -149,6 +160,7 @@ public class ClientConnect : MonoBehaviour {
 
 				case "Fiets":
 					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
+					Bicycle.SetActive(true);
 					GameObject AI = Bicycle.transform.Find("AI").gameObject;
 					Debug.Log (AI);
 					Debug.Log (AI.ToString());
@@ -164,6 +176,7 @@ public class ClientConnect : MonoBehaviour {
 		}
 		
 	}
+
 	void ChangeTrafficLight(byte id, byte state){
 		string State = null;
 		switch (state)
