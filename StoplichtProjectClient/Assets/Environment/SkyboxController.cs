@@ -27,7 +27,7 @@ public class SkyboxController : MonoBehaviour {
 			RenderSettings.skybox = Skybox1;
 			Destroy(SkyboxCube);
 			SkyboxCube = Instantiate(CubeSkybox1, new Vector3(0,0,0), Quaternion.Euler(-90,0,0)) as GameObject;
-			SlowRotate rotatescript = SkyboxCube.GetComponent<SlowRotate>();
+			skybox_rotate rotatescript = SkyboxCube.GetComponent<skybox_rotate>();
 			rotatescript.User = User;
 			SkyboxCube.transform.parent = transform;
 		}
@@ -35,7 +35,7 @@ public class SkyboxController : MonoBehaviour {
 			RenderSettings.skybox = Skybox2;
 			Destroy(SkyboxCube);
 			SkyboxCube = Instantiate(CubeSkybox2, new Vector3(0,0,0), Quaternion.Euler(-90,0,0)) as GameObject;
-			SlowRotate rotatescript = SkyboxCube.GetComponent<SlowRotate>();
+			skybox_rotate rotatescript = SkyboxCube.GetComponent<skybox_rotate>();
 			rotatescript.User = User;
 			SkyboxCube.transform.parent = transform;
 		}
@@ -43,7 +43,7 @@ public class SkyboxController : MonoBehaviour {
 			RenderSettings.skybox = Skybox3;
 			Destroy(SkyboxCube);
 			SkyboxCube = Instantiate(CubeSkybox3, new Vector3(0,0,0), Quaternion.Euler(-90,0,0)) as GameObject;
-			SlowRotate rotatescript = SkyboxCube.GetComponent<SlowRotate>();
+			skybox_rotate rotatescript = SkyboxCube.GetComponent<skybox_rotate>();
 			rotatescript.User = User;
 			SkyboxCube.transform.parent = transform;
 		}
@@ -51,7 +51,7 @@ public class SkyboxController : MonoBehaviour {
 			RenderSettings.skybox = Skybox4;
 			Destroy(SkyboxCube);
 			SkyboxCube = Instantiate(CubeSkybox4, new Vector3(0,0,0), Quaternion.Euler(-90,0,0)) as GameObject;
-			SlowRotate rotatescript = SkyboxCube.GetComponent<SlowRotate>();
+			skybox_rotate rotatescript = SkyboxCube.GetComponent<skybox_rotate>();
 			rotatescript.User = User;
 			SkyboxCube.transform.parent = transform;
 		}
@@ -59,7 +59,7 @@ public class SkyboxController : MonoBehaviour {
 			RenderSettings.skybox = Skybox5;
 			Destroy(SkyboxCube);
 			SkyboxCube = Instantiate(CubeSkybox5, new Vector3(0,0,0), Quaternion.Euler(-90,0,0)) as GameObject;
-			SlowRotate rotatescript = SkyboxCube.GetComponent<SlowRotate>();
+			skybox_rotate rotatescript = SkyboxCube.GetComponent<skybox_rotate>();
 			rotatescript.User = User;
 			SkyboxCube.transform.parent = transform;
 		}
