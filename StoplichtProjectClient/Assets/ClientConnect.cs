@@ -12,22 +12,33 @@ public class ClientConnect : MonoBehaviour {
 	public GameObject Voetganger;
 	public GameObject Bus;
 	public GameObject Fiets;
-	public GameObject spawnpoints_;
+	public GameObject spawnpoints;
 	public GameObject trafficlights;
 	public GameObject TrafficLightStopGoBoxes;
-	public List<GameObject> spawnpoints = new List<GameObject>();
+	private List<GameObject> spawnpoints_ = new List<GameObject>();
+	private List<Trafficlight> trafficlights_ = new List<Trafficlight>();
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
-	// Use this for initialization
+	
 	void Start () {
 		print("Client Started");
 		clientSocket.Connect(ipaddress, 10000);
 		print("Client Socket Program - Server Connected ...");
 		serverStream = clientSocket.GetStream();
 
-		foreach (Transform s in spawnpoints_.transform) {
+		foreach (Transform s in spawnpoints.transform) {
 
-			spawnpoints.Add(s.gameObject);
+			spawnpoints_.Add(s.gameObject);
+
+		}
+
+		foreach (Transform gameObj in trafficlights.transform) {
+		
+			trafficlightscript lightScript = gameObj.GetComponent<trafficlightscript>();
+			Trafficlight light = gameObj.gameObject.AddComponent<TrafficlightCar>();
+
+			light.id = lightScript.ID;
+			trafficlights_.Add(light);
 
 		}
 
@@ -121,7 +132,7 @@ public class ClientConnect : MonoBehaviour {
 		}
 //		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
 		List<Spawnpoint> possibleSpawnpoints = new List<Spawnpoint>();
-		foreach(GameObject gameObj in spawnpoints)
+		foreach(GameObject gameObj in spawnpoints_)
 		{
 			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
 
@@ -195,17 +206,17 @@ public class ClientConnect : MonoBehaviour {
 			break;
 		}
 		print ("Received packet: Turning the trafficlight with id " + id + " " + State);
-		foreach(Transform gameObj in trafficlights.transform)
-		{
-			trafficlightscript light = gameObj.GetComponent<trafficlightscript>();
-			if(light.ID == id){
-				{
-					print ("Executing void.");
-					light.switchlight(State);
 
-				}
+		foreach(Trafficlight light in trafficlights_) {
+
+			if(light.id == id){
+				print ("Executing void.");
+				light.setNewState(State);
+
 			}
+
 		}
+
 		foreach(Transform gameObj in TrafficLightStopGoBoxes.transform)
 		{
 			WaitingScript hotspot = gameObj.GetComponent<WaitingScript>();
@@ -221,6 +232,7 @@ public class ClientConnect : MonoBehaviour {
 			}
 		}
 	}
+
 	public void SendVehicleSignal(int trafficlightid, int state){
 
 		// dont send if not connected
@@ -240,6 +252,18 @@ public class ClientConnect : MonoBehaviour {
 
 			serverStream.Write (outStream, 0, outStream.Length);
 		}
+
+	}
+
+	public void registerSpawnpoint(GameObject spawnpoint) {
+
+		spawnpoints_.Add (spawnpoint);
+
+	}
+
+	public void registerLight(Trafficlight light) {
+
+		trafficlights_.Add (light);
 
 	}
 

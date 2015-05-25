@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\Actions\WaitForTrafficlight.cs" />
      <Compile Include="Assets\AI\Actions\nextWaypointRoute.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
@@ -92,10 +93,14 @@
      <Compile Include="Assets\OVR\Scripts\Util\OVRUGUI.cs" />
      <Compile Include="Assets\OVR\Scripts\Util\OVRVisionGuide.cs" />
      <Compile Include="Assets\PictureTrigger.cs" />
+     <Compile Include="Assets\Spawnpoint_.cs" />
      <Compile Include="Assets\SwitchToScoreBoard.cs" />
      <Compile Include="Assets\Traffic lights\trafficlight_bus.cs" />
      <Compile Include="Assets\Traffic lights\trafficlight_pedestrian.cs" />
      <Compile Include="Assets\Traffic lights\trafficlightscript.cs" />
+     <Compile Include="Assets\TrafficlighBicycle.cs" />
+     <Compile Include="Assets\Trafficlight.cs" />
+     <Compile Include="Assets\TrafficlightCar.cs" />
      <Compile Include="Assets\Vehicle\AIController.cs" />
      <Compile Include="Assets\Vehicle\AIControllerWheelCol.cs" />
      <Compile Include="Assets\Vehicle\CarController\CarController.cs" />

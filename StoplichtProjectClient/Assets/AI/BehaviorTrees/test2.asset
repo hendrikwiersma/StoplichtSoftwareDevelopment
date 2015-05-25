@@ -24,6 +24,9 @@ MonoBehaviour:
       name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
       name=&quot;next waypoint route&quot; debugbreak=&quot;False&quot; classname=&quot;nextWaypointRoute&quot;
+      /&gt;&lt;action repeatuntil=&quot;success&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;Check trafficlight
+      state&quot; debugbreak=&quot;False&quot; classname=&quot;WaitForTrafficlight&quot;
       /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Execute
       once&quot; debugbreak=&quot;False&quot; constraint=&quot;execute == true&quot;&gt;&lt;waypointpath
       waypointsetvariable=&quot;Network&quot; waypointactiontype=&quot;path&quot;

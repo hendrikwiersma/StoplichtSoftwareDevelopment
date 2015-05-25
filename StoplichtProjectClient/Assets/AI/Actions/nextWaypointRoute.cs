@@ -13,8 +13,8 @@ public class nextWaypointRoute : RAINAction
 		string direction = ai.WorkingMemory.GetItem<string> ("Direction");
 		GameObject currentNetwork = ai.WorkingMemory.GetItem<GameObject> ("Network");
 
-		Intersection nextIntersection = currentNetwork.transform.parent.gameObject.GetComponent<Intersection>();
-		GameObject nextRoute = nextIntersection.GetNewRoute (direction);
+		Intersection currentIntersection = currentNetwork.transform.parent.gameObject.GetComponent<Intersection>();
+		GameObject nextRoute = currentIntersection.GetNewRoute (direction);
 
 		if (nextRoute == GameObject.Find ("Destenation")) {
 
@@ -25,6 +25,7 @@ public class nextWaypointRoute : RAINAction
 
 		GameObject nextTarget = nextRoute.transform.Find("Target").gameObject;
 
+		ai.WorkingMemory.SetItem<Intersection> ("LatestIntersection", currentIntersection);
 		ai.WorkingMemory.SetItem<GameObject> ("Network", nextRoute);
 		ai.WorkingMemory.SetItem<GameObject> ("Destenation", nextTarget);
 		ai.WorkingMemory.SetItem<bool> ("execute", true);
