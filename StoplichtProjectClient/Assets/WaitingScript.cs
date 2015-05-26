@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaitingScript : MonoBehaviour {
 	public bool Go = false;
-	public enum WaypointSystem{Westoost,ZuidWest,ZuidNoord,WestZuid,ZuidOost,OostWest,OostNoord,OostZuid}
+	public enum WaypointSystem{Westoost,WestNoord,ZuidWest,ZuidNoord,WestZuid,ZuidOost,OostWest,OostNoord,OostZuid,NoordOost,NoordZuid,NoordWest}
 	public WaypointSystem waypointSystem;
 	public int TrafficLightID = 0;
 	// Use this for initialization

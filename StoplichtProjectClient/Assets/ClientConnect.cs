@@ -143,13 +143,23 @@ public class ClientConnect : MonoBehaviour {
 
 					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
 					AIController controller = car.GetComponent<AIController>();
+					int counter = 0;
 					foreach(Transform gameObj in WaypointCollection.transform)
 					{
 						if(gameObj.transform.name == StartingPoint+EndPoint){
 							print("Spawning new car: " + gameObj.transform.name + " " + StartingPoint+EndPoint);
 							AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
-							aiscript.WaypointCollection = gameObj.gameObject;
-							aiscript.WaypointCollection2 = gameObj.gameObject;
+							if(counter == 0){
+								aiscript.WaypointCollection = gameObj.gameObject;
+								counter++;
+							}
+							else if(counter == 1){
+								aiscript.WaypointCollection2 = gameObj.gameObject;
+								counter++;
+							}
+							else{
+								print("Not more than two waypoint collections possible.");
+							}
 						}
 					}
 					break;
