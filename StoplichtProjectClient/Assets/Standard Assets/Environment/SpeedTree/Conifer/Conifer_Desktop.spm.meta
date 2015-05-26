@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 469edab27ab6d004d84af2c4a851bd7f
+timeCreated: 1431513434
+licenseType: Free
 SpeedTreeImporter:
   serializedVersion: 3
   mainColor: {r: 1, g: 1, b: 1, a: 1}
@@ -48,3 +50,4 @@ SpeedTreeImporter:
   scaleFactor: .304800004
   userData: 
   assetBundleName: 
+  assetBundleVariant: 

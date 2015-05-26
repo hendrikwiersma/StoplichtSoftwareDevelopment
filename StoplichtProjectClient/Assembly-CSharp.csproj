@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\Actions\FreeObject.cs" />
+     <Compile Include="Assets\AI\Actions\FreezeObject.cs" />
      <Compile Include="Assets\AI\Actions\WaitForTrafficlight.cs" />
      <Compile Include="Assets\AI\Actions\nextWaypointRoute.cs" />
      <Compile Include="Assets\BikeAI.cs" />
@@ -160,6 +162,7 @@
      <Compile Include="Assets\parking_space_controller.cs" />
      <Compile Include="Assets\parking_trigger.cs" />
      <Compile Include="Assets\reset.cs" />
+     <Compile Include="Assets\skybox_rotate.cs" />
      <Compile Include="Assets\take_screenshot.cs" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Vehicle\RealisticCarControllerV2\Scripts\RCCSkidmarks.shader" />

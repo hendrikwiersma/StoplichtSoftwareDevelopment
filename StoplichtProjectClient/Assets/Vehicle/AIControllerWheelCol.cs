@@ -104,7 +104,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 		}
 		if(combinehits){
 			for (int i = 0; i < leftHits.Length; i++) {
-				RaycastHit hit = allHits[i];
+				RaycastHit hit = leftHits[i];
 				Debug.DrawLine (transform.position, hit.point, Color.cyan);
 				if(hit.collider.gameObject.tag == "Car"){
 					cartoleft = true;
