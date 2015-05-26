@@ -12,11 +12,23 @@ public class WaitingScript : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other) {
 		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
-		controller.go = true;
+
+		if (controller != null) {
+
+			controller.go = true;
+
+		}
+
 	}
 	void OnTriggerExit(Collider other) {
 		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
-		controller.go = true;
+
+		if (controller != null) {
+
+			controller.go = true;
+
+		}
+
 	}
 	public void OnDrawGizmos()	{
 

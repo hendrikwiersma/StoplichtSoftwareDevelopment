@@ -2727,6 +2727,7 @@ GameObject:
   - 4: {fileID: 151657309}
   - 114: {fileID: 151657311}
   - 65: {fileID: 151657310}
+  - 114: {fileID: 151657312}
   m_Layer: 0
   m_Name: WestSpawnpoint
   m_TagString: Untagged
@@ -2774,6 +2775,17 @@ MonoBehaviour:
   direction: 3
   vehicle: 1
   available: 1
+--- !u!114 &151657312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151657308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91d2f968c3fe3643b50efddd8b96ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &157451766
 GameObject:
   m_ObjectHideFlags: 0
@@ -7343,14 +7355,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb283b1dbf5e2941937845c78ea8846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipaddress: 192.168.2.4
+  ipaddress: 172.16.1.103
   WaypointCollection: {fileID: 1171490427}
   Auto: {fileID: 128192, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
   Voetganger: {fileID: 141640, guid: 28e5d90250aee7e469bd6c20cd792055, type: 2}
   Bus: {fileID: 124212, guid: c567c31cd8b69eb48a3c9090a561e87a, type: 2}
   Fiets: {fileID: 1681814001}
-  spawnpoints: {fileID: 0}
-  trafficlights: {fileID: 0}
+  spawnpoints: {fileID: 1504937132}
+  trafficlights: {fileID: 1354790030}
   TrafficLightStopGoBoxes: {fileID: 1677199515}
 --- !u!4 &404561959
 Transform:
@@ -22848,7 +22860,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1182791559}
   - 114: {fileID: 1182791560}
-  - 114: {fileID: 1182791561}
   m_Layer: 0
   m_Name: West
   m_TagString: Untagged
@@ -22889,17 +22900,6 @@ MonoBehaviour:
   West:
   - {fileID: 1288944728}
   LightState: 01010101
---- !u!114 &1182791561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1182791558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91d2f968c3fe3643b50efddd8b96ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1183026123
 GameObject:
   m_ObjectHideFlags: 0

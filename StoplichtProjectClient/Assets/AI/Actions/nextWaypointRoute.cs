@@ -13,12 +13,22 @@ public class nextWaypointRoute : RAINAction
 		string direction = ai.WorkingMemory.GetItem<string> ("Direction");
 		GameObject currentNetwork = ai.WorkingMemory.GetItem<GameObject> ("Network");
 
+		if (currentNetwork == null) {
+
+			BikeAI mem = ai.Body.GetComponent<BikeAI>();
+			currentNetwork = mem.Spawnpoint;
+			direction = mem.Direction;
+			ai.WorkingMemory.SetItem<string> ("Direction", direction);
+
+		}
+
 		Intersection currentIntersection = currentNetwork.transform.parent.gameObject.GetComponent<Intersection>();
 		GameObject nextRoute = currentIntersection.GetNewRoute (direction);
 
 		if (nextRoute == GameObject.Find ("Destenation")) {
 
 			Debug.Log("Destenation reached");
+			Object.Destroy(ai.Body.gameObject);
 			return ActionResult.FAILURE;
 			
 		}

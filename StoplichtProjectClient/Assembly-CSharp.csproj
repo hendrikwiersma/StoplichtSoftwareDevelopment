@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\AI\Actions\WaitForTrafficlight.cs" />
      <Compile Include="Assets\AI\Actions\nextWaypointRoute.cs" />
+     <Compile Include="Assets\BikeAI.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
      <Compile Include="Assets\Destructive.cs" />

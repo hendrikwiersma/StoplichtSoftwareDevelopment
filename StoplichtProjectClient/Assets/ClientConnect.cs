@@ -4,6 +4,7 @@ using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System;
+using RAIN;
 
 public class ClientConnect : MonoBehaviour {
 	public string ipaddress;
@@ -137,12 +138,11 @@ public class ClientConnect : MonoBehaviour {
 			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
 
 			if(spawnpoint.direction.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType){
-				{
 
-					possibleSpawnpoints.Add(spawnpoint);
+				possibleSpawnpoints.Add(spawnpoint);
 
-				}
 			}
+
 		}
 		foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
 
@@ -171,10 +171,10 @@ public class ClientConnect : MonoBehaviour {
 
 				case "Fiets":
 					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
+					BikeAI AI = Bicycle.GetComponent<BikeAI>();
+					AI.Init(currentspawnpoint.gameObject, EndPoint);
 					Bicycle.SetActive(true);
-					GameObject AI = Bicycle.transform.Find("AI").gameObject;
-					Debug.Log (AI);
-					Debug.Log (AI.ToString());
+
 					break;
 
 				case "Bus":

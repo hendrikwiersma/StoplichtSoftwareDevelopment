@@ -44,7 +44,14 @@ public class Intersection : MonoBehaviour {
 	// Switch route in case of "USE_DIRECTION"
 	private GameObject[] GetCorrectRoute(GameObject[] routeChoice) {
 
-		if (routeChoice == null || routeChoice [0] == null) {
+		if (routeChoice == null) {
+
+			Debug.LogError("No route was set for intersection");
+			return null;
+
+		}
+
+		if (routeChoice [0] == null) {
 
 			Debug.LogError("No route was set for intersection");
 			return null;
@@ -111,9 +118,9 @@ public class Intersection : MonoBehaviour {
 
 		switch (Direction) {
 			
-			case "Noord": return LightState[0];
-			case "Oost": return LightState[1];
-			case "Zuid": return LightState[2];
+			case "North": return LightState[0];
+			case "East": return LightState[1];
+			case "South": return LightState[2];
 			case "West": return LightState[3];
 			
 		}
