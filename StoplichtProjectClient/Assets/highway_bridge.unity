@@ -115,7 +115,7 @@ Transform:
   - {fileID: 620496085}
   - {fileID: 1657070487}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &2583104
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,14 +524,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11483612, guid: aaac3121c16679346832835e4d900145, type: 2}
-      propertyPath: PlayerScoreboardPos
-      value: 
-      objectReference: {fileID: 379701042}
     - target: {fileID: 11410956, guid: aaac3121c16679346832835e4d900145, type: 2}
       propertyPath: ScreenShotsOriginPoint
       value: 
       objectReference: {fileID: 1288654527}
+    - target: {fileID: 11483612, guid: aaac3121c16679346832835e4d900145, type: 2}
+      propertyPath: PlayerScoreboardPos
+      value: 
+      objectReference: {fileID: 379701042}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaac3121c16679346832835e4d900145, type: 2}
   m_IsPrefabParent: 0
@@ -1729,7 +1729,7 @@ GameObject:
   - 4: {fileID: 100519217}
   - 114: {fileID: 100519218}
   m_Layer: 0
-  m_Name: ZuidNoord
+  m_Name: NoordZuid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1823,7 +1823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b8b75ec3ad71341ade777ca175800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
+  number: 1
 --- !u!1 &101011958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,7 +2624,7 @@ GameObject:
   - 4: {fileID: 132433716}
   - 114: {fileID: 132433717}
   m_Layer: 0
-  m_Name: NoordZuid
+  m_Name: ZuidNoord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2718,7 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b8b75ec3ad71341ade777ca175800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
+  number: 2
 --- !u!1 &133848970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,7 +3276,7 @@ Transform:
   m_GameObject: {fileID: 163754504}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: 205.229996, y: 0, z: -12.8999996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 1504937133}
   m_RootOrder: 2
@@ -3293,6 +3293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   vehicle: 0
+  StartWaypointCollection: 0
   available: 1
 --- !u!65 &163754507
 BoxCollider:
@@ -8178,7 +8179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &404561958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8190,17 +8191,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb283b1dbf5e2941937845c78ea8846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipaddress: 172.16.0.1
+  ipaddress: 127.0.0.1
   WaypointCollection: {fileID: 1171490427}
   Auto: {fileID: 128192, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
   Voetganger: {fileID: 141640, guid: 28e5d90250aee7e469bd6c20cd792055, type: 2}
   Bus: {fileID: 124212, guid: c567c31cd8b69eb48a3c9090a561e87a, type: 2}
   Fiets: {fileID: 121292, guid: 4c5c021efd346e0408fc71d2e40e0210, type: 2}
-  spawnpoints_: {fileID: 0}
+  spawnpoints: {fileID: 1504937132}
   trafficlights: {fileID: 0}
   TrafficLightStopGoBoxes: {fileID: 0}
-  spawnpoints:
-  - {fileID: 0}
 --- !u!4 &404561959
 Transform:
   m_ObjectHideFlags: 0
@@ -8212,7 +8211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &405372260
 GameObject:
   m_ObjectHideFlags: 0
@@ -10456,7 +10455,7 @@ Transform:
   m_GameObject: {fileID: 517672318}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: -191.020004, y: 0, z: -17.8549995}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 1504937133}
   m_RootOrder: 1
@@ -10473,6 +10472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 2
   vehicle: 0
+  StartWaypointCollection: 0
   available: 1
 --- !u!33 &517672321
 MeshFilter:
@@ -11176,7 +11176,7 @@ GameObject:
   - 4: {fileID: 543289961}
   - 114: {fileID: 543289962}
   m_Layer: 0
-  m_Name: ZuidNoord
+  m_Name: NoordZuid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11270,7 +11270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b8b75ec3ad71341ade777ca175800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
+  number: 2
 --- !u!1 &547679496
 GameObject:
   m_ObjectHideFlags: 0
@@ -11451,6 +11451,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 557218204}
   - 20: {fileID: 557218203}
+  - 45: {fileID: 557218205}
   m_Layer: 0
   m_Name: Water4SimpleReflectionSceneCamera
   m_TagString: Untagged
@@ -11496,12 +11497,20 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 557218202}
-  m_LocalRotation: {x: -.0510999262, y: .906936169, z: .115288392, w: .401950449}
-  m_LocalPosition: {x: -810.794922, y: -140.078644, z: 22.3810768}
+  m_LocalRotation: {x: .537701666, y: .112214558, z: .0724837258, w: -.832484841}
+  m_LocalPosition: {x: -524.692993, y: -242.418625, z: 49.3321228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!45 &557218205
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 557218202}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &557542977
 GameObject:
   m_ObjectHideFlags: 0
@@ -21409,7 +21418,7 @@ Transform:
   m_GameObject: {fileID: 1116360218}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: -191.009995, y: 0, z: -16.4759998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 1504937133}
   m_RootOrder: 0
@@ -21426,6 +21435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 2
   vehicle: 0
+  StartWaypointCollection: 1
   available: 1
 --- !u!33 &1116360221
 MeshFilter:
@@ -23565,6 +23575,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _control: {x: 0, y: 0, z: 0}
+--- !u!1001 &1254206673
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -969.98407
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 57.43013
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -1.62920685e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 467888, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1259688718
 GameObject:
   m_ObjectHideFlags: 0
@@ -25451,7 +25503,7 @@ Transform:
   - {fileID: 1737153655}
   - {fileID: 2077630493}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1363307747
 GameObject:
   m_ObjectHideFlags: 0
@@ -30581,7 +30633,7 @@ GameObject:
   - 4: {fileID: 1626349716}
   - 114: {fileID: 1626349717}
   m_Layer: 0
-  m_Name: NoordZuid
+  m_Name: ZuidNoord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30675,7 +30727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b8b75ec3ad71341ade777ca175800b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
+  number: 1
 --- !u!1 &1628512425
 GameObject:
   m_ObjectHideFlags: 0
@@ -32393,7 +32445,7 @@ Transform:
   m_GameObject: {fileID: 1751687927}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
   m_LocalPosition: {x: 205.240005, y: 0, z: -14.4300003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 1504937133}
   m_RootOrder: 3
@@ -32410,6 +32462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   vehicle: 0
+  StartWaypointCollection: 1
   available: 1
 --- !u!65 &1751687930
 BoxCollider:

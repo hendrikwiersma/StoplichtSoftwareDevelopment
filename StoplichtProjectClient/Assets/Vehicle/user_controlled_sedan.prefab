@@ -160,7 +160,6 @@ GameObject:
   - 20: {fileID: 2005176}
   - 124: {fileID: 12406232}
   - 92: {fileID: 9247074}
-  - 81: {fileID: 8179290}
   m_Layer: 8
   m_Name: RightSideCamera
   m_TagString: Untagged
@@ -364,7 +363,6 @@ GameObject:
   - 20: {fileID: 2053970}
   - 124: {fileID: 12477606}
   - 92: {fileID: 9209462}
-  - 81: {fileID: 8126564}
   m_Layer: 8
   m_Name: LeftMirrorCamera
   m_TagString: Untagged
@@ -400,7 +398,6 @@ GameObject:
   - 20: {fileID: 2044204}
   - 124: {fileID: 12482020}
   - 92: {fileID: 9207892}
-  - 81: {fileID: 8181484}
   m_Layer: 8
   m_Name: rearMirrorCamera
   m_TagString: Untagged
@@ -962,7 +959,6 @@ GameObject:
   - 20: {fileID: 2089568}
   - 124: {fileID: 12465544}
   - 92: {fileID: 9217300}
-  - 81: {fileID: 8136734}
   - 114: {fileID: 11469810}
   m_Layer: 0
   m_Name: Camera
@@ -1052,7 +1048,6 @@ GameObject:
   - 20: {fileID: 2090592}
   - 124: {fileID: 12469444}
   - 92: {fileID: 9236758}
-  - 81: {fileID: 8134716}
   m_Layer: 0
   m_Name: ScreenshotCamera
   m_TagString: Player
@@ -3231,41 +3226,6 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147370}
-  m_Enabled: 1
---- !u!81 &8126564
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136914}
-  m_Enabled: 1
---- !u!81 &8134716
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197748}
-  m_Enabled: 0
---- !u!81 &8136734
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190412}
-  m_Enabled: 1
---- !u!81 &8179290
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112984}
-  m_Enabled: 1
---- !u!81 &8181484
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143024}
   m_Enabled: 1
 --- !u!92 &9207892
 Behaviour:

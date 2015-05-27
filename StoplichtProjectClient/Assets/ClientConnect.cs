@@ -153,15 +153,14 @@ public class ClientConnect : MonoBehaviour {
 				case "Auto": 
 
 					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
-					AIController controller = car.GetComponent<AIController>();
 					int counter = 0;
+					AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
 					foreach(Transform gameObj in WaypointCollection.transform)
 					{
 						if(gameObj.transform.name == StartingPoint+EndPoint){
-//							print("Spawning new car: " + gameObj.transform.name + " " + StartingPoint+EndPoint);
-							AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
+							
 							if(counter == 0){
-								aiscript.WaypointCollection = gameObj.gameObject;
+								aiscript.WaypointCollection1 = gameObj.gameObject;
 								counter++;
 							}
 							else if(counter == 1){
@@ -172,6 +171,18 @@ public class ClientConnect : MonoBehaviour {
 								print("Not more than two waypoint collections possible.");
 							}
 						}
+					}
+					if(aiscript.WaypointCollection2 == null){
+						aiscript.WaypointCollection2 = aiscript.WaypointCollection1;
+					}
+					if(currentspawnpoint.StartWaypointCollection == 0){
+						aiscript.CurrentWaypoints = aiscript.WaypointCollection1;
+					}
+					else if(currentspawnpoint.StartWaypointCollection == 1){
+						aiscript.CurrentWaypoints = aiscript.WaypointCollection2;
+					}
+					else{
+						print("Wrong start waypointNumber set in spawncube.");
 					}
 					break;
 
