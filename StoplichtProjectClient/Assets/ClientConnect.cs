@@ -220,7 +220,7 @@ public class ClientConnect : MonoBehaviour {
 		foreach(Trafficlight light in trafficlights_) {
 
 			if(light.id == id){
-				print ("Executing void.");
+
 				light.setNewState(State);
 
 			}
@@ -252,11 +252,11 @@ public class ClientConnect : MonoBehaviour {
 
 			if (state == 0) {
 
-				print ("Sending packet: A car is logging in at trafficlight id " + trafficlightid);
+				//print ("Sending packet: A car is logging in at trafficlight id " + trafficlightid);
 
 			} else {
 
-				print ("Sending packet: A car is logging out at trafficlight id " + trafficlightid);
+				//print ("Sending packet: A car is logging out at trafficlight id " + trafficlightid);
 
 			}
 

@@ -76,7 +76,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 				carinfront = true;
 				if(combinehits == false){
 					combinehits = true;
-					print("Adding left side.");
+
 					leftHits = Physics.RaycastAll(transform.position, frr, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude * 2, 13, 2000));
 					Vector3 forward = frl *  Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude * 2, 13, 2000);
         			Debug.DrawRay(transform.position, forward, Color.green);

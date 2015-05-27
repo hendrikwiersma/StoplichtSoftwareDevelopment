@@ -14,6 +14,7 @@ public class Intersection : MonoBehaviour {
 	public GameObject[] East = new GameObject[1];
 	public GameObject[] South = new GameObject[1];
 	public GameObject[] West = new GameObject[1];
+	public GameObject[] Ventweg = new GameObject[1];
 
 	// traffic allowed to pass in this direction (n,e,s,w)
 	public bool[] LightState = {true, true, true, true};
@@ -30,6 +31,7 @@ public class Intersection : MonoBehaviour {
 			case "East": dir = GetCorrectRoute(East); break;
 			case "South": dir = GetCorrectRoute(South); break;
 			case "West": dir = GetCorrectRoute(West); break;
+			case "Ventweg": dir = GetCorrectRoute(Ventweg); break;
 			default:
 				Debug.LogError("Unable to find route for intersection");
 				return null;
@@ -125,6 +127,7 @@ public class Intersection : MonoBehaviour {
 			
 		}
 
+		Debug.LogError ("Unknown light state");
 		return false;
 		
 	}
@@ -140,6 +143,7 @@ public class Intersection : MonoBehaviour {
 			case "Oost": state = LightState[1]; break;
 			case "Zuid": state = LightState[2]; break;
 			case "West": state = LightState[3]; break;
+			default: Debug.LogError ("Unknown light state"); break;
 			
 		}
 
