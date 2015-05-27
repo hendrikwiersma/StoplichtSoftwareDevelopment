@@ -12,136 +12,167 @@ public class AIControllerWheelCol : MonoBehaviour {
 	public WheelCollider LeftBack;
 
 	
-	public GameObject WaypointCollection;
+	public GameObject WaypointCollection1;
 	public GameObject WaypointCollection2;
-	private List<GameObject> waypoints;
-	private List<GameObject> waypoints2;
-	private List<GameObject> currentwaypoints;
-	private int waypointcounter = 0;
-	private GameObject Target;
 
+	public GameObject CurrentWaypoints;
+	private int waypointcounter = 0;
+	public Transform Target;
+
+	public float timeBetweenSteps = 2.0f;
+	private float lastStep;
 	private float steering = 0.0f;
 	private float braketorque = 0.0f;
 	private float motortorque = 0.0f;
+	private float distance = 0.0f;
 	public bool go = true;
+	public bool drawDebuglines = true;
+	public GameObject RightOriginPoint;
+	public GameObject LeftOriginPoint;
+	public int topMotorTorque = 600;
+	public int topBrakeTorque = 1000;
 
 	// Use this for initialization
 	void Start () {
-
-		waypoints = new List<GameObject>();
-		foreach(Transform gameObj in WaypointCollection.transform){
-			waypoints.Add(gameObj.gameObject);
-		}
-		waypoints2 = new List<GameObject>();
-		foreach(Transform gameObj in WaypointCollection2.transform){
-			waypoints2.Add(gameObj.gameObject);
-		}
-		currentwaypoints = waypoints;
-		Target = currentwaypoints[waypointcounter];
+		Target = CurrentWaypoints.transform.GetChild(waypointcounter);
 	}
 	public void nextWaypoint(){
-		if(waypointcounter < currentwaypoints.Count-1){
+		if(waypointcounter < CurrentWaypoints.transform.childCount-1){
 			waypointcounter++;
 		}
 		else{
 			Destroy(this.gameObject);
 		}
-		Target = currentwaypoints[waypointcounter];
-		}
-	
-	// Update is called once per frame
+		Target = CurrentWaypoints.transform.GetChild(waypointcounter);
+	}
+
 	void Update () {
-		float xDistance = Target.transform.position.x - transform.position.x;
-		float zDistance = Target.transform.position.z - transform.position.z;
+		float xDistance = Target.position.x - transform.position.x;
+		float zDistance = Target.position.z - transform.position.z;
 		float angle = Mathf.Atan2(xDistance, zDistance) * Mathf.Rad2Deg;
 		float carAngle = transform.localEulerAngles.y;
-		float newsteering = (angle - carAngle);
-		float distance = Vector3.Distance (Target.transform.position, transform.position);
+		float steering = (angle - carAngle);
+		distance = Vector3.Distance (Target.position, transform.position);
 
-		Vector3 fwd = transform.TransformDirection(Vector3.forward);
-		Vector3 frl = transform.TransformDirection(new Vector3(-0.3f, 0, 1));
-		Vector3 frr = transform.TransformDirection(new Vector3(0.3f, 0, 1));
-		
-		RaycastHit[] allHits;
-		RaycastHit[] leftHits = null;
-		allHits = Physics.RaycastAll(transform.position, fwd, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude * 3, 20, 200));
-		bool combinehits = false;
-		bool carinfront = false;
-		bool cartoleft = false;
-		for (int i = 0; i < allHits.Length; i++) {
-
-			RaycastHit hit = allHits[i];
-			Debug.DrawLine (transform.position, hit.point, Color.cyan);
-			if(hit.collider.gameObject.tag == "Car"){
-				carinfront = true;
-				if(combinehits == false){
-					combinehits = true;
-
-					leftHits = Physics.RaycastAll(transform.position, frr, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude * 2, 13, 2000));
-					Vector3 forward = frl *  Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude * 2, 13, 2000);
-        			Debug.DrawRay(transform.position, forward, Color.green);
-
-				}
-			}
-			else if(hit.collider.gameObject.tag == "Trafficlight"){
-				WaitingScript controller = hit.collider.gameObject.GetComponent<WaitingScript>();
-				if(controller.waypointSystem.ToString() == WaypointCollection.transform.name){
-					if(controller.Go == true){
-						go = true;
-					}
-					else{
-						go = false;
-					}
-				}
-			}
-			else{
-				drive(distance);
-			}
-			if(go == true){
-				drive(distance);
-			}
-
-		}
-		if(combinehits){
-			for (int i = 0; i < leftHits.Length; i++) {
-				RaycastHit hit = leftHits[i];
-				Debug.DrawLine (transform.position, hit.point, Color.cyan);
-				if(hit.collider.gameObject.tag == "Car"){
-					cartoleft = true;
-				}
-			}
-		}
-
-		if(carinfront || go == false){
-			brake();
-		}
-		if(allHits.Length == 0){
-			drive(distance);
-		}
-		if(carinfront && cartoleft == false){
-			RaycastHit hitleft;
-			if(Physics.Raycast(transform.position, Vector3.left, out hitleft)){
-				if(hitleft.collider.gameObject.tag != "Car"){
-					currentwaypoints = waypoints2;
-					//nextWaypoint();
-					//waypointcounter = waypointcounter -1;
-				}
-			}
-			else{
-				currentwaypoints = waypoints2;
-				//nextWaypoint();
-			}
-			RaycastHit hitright;
-			if(Physics.Raycast(transform.position, Vector3.right, out hitright, 2.0f) && hitright.collider.gameObject.tag != "Car"){
-				//Debug.DrawLine (transform.position, hitright.point, Color.cyan);
-				currentwaypoints = waypoints;
-			}
-		}
-		steering = newsteering;
 		RightFront.steerAngle = steering;
 		LeftFront.steerAngle = steering;
-		//print(braketorque);
+		if(Time.time - lastStep > timeBetweenSteps){
+		    lastStep = Time.time;
 
+			Vector3 forward = transform.TransformDirection(Vector3.forward);
+			Vector3 left = transform.TransformDirection(Vector3.left);
+			Vector3 right = transform.TransformDirection(Vector3.right);
+			Vector3 frl = transform.TransformDirection(new Vector3(-0.5f, 0, 1));
+			Vector3 frr = transform.TransformDirection(new Vector3(0.5f, 0, 1));
+			
+			RaycastHit[] forward_hits;
+			RaycastHit[] left_forward_hits;
+			RaycastHit[] right_forward_hits;
+			RaycastHit[] left_sideways_hits;
+			RaycastHit[] right_sideways_hits;
+
+			RaycastHit[] left_hits = null;
+			RaycastHit[] right_hits = null;
+
+			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 400));
+			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 400));
+			left_sideways_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, frl, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 50));
+			right_sideways_hits = Physics.RaycastAll(RightOriginPoint.transform.position, frr, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 50));
+			
+			forward_hits = left_forward_hits.Concat(right_forward_hits).ToArray();
+			forward_hits = forward_hits.Concat(left_sideways_hits).ToArray();
+			forward_hits = forward_hits.Concat(right_sideways_hits).ToArray();
+
+			bool car_in_front = false;
+			bool car_to_left = false;
+			bool car_to_right = false;
+			
+			
+			for (int i = 0; i < forward_hits.Length; i++) {
+				RaycastHit hit = forward_hits[i];
+				if(hit.collider.gameObject.tag == "Car"){
+					car_in_front = true;
+				}
+			}
+
+			Road roadScript = CurrentWaypoints.GetComponent<Road>();
+			if(go == true){
+				if(roadScript.number == 1 && car_in_front == true){
+					left_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, left, 5.0f);
+					for (int i = 0; i < left_hits.Length; i++) {
+						RaycastHit hit = left_hits[i];
+						if(hit.collider.gameObject.tag == "Car"){
+							car_to_left = true;
+						}
+					}
+					if(car_to_left == false){
+						CurrentWaypoints = WaypointCollection2;
+						brake();
+					}
+					else{
+						brake();
+					}
+				}
+				else if(roadScript.number == 1 && car_in_front == false){
+					drive();
+				}
+				else if(roadScript.number == 2 && car_in_front == false){
+					right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 5.0f);
+					for (int i = 0; i < right_hits.Length; i++) {
+						RaycastHit hit = right_hits[i];
+						if(hit.collider.gameObject.tag == "Car"){
+							car_to_right = true;
+						}
+					}
+					if(car_to_right == false){
+						CurrentWaypoints = WaypointCollection1;
+						brake();
+					}
+					else{
+						drive();
+					}
+				}
+				else if(roadScript.number == 2 && car_in_front == true){
+					brake();
+				}
+			}
+			else{
+				brake();
+			}
+
+
+			if(drawDebuglines){
+				Debug.DrawLine (transform.position, Target.transform.position, Color.white);
+				for (int i = 0; i < right_forward_hits.Length; i++) {
+					RaycastHit hit = right_forward_hits[i];
+					Debug.DrawLine (RightOriginPoint.transform.position, hit.point, Color.cyan);
+				}
+				for (int i = 0; i < left_forward_hits.Length; i++) {
+					RaycastHit hit = left_forward_hits[i];
+					Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.cyan);
+				}
+				for (int i = 0; i < left_sideways_hits.Length; i++) {
+					RaycastHit hit = left_sideways_hits[i];
+					Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.cyan);
+				}
+				for (int i = 0; i < left_sideways_hits.Length; i++) {
+					RaycastHit hit = left_sideways_hits[i];
+					Debug.DrawLine (RightOriginPoint.transform.position, hit.point, Color.cyan);
+				}
+				if(left_hits != null){
+					for (int i = 0; i < left_hits.Length; i++) {
+						RaycastHit hit = left_hits[i];
+						Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.red);
+					}
+				}
+				if(right_hits != null){
+					for (int i = 0; i < right_hits.Length; i++) {
+						RaycastHit hit = right_hits[i];
+						Debug.DrawLine (RightOriginPoint.transform.position, hit.point, Color.red);
+					}
+				}
+			}
+		}
 		RightFront.motorTorque = motortorque;
 		LeftFront.motorTorque = motortorque;
 		RightBack.motorTorque = motortorque;
@@ -150,16 +181,21 @@ public class AIControllerWheelCol : MonoBehaviour {
 		LeftFront.brakeTorque = braketorque;
 		RightBack.brakeTorque = braketorque;
 		LeftBack.brakeTorque = braketorque;
+
 	}
 	void brake(){
-		float brakeforce = braketorque+=GetComponent<Rigidbody>().velocity.magnitude*80;
-		motortorque = 0;
-		braketorque = Mathf.Clamp(brakeforce, 60.0f, 1000.0f);
-	}
-	void drive(float distance){
-		float torque = distance*0.2f;
-		braketorque = 0;
-		motortorque = Mathf.Clamp(motortorque+=torque, 0.0f, 300.0f);
 		
+		float brakeforce = braketorque+=GetComponent<Rigidbody>().velocity.magnitude*300;
+		motortorque = 0;
+		braketorque = Mathf.Clamp(brakeforce, 20, topBrakeTorque);
+		print("Brake" + braketorque);
+
+	}
+	void drive(){
+		
+		float torque = distance*10.0f;
+		braketorque = 0;
+		motortorque = Mathf.Clamp(motortorque+=torque, 0, topMotorTorque);
+		print("Drive");
 	}
 }
