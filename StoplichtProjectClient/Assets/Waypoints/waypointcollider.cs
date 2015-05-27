@@ -15,7 +15,6 @@ public class waypointcollider : MonoBehaviour {
 
 		if (controller == null) {
 
-			Debug.Log ("test");
 			return;
 
 		}

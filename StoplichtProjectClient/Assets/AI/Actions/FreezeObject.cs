@@ -8,6 +8,7 @@ using RAIN.Core;
 public class FreezeObject : RAINAction
 {
 
+	// Freeze bicycle on spot
     public override ActionResult Execute(RAIN.Core.AI ai) {
 
 		Rigidbody r = ai.Body.GetComponent<Rigidbody> ();
