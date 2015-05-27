@@ -20,7 +20,7 @@ public class Speedometer_RPM : MonoBehaviour {
 			float newRPM = RPM - previousRPM;
 
 			// Set rotation.
-			transform.RotateAround (transform.position, transform.up, (newRPM * baseOfMeter));
+			transform.RotateAround (transform.position, transform.forward, (newRPM * baseOfMeter));
 
 			// Note down the RPM we've just used.
 			previousRPM = RPM;
