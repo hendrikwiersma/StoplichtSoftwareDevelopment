@@ -1,17 +1,44 @@
 fileFormatVersion: 2
-guid: 20f2d36e7dbba204d8e547e2c200844b
-timeCreated: 1431507803
+guid: cfac9c328e2a7a040896a24951699f80
+timeCreated: 1432742246
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: default
+    100000: Dashboard
     100002: //RootNode
-    400000: default
+    100004: DashMeters_001
+    100006: RPMGaugeStokje
+    100008: SpeedGaugeStokje
+    100010: SteeringWheel
+    100012: SteeringWheelCollumn
+    400000: Dashboard
     400002: //RootNode
-    2300000: default
-    3300000: default
-    4300000: default
+    400004: DashMeters_001
+    400006: RPMGaugeStokje
+    400008: SpeedGaugeStokje
+    400010: SteeringWheel
+    400012: SteeringWheelCollumn
+    2300000: Dashboard
+    2300002: DashMeters_001
+    2300004: RPMGaugeStokje
+    2300006: SpeedGaugeStokje
+    2300008: SteeringWheel
+    2300010: SteeringWheelCollumn
+    3300000: Dashboard
+    3300002: DashMeters_001
+    3300004: RPMGaugeStokje
+    3300006: SpeedGaugeStokje
+    3300008: SteeringWheel
+    3300010: SteeringWheelCollumn
+    4300000: SpeedGaugeStokje
+    4300002: RPMGaugeStokje
+    4300004: DashMeters_001
+    4300006: SteeringWheelCollumn
+    4300008: SteeringWheel
+    4300010: Dashboard
+    7400000: Default Take
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -65,7 +92,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
