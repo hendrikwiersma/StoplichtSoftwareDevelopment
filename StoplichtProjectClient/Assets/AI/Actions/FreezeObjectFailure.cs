@@ -5,16 +5,16 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class FreeObject : RAINAction {
-
-	// Allow bicycle to move
+public class FreezeObjectFailure : RAINAction
+{
+	// Freeze bicycle on spot
 	public override ActionResult Execute(RAIN.Core.AI ai) {
 		
 		Rigidbody r = ai.Body.GetComponent<Rigidbody> ();
-		r.constraints = RigidbodyConstraints.None;
+		r.constraints = RigidbodyConstraints.FreezeAll;
 
-		return ActionResult.SUCCESS;
-		
+		return ActionResult.FAILURE;
+
 	}
 
 }

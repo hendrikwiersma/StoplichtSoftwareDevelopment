@@ -13,7 +13,8 @@ public class FreezeObject : RAINAction
 
 		Rigidbody r = ai.Body.GetComponent<Rigidbody> ();
 		r.constraints = RigidbodyConstraints.FreezeAll;
-        return ActionResult.FAILURE;
+
+		return ActionResult.SUCCESS;
 
     }
 

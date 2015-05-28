@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1227330239, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
-  m_Name: test2
+  m_Name: test3
   m_EditorClassIdentifier: 
   _dataSerializer:
     _serializedData: <scriptableobject version="1.3" type="RAIN.BehaviorTrees.BTAsset"><fields><field
-      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;test2&quot;
+      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;test3&quot;
       debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;Parallel detector&quot; fail=&quot;any&quot;
       debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot;
@@ -23,12 +23,19 @@ MonoBehaviour:
       /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
       name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
-      name=&quot;next waypoint route&quot; debugbreak=&quot;False&quot; classname=&quot;FindNewRoute&quot;
-      /&gt;&lt;action repeatuntil=&quot;success&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
-      parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;Check trafficlight
-      state&quot; debugbreak=&quot;False&quot; classname=&quot;&quot; /&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Execute once&quot;
-      debugbreak=&quot;False&quot; constraint=&quot;execute == true&quot;&gt;&lt;waypointpath
+      name=&quot;Obtain new route&quot; debugbreak=&quot;False&quot; classname=&quot;FindNewRoute&quot;
+      /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Freeze&quot; debugbreak=&quot;False&quot;
+      classname=&quot;FreezeObject&quot; /&gt;&lt;action repeatuntil=&quot;success&quot;
+      priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
+      name=&quot;Check for free road&quot; debugbreak=&quot;False&quot; classname=&quot;RoadIsFree&quot;
+      /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;&quot; name=&quot;Unfreeze&quot; debugbreak=&quot;False&quot;
+      classname=&quot;FreeObject&quot; /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
+      parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
+      name=&quot;Update road&quot; debugbreak=&quot;False&quot; classname=&quot;UpdateRoad&quot;
+      /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Execute
+      once&quot; debugbreak=&quot;False&quot; constraint=&quot;execute == true&quot;&gt;&lt;waypointpath
       waypointsetvariable=&quot;Network&quot; waypointactiontype=&quot;path&quot;
       traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
       pathtargetvariable=&quot;Destenation&quot; name=&quot;Get new destenation from
@@ -38,13 +45,13 @@ MonoBehaviour:
       priority=&quot;&quot; name=&quot;Road is empty?&quot; debugbreak=&quot;False&quot;
       constraint=&quot;predecessor == null&quot;&gt;&lt;action repeatuntil=&quot;&quot;
       parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
-      name=&quot;action&quot; debugbreak=&quot;False&quot; classname=&quot;FreeObject&quot;
+      name=&quot;Free&quot; debugbreak=&quot;False&quot; classname=&quot;FreeObject&quot;
       /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Move
       to new position&quot; movetarget=&quot;targetPosition&quot; movespeed=&quot;10&quot;
       facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
-      name=&quot;action&quot; debugbreak=&quot;False&quot; classname=&quot;FreezeObject&quot;
+      name=&quot;Freeze&quot; debugbreak=&quot;False&quot; classname=&quot;FreezeObjectFailure&quot;
       /&gt;&lt;/selector&gt;&lt;/waypointpath&gt;&lt;expression returnvalue=&quot;evaluate&quot;
       repeatuntil=&quot;&quot; name=&quot;End loop&quot; expression=&quot;execute
       = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"

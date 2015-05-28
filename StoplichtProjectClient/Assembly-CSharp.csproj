@@ -46,10 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI\Actions\FindNewRoute.cs" />
      <Compile Include="Assets\AI\Actions\FreeObject.cs" />
      <Compile Include="Assets\AI\Actions\FreezeObject.cs" />
-     <Compile Include="Assets\AI\Actions\WaitForTrafficlight.cs" />
-     <Compile Include="Assets\AI\Actions\nextWaypointRoute.cs" />
+     <Compile Include="Assets\AI\Actions\FreezeObjectFailure.cs" />
+     <Compile Include="Assets\AI\Actions\RoadIsFree.cs" />
+     <Compile Include="Assets\AI\Actions\UpdateRoad.cs" />
      <Compile Include="Assets\BikeAI.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
