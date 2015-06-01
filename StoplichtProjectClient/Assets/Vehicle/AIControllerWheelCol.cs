@@ -188,7 +188,6 @@ public class AIControllerWheelCol : MonoBehaviour {
 		float brakeforce = braketorque+=GetComponent<Rigidbody>().velocity.magnitude*300;
 		motortorque = 0;
 		braketorque = Mathf.Clamp(brakeforce, 20, topBrakeTorque);
-		print("Brake" + braketorque);
 
 	}
 	void drive(){
@@ -196,6 +195,6 @@ public class AIControllerWheelCol : MonoBehaviour {
 		float torque = distance*10.0f;
 		braketorque = 0;
 		motortorque = Mathf.Clamp(motortorque+=torque, 0, topMotorTorque);
-		print("Drive");
+
 	}
 }

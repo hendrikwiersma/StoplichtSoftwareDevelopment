@@ -18,8 +18,7 @@ public class Spawnpoint : MonoBehaviour {
 	public void OnDrawGizmos()	{
 
 		// bugged inialization outside code
-		Vector3 gizmoSize = new Vector3 (3, 3, 3);
-		Vector3 controlSize = new Vector3 (1, 1, 1);
+		Vector3 gizmoSize = new Vector3 (1, 1, 1);
 
 		Gizmos.color = Color.green;
 		Gizmos.DrawCube(transform.position, gizmoSize);
