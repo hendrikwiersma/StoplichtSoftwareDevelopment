@@ -29,12 +29,16 @@ public class AIControllerWheelCol : MonoBehaviour {
 	public bool drawDebuglines = true;
 	public GameObject RightOriginPoint;
 	public GameObject LeftOriginPoint;
-	public int topMotorTorque = 600;
+	public int topMotorTorque = 400;
 	public int topBrakeTorque = 1000;
+
+	private Rigidbody carRigidbody;
+	private Road carRoad;
 
 	// Use this for initialization
 	void Start () {
 		Target = CurrentWaypoints.transform.GetChild(waypointcounter);
+		carRigidbody = GetComponent<Rigidbody>();
 	}
 	public void nextWaypoint(){
 		if(waypointcounter < CurrentWaypoints.transform.childCount-1){
@@ -70,14 +74,18 @@ public class AIControllerWheelCol : MonoBehaviour {
 			RaycastHit[] right_forward_hits;
 			RaycastHit[] left_sideways_hits;
 			RaycastHit[] right_sideways_hits;
+			RaycastHit[] stoplights_check_hits;
 
 			RaycastHit[] left_hits = null;
 			RaycastHit[] right_hits = null;
 
-			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 400));
-			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 400));
-			left_sideways_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, frl, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 50));
-			right_sideways_hits = Physics.RaycastAll(RightOriginPoint.transform.position, frr, Mathf.Clamp(GetComponent<Rigidbody>().velocity.magnitude, 10, 50));
+			float Magnitude = carRigidbody.velocity.magnitude;
+
+			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
+			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
+			left_sideways_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, frl, Mathf.Clamp(Magnitude, 10, 50));
+			right_sideways_hits = Physics.RaycastAll(RightOriginPoint.transform.position, frr, Mathf.Clamp(Magnitude, 10, 50));
+			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude, 20, 500));
 			
 			forward_hits = left_forward_hits.Concat(right_forward_hits).ToArray();
 			forward_hits = forward_hits.Concat(left_sideways_hits).ToArray();
@@ -87,11 +95,26 @@ public class AIControllerWheelCol : MonoBehaviour {
 			bool car_to_left = false;
 			bool car_to_right = false;
 			
+			for (int i = 0; i < stoplights_check_hits.Length; i++) {
+				RaycastHit hit = stoplights_check_hits[i];
+				if(hit.collider.gameObject.tag == "Trafficlight"){
+				WaitingScript controller = hit.collider.gameObject.GetComponent<WaitingScript>();
+					if(controller.waypointSystem.ToString() == CurrentWaypoints.transform.name){
+						if(controller.Go == true){
+							go = true;
+						}
+						else{
+							go = false;
+						}
+					}
+				}
+			}
 			
 			for (int i = 0; i < forward_hits.Length; i++) {
 				RaycastHit hit = forward_hits[i];
 				if(hit.collider.gameObject.tag == "Car"){
 					car_in_front = true;
+					print(hit.collider);
 				}
 			}
 
@@ -105,7 +128,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 							car_to_left = true;
 						}
 					}
-					if(car_to_left == false){
+					if(car_to_left == false && waypointcounter % 5 == 0){
 						CurrentWaypoints = WaypointCollection2;
 						brake();
 					}
@@ -124,7 +147,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 							car_to_right = true;
 						}
 					}
-					if(car_to_right == false){
+					if(car_to_right == false && waypointcounter % 5 == 0){
 						CurrentWaypoints = WaypointCollection1;
 						brake();
 					}
@@ -185,17 +208,17 @@ public class AIControllerWheelCol : MonoBehaviour {
 	}
 	void brake(){
 		
-		float brakeforce = braketorque+=GetComponent<Rigidbody>().velocity.magnitude*300;
+		float brakeforce = braketorque+=carRigidbody.velocity.magnitude*300;
 		motortorque = 0;
 		braketorque = Mathf.Clamp(brakeforce, 20, topBrakeTorque);
-		print("Brake" + braketorque);
+		//print("Brake" + braketorque);
 
 	}
 	void drive(){
 		
-		float torque = distance*10.0f;
+		float torque = distance*8.0f;
 		braketorque = 0;
-		motortorque = Mathf.Clamp(motortorque+=torque, 0, topMotorTorque);
-		print("Drive");
+		motortorque = Mathf.Clamp(motortorque+=torque, 0.0f, topMotorTorque);
+		//print("Drive");
 	}
 }
