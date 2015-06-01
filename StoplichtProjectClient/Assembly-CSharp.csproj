@@ -104,6 +104,7 @@
      <Compile Include="Assets\Traffic lights\trafficlight_pedestrian.cs" />
      <Compile Include="Assets\Traffic lights\trafficlightscript.cs" />
      <Compile Include="Assets\TrafficlighBicycle.cs" />
+     <Compile Include="Assets\TrafficlighPedestrian.cs" />
      <Compile Include="Assets\Trafficlight.cs" />
      <Compile Include="Assets\TrafficlightCar.cs" />
      <Compile Include="Assets\Vehicle\AIController.cs" />
