@@ -10363,10 +10363,10 @@ MonoBehaviour:
       value="Visual Sensor" type="System.String" id="_sensorName" /><field value="True"
       type="System.Boolean" id="_isActive" /><field value="0,0.6,0,1" type="UnityEngine.Color"
       id="_sensorColor" /><field type="UnityEngine.Transform" id="_mountPoint" gameobject="2"
-      /><field value="-2.229513E-05,4.799179,-5.945369E-05" type="UnityEngine.Vector3"
+      /><field value="-2.229513E-05,2.660288,-5.945369E-05" type="UnityEngine.Vector3"
       id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
       /><field type="System.Collections.Generic.List" id="_filters" elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter"
-      /><field value="5" type="System.Single" id="_range" /><field value="False" type="System.Boolean"
+      /><field value="2" type="System.Single" id="_range" /><field value="False" type="System.Boolean"
       id="_canDetectSelf" /><field value="20" type="System.Single" id="_horizontalAngle"
       /><field value="58" type="System.Single" id="_verticalAngle" /><field value="False"
       type="System.Boolean" id="_lineOfSight" /><field value="-5" type="UnityEngine.LayerMask"
@@ -12865,7 +12865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb283b1dbf5e2941937845c78ea8846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipaddress: 172.16.1.100
+  ipaddress: 192.168.2.4
   WaypointCollection: {fileID: 1171490427}
   Auto: {fileID: 128192, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
   Voetganger: {fileID: 672517398}
@@ -36931,7 +36931,7 @@ MonoBehaviour:
       /><field value="-2.23392E-05,1.226969,-4.737705E-05" type="UnityEngine.Vector3"
       id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
       /><field type="System.Collections.Generic.List" id="_filters" elementtype="RAIN.Perception.Sensors.Filters.RAINSensorFilter"
-      /><field value="4" type="System.Single" id="_range" /><field value="False" type="System.Boolean"
+      /><field value="5" type="System.Single" id="_range" /><field value="False" type="System.Boolean"
       id="_canDetectSelf" /><field value="15" type="System.Single" id="_horizontalAngle"
       /><field value="58" type="System.Single" id="_verticalAngle" /><field value="False"
       type="System.Boolean" id="_lineOfSight" /><field value="-5" type="UnityEngine.LayerMask"
@@ -50650,7 +50650,7 @@ MonoBehaviour:
       id="_positionOffset" /><field value="0,0,0" type="UnityEngine.Vector3" id="_angleOffset"
       /></reference></references></component>
     _serializedGameObjects:
-    - {fileID: 1884028532}
+    - {fileID: 672517398}
     - {fileID: 1814515952}
     _serializedCustomData: []
 --- !u!1 &1694733154

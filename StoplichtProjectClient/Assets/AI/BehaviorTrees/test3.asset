@@ -19,7 +19,7 @@ MonoBehaviour:
       debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot;
       repeatuntil=&quot;running&quot; name=&quot;Check for empty road&quot; matchtype=&quot;best&quot;
       entityobjectvariable=&quot;&quot; debugbreak=&quot;False&quot; consistent=&quot;True&quot;
-      aspectvariable=&quot;predecessor&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;Bike&amp;quot;&quot;
+      aspectvariable=&quot;&quot; aspectobjectvariable=&quot;predecessor&quot; aspect=&quot;&amp;quot;Bike&amp;quot;&quot;
       /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
       name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
