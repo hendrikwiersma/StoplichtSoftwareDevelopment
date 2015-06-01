@@ -47,7 +47,7 @@ MonoBehaviour:
       parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
       name=&quot;Free&quot; debugbreak=&quot;False&quot; classname=&quot;FreeObject&quot;
       /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Move
-      to new position&quot; movetarget=&quot;targetPosition&quot; movespeed=&quot;10&quot;
+      to new position&quot; movetarget=&quot;targetPosition&quot; movespeed=&quot;&quot;
       facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
