@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.Net.Sockets;
@@ -187,15 +187,19 @@ public class ClientConnect : MonoBehaviour {
 					break;
 
 				case "Voetganger":
-					//Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;			
+					Debug.Log("spawn voetganger");
+					GameObject Pedestrian = Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
+					AIData AIP = Pedestrian.GetComponent<AIData>();
+					AIP.Init(currentspawnpoint.gameObject, EndPoint);
+					Pedestrian.SetActive(true);			
 					break;
 
 				case "Fiets":
+					Debug.Log("spawn");
 					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
-					BikeAI AI = Bicycle.GetComponent<BikeAI>();
-					AI.Init(currentspawnpoint.gameObject, EndPoint);
+					AIData AIB = Bicycle.GetComponent<AIData>();
+					AIB.Init(currentspawnpoint.gameObject, EndPoint);
 					Bicycle.SetActive(true);
-
 					break;
 
 				case "Bus":

@@ -3,7 +3,7 @@ using System.Collections;
 
 // Temporary data holder for route info
 // Requested by AI when initialized
-public class BikeAI : MonoBehaviour {
+public class AIData : MonoBehaviour {
 
 	public GameObject Spawnpoint;
 	public string Direction;

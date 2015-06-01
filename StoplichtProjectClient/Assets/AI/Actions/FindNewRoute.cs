@@ -17,7 +17,7 @@ public class FindNewRoute : RAINAction
 		// Init network when not set
 		if (currentIntersection == null) {
 			
-			BikeAI mem = ai.Body.GetComponent<BikeAI>();
+			AIData mem = ai.Body.GetComponent<AIData>();
 			GameObject spawnpoint = mem.Spawnpoint;
 			currentIntersection = spawnpoint.transform.parent.gameObject.GetComponent<Intersection>();
 			direction = mem.Direction;

@@ -52,7 +52,7 @@
      <Compile Include="Assets\AI\Actions\FreezeObjectFailure.cs" />
      <Compile Include="Assets\AI\Actions\RoadIsFree.cs" />
      <Compile Include="Assets\AI\Actions\UpdateRoad.cs" />
-     <Compile Include="Assets\BikeAI.cs" />
+     <Compile Include="Assets\AIData.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
      <Compile Include="Assets\Destructive.cs" />
