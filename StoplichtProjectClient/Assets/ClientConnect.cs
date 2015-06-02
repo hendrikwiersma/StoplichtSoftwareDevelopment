@@ -68,7 +68,6 @@ public class ClientConnect : MonoBehaviour {
 	}
 	void SpawnVehicle(byte startpoint, byte endpoint, byte type){
 		string StartingPoint = null;
-		System.Random newrand = new System.Random ();
 		switch (startpoint)
         {
         case 0:
@@ -187,7 +186,6 @@ public class ClientConnect : MonoBehaviour {
 					break;
 
 				case "Voetganger":
-					Debug.Log("spawn voetganger");
 					GameObject Pedestrian = Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
 					AIData AIP = Pedestrian.GetComponent<AIData>();
 					AIP.Init(currentspawnpoint.gameObject, EndPoint);
@@ -195,7 +193,6 @@ public class ClientConnect : MonoBehaviour {
 					break;
 
 				case "Fiets":
-					Debug.Log("spawn");
 					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
 					AIData AIB = Bicycle.GetComponent<AIData>();
 					AIB.Init(currentspawnpoint.gameObject, EndPoint);

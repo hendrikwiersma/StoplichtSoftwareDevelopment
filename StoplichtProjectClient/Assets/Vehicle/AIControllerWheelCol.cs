@@ -114,7 +114,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 				RaycastHit hit = forward_hits[i];
 				if(hit.collider.gameObject.tag == "Car"){
 					car_in_front = true;
-					print(hit.collider);
+					//print(hit.collider);
 				}
 			}
 

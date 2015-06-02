@@ -15,8 +15,8 @@ public class AIController : MonoBehaviour {
 	private List<GameObject> waypoints;
 	private int waypointcounter = 0;
 	public GameObject Target;
-	private float speed = 0.1f;
-	private float tParam = 0f;
+	//private float speed = 0.1f;
+	//private float tParam = 0f;
 
 	private float steering = 0.0f;
 
