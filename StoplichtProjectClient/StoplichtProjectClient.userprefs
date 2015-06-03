@@ -1,16 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ClientConnect.cs">
     <Files>
-      <File FileName="Assets\ClientConnect.cs" Line="225" Column="20" />
-      <File FileName="Assets\Waypoints\waypointcollider.cs" Line="1" Column="1" />
-      <File FileName="Assets\AIData.cs" Line="1" Column="1" />
-      <File FileName="Assets\AI\Actions\FindNewRoute.cs" Line="1" Column="1" />
-      <File FileName="Assets\Intersection.cs" Line="1" Column="1" />
-      <File FileName="Assets\Vehicle\RealisticCarControllerV2\Scripts\RCCCarControllerV2.cs" Line="1" Column="1" />
-      <File FileName="Assets\WaitingScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Vehicle\AIController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Vehicle\AIControllerWheelCol.cs" Line="1" Column="1" />
+      <File FileName="Assets\ClientConnect.cs" Line="27" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

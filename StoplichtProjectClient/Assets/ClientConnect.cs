@@ -136,7 +136,7 @@ public class ClientConnect : MonoBehaviour {
 		{
 			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
 
-			if(spawnpoint.direction.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType){
+			if(spawnpoint.begin.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType && (spawnpoint.end.ToString() == EndPoint || spawnpoint.end == Spawnpoint.End.SelfSearching)){
 
 				possibleSpawnpoints.Add(spawnpoint);
 
@@ -145,12 +145,10 @@ public class ClientConnect : MonoBehaviour {
 		}
 		foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
 
-			if(currentspawnpoint.available == true){
-				currentspawnpoint.available = false;
+			if(currentspawnpoint.spawnpointAvailable() == true){
 
 				switch(VehicleType) {
 				case "Auto": 
-
 					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
 					int counter = 0;
 					AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
@@ -215,14 +213,12 @@ public class ClientConnect : MonoBehaviour {
 		switch (state)
 		{
 		case 0:
-			Debug.Log("Red");
 			State = "Rood";
 			break;
 		case 1:
 			State = "Oranje";
 			break;
 		case 2:
-			Debug.Log("Green");
 			State = "Groen";
 			break;
 		default:

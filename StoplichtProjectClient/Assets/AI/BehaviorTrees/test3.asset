@@ -16,12 +16,16 @@ MonoBehaviour:
       value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;test3&quot;
       debugbreak=&quot;False&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;Parallel detector&quot; fail=&quot;any&quot;
-      debugbreak=&quot;False&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot;
-      repeatuntil=&quot;running&quot; name=&quot;Check for empty road&quot; matchtype=&quot;best&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;yield
+      priority=&quot;&quot; name=&quot;yield&quot; debugbreak=&quot;False&quot; /&gt;&lt;detect
+      sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Check for empty road&quot; matchtype=&quot;best&quot;
       entityobjectvariable=&quot;&quot; debugbreak=&quot;False&quot; consistent=&quot;True&quot;
       aspectvariable=&quot;&quot; aspectobjectvariable=&quot;predecessor&quot; aspect=&quot;&amp;quot;Bike&amp;quot;&quot;
-      /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
-      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      /&gt;&lt;/sequencer&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;yield priority=&quot;&quot;
+      name=&quot;yield&quot; debugbreak=&quot;False&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
       priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
       name=&quot;Obtain new route&quot; debugbreak=&quot;False&quot; classname=&quot;FindNewRoute&quot;
       /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;&quot;
@@ -43,15 +47,17 @@ MonoBehaviour:
       usepriorities=&quot;False&quot; repeatuntil=&quot;success&quot; name=&quot;Try
       to move&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;Road is empty?&quot; debugbreak=&quot;False&quot;
-      constraint=&quot;predecessor == null&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      constraint=&quot;predecessor == null&quot;&gt;&lt;yield name=&quot;yield&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;&quot;
+      parameters=&quot;&quot; namespace=&quot;(global)&quot; name=&quot;Free&quot;
+      debugbreak=&quot;False&quot; classname=&quot;FreeObject&quot; /&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Move to new position&quot;
+      movetarget=&quot;targetPosition&quot; movespeed=&quot;&quot; facetarget=&quot;&quot;
+      debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot;
+      /&gt;&lt;/constraint&gt;&lt;yield priority=&quot;&quot; name=&quot;yield&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
       parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
-      name=&quot;Free&quot; debugbreak=&quot;False&quot; classname=&quot;FreeObject&quot;
-      /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Move
-      to new position&quot; movetarget=&quot;targetPosition&quot; movespeed=&quot;&quot;
-      facetarget=&quot;&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/constraint&gt;&lt;action repeatuntil=&quot;&quot;
-      priority=&quot;&quot; parametervalues=&quot;&quot; parameters=&quot;&quot; namespace=&quot;(global)&quot;
-      name=&quot;Freeze&quot; debugbreak=&quot;False&quot; classname=&quot;FreezeObjectFailure&quot;
+      name=&quot;Freeze&quot; debugbreak=&quot;True&quot; classname=&quot;FreezeObjectFailure&quot;
       /&gt;&lt;/selector&gt;&lt;/waypointpath&gt;&lt;expression returnvalue=&quot;evaluate&quot;
       repeatuntil=&quot;&quot; name=&quot;End loop&quot; expression=&quot;execute
       = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"

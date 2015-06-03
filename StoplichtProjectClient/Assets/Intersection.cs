@@ -177,6 +177,7 @@ public class Intersection : MonoBehaviour {
 			
 			case "North": return LightState[0];
 			case "East": return LightState[1];
+			case "Ventweg": // dir for ventweg
 			case "South": return LightState[2];
 			case "West": return LightState[3];
 			

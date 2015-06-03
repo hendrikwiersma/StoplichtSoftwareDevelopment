@@ -2,19 +2,37 @@
 using System.Collections;
 
 public class Spawnpoint : MonoBehaviour {
-	public enum Direction{Noord,Oost,Zuid,West,Ventweg}
+	public enum Begin{Noord,Oost,Zuid,West,Ventweg}
+	public enum End{Noord,Oost,Zuid,West,Ventweg,SelfSearching}
 	public enum Vehicle{Auto,Fiets,Bus,Voetganger}
-	public Direction direction;
+	public Begin begin;
+	public End end;
 	public Vehicle vehicle;
 	public int StartWaypointCollection;
 	public bool available = true;
-	// Use this for initialization
+	public int carsInside = 0;
+
+	void OnTriggerEnter(Collider other) {
+		carsInside++;
+	}
+
 	void OnTriggerExit(Collider other) {
-		available = true;
+		carsInside--;
 	}
-	void Start () {
-	
+
+	public bool spawnpointAvailable(){
+		if(carsInside == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
+
+	public void addCarInsideSpawnpoint(){
+		carsInside++;
+	}
+
 	public void OnDrawGizmos()	{
 
 		// bugged inialization outside code
@@ -24,9 +42,5 @@ public class Spawnpoint : MonoBehaviour {
 		Gizmos.DrawCube(transform.position, gizmoSize);
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

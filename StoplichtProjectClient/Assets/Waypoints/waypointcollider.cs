@@ -19,10 +19,10 @@ public class waypointcollider : MonoBehaviour {
 
 		}
 
-		//Road roadScript = controller.CurrentWaypoints.GetComponent<Road>();
-		//Road parent = transform.parent.parent.GetComponent<Road>();
+		Road roadScript = controller.CurrentWaypoints.GetComponent<Road>();
+		Road parent = transform.parent.parent.GetComponent<Road>();
 
-		if(controller.CurrentWaypoints.transform.name == transform.parent.parent.name){
+		if(controller.CurrentWaypoints.transform.name == transform.parent.parent.name && roadScript.number == parent.number){
 
 			controller.nextWaypoint();
 

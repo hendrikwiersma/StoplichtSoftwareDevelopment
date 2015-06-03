@@ -37,9 +37,12 @@ public class AIControllerWheelCol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		Target = CurrentWaypoints.transform.GetChild(waypointcounter);
 		carRigidbody = GetComponent<Rigidbody>();
+
 	}
+
 	public void nextWaypoint(){
 		if(waypointcounter < CurrentWaypoints.transform.childCount-1){
 			waypointcounter++;
@@ -120,7 +123,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 
 			Road roadScript = CurrentWaypoints.GetComponent<Road>();
 			if(go == true){
-				if(roadScript.number == 1 && car_in_front == true){
+				if(roadScript.number == 0 && car_in_front == true){
 					left_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, left, 5.0f);
 					for (int i = 0; i < left_hits.Length; i++) {
 						RaycastHit hit = left_hits[i];
@@ -136,10 +139,10 @@ public class AIControllerWheelCol : MonoBehaviour {
 						brake();
 					}
 				}
-				else if(roadScript.number == 1 && car_in_front == false){
+				else if(roadScript.number == 0 && car_in_front == false){
 					drive();
 				}
-				else if(roadScript.number == 2 && car_in_front == false){
+				else if(roadScript.number == 1 && car_in_front == false){
 					right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 5.0f);
 					for (int i = 0; i < right_hits.Length; i++) {
 						RaycastHit hit = right_hits[i];
@@ -155,7 +158,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 						drive();
 					}
 				}
-				else if(roadScript.number == 2 && car_in_front == true){
+				else if(roadScript.number == 1 && car_in_front == true){
 					brake();
 				}
 			}
