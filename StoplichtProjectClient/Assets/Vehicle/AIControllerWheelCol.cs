@@ -75,24 +75,20 @@ public class AIControllerWheelCol : MonoBehaviour {
 			RaycastHit[] forward_hits;
 			RaycastHit[] left_forward_hits;
 			RaycastHit[] right_forward_hits;
-			RaycastHit[] left_sideways_hits;
-			RaycastHit[] right_sideways_hits;
+			RaycastHit[] right_hits;
 			RaycastHit[] stoplights_check_hits;
-
-			RaycastHit[] left_hits = null;
-			RaycastHit[] right_hits = null;
 
 			float Magnitude = carRigidbody.velocity.magnitude;
 
 			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
 			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
-			left_sideways_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, frl, Mathf.Clamp(Magnitude, 10, 50));
-			right_sideways_hits = Physics.RaycastAll(RightOriginPoint.transform.position, frr, Mathf.Clamp(Magnitude, 10, 50));
-			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude, 20, 500));
-			
+			right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 2);
+			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude, 10, 200));
+
+
+
 			forward_hits = left_forward_hits.Concat(right_forward_hits).ToArray();
-			forward_hits = forward_hits.Concat(left_sideways_hits).ToArray();
-			forward_hits = forward_hits.Concat(right_sideways_hits).ToArray();
+			forward_hits = forward_hits.Concat(right_hits).ToArray();
 
 			bool car_in_front = false;
 			bool car_to_left = false;
@@ -123,43 +119,11 @@ public class AIControllerWheelCol : MonoBehaviour {
 
 			Road roadScript = CurrentWaypoints.GetComponent<Road>();
 			if(go == true){
-				if(roadScript.number == 0 && car_in_front == true){
-					left_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, left, 5.0f);
-					for (int i = 0; i < left_hits.Length; i++) {
-						RaycastHit hit = left_hits[i];
-						if(hit.collider.gameObject.tag == "Car"){
-							car_to_left = true;
-						}
-					}
-					if(car_to_left == false && waypointcounter % 5 == 0){
-						CurrentWaypoints = WaypointCollection2;
-						brake();
-					}
-					else{
-						brake();
-					}
-				}
-				else if(roadScript.number == 0 && car_in_front == false){
-					drive();
-				}
-				else if(roadScript.number == 1 && car_in_front == false){
-					right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 5.0f);
-					for (int i = 0; i < right_hits.Length; i++) {
-						RaycastHit hit = right_hits[i];
-						if(hit.collider.gameObject.tag == "Car"){
-							car_to_right = true;
-						}
-					}
-					if(car_to_right == false && waypointcounter % 5 == 0){
-						CurrentWaypoints = WaypointCollection1;
-						brake();
-					}
-					else{
-						drive();
-					}
-				}
-				else if(roadScript.number == 1 && car_in_front == true){
+				if(car_in_front == true){
 					brake();
+				}
+				else{
+					drive();
 				}
 			}
 			else{
@@ -177,26 +141,6 @@ public class AIControllerWheelCol : MonoBehaviour {
 					RaycastHit hit = left_forward_hits[i];
 					Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.cyan);
 				}
-				for (int i = 0; i < left_sideways_hits.Length; i++) {
-					RaycastHit hit = left_sideways_hits[i];
-					Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.cyan);
-				}
-				for (int i = 0; i < left_sideways_hits.Length; i++) {
-					RaycastHit hit = left_sideways_hits[i];
-					Debug.DrawLine (RightOriginPoint.transform.position, hit.point, Color.cyan);
-				}
-				if(left_hits != null){
-					for (int i = 0; i < left_hits.Length; i++) {
-						RaycastHit hit = left_hits[i];
-						Debug.DrawLine (LeftOriginPoint.transform.position, hit.point, Color.red);
-					}
-				}
-				if(right_hits != null){
-					for (int i = 0; i < right_hits.Length; i++) {
-						RaycastHit hit = right_hits[i];
-						Debug.DrawLine (RightOriginPoint.transform.position, hit.point, Color.red);
-					}
-				}
 			}
 		}
 		RightFront.motorTorque = motortorque;
@@ -211,7 +155,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 	}
 	void brake(){
 		
-		float brakeforce = braketorque+=carRigidbody.velocity.magnitude*300;
+		float brakeforce = braketorque+=carRigidbody.velocity.magnitude*200;
 		motortorque = 0;
 		braketorque = Mathf.Clamp(brakeforce, 20, topBrakeTorque);
 		//print("Brake" + braketorque);

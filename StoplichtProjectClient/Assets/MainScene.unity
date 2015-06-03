@@ -186,101 +186,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 1311704}
     _serializedCustomData: []
---- !u!1 &2824240
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 103824, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2824241}
-  - 114: {fileID: 2824245}
-  - 23: {fileID: 2824244}
-  - 33: {fileID: 2824243}
-  - 65: {fileID: 2824242}
-  m_Layer: 0
-  m_Name: ZuidAuto4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2824241
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 472662, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2824240}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -2.20000005, y: -2.29999995, z: 155.600006}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 17
---- !u!65 &2824242
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6576608, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2824240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &2824243
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3318974, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2824240}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2824244
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2350174, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2824240}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &2824245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11478662, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2824240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &4755072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,66 +2175,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 101750594}
     _serializedCustomData: []
---- !u!1 &104246487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 185546, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 104246488}
-  - 114: {fileID: 104246490}
-  - 65: {fileID: 104246489}
-  m_Layer: 0
-  m_Name: ZuidAuto2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &104246488
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400082, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 104246487}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -11.7150002, y: -2.28499985, z: 155.580002}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 2
---- !u!65 &104246489
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6514720, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 104246487}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &104246490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468620, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 104246487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &104843709 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 163322, guid: 904f253c0447c004780a68e1cfc10431, type: 2}
@@ -3409,101 +3254,6 @@ MonoBehaviour:
   direction: 1
   id: 43
   State: Rood
---- !u!1 &152017376
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 159246, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 152017377}
-  - 114: {fileID: 152017381}
-  - 23: {fileID: 152017380}
-  - 33: {fileID: 152017379}
-  - 65: {fileID: 152017378}
-  m_Layer: 0
-  m_Name: ZuidAuto5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &152017377
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 446138, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152017376}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -6.9000001, y: -2.29999995, z: 155.600006}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 18
---- !u!65 &152017378
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6506930, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152017376}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &152017379
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3353810, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152017376}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &152017380
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2349130, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152017376}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &152017381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11413584, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 152017376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &152447501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,66 +3426,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 154811124}
   m_Mesh: {fileID: 4300046, guid: abd9cf4e735cd5b4eac31c16ec75bd0b, type: 3}
---- !u!1 &155298389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 143434, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 155298390}
-  - 114: {fileID: 155298392}
-  - 65: {fileID: 155298391}
-  m_Layer: 0
-  m_Name: NoordAuto1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155298390
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 408316, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 155298389}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -229.334991, y: -2.29999995, z: -21.3699951}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 11
---- !u!65 &155298391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6518864, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 155298389}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &155298392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11425088, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 155298389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &157953656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,101 +3732,6 @@ MonoBehaviour:
   Go: 0
   waypointSystem: 10
   TrafficLightID: 11
---- !u!1 &176088550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 127752, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 176088551}
-  - 114: {fileID: 176088555}
-  - 23: {fileID: 176088554}
-  - 33: {fileID: 176088553}
-  - 65: {fileID: 176088552}
-  m_Layer: 0
-  m_Name: ZuidAuto7
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &176088551
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 457876, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176088550}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -11.8999996, y: -2.29999995, z: 169.720001}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 20
---- !u!65 &176088552
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6531878, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176088550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &176088553
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3326508, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176088550}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &176088554
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2381984, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176088550}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &176088555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11420988, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 176088550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 4
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &178718473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,66 +4233,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 203705732}
     _serializedCustomData: []
---- !u!1 &206216614
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 112430, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 206216615}
-  - 114: {fileID: 206216617}
-  - 65: {fileID: 206216616}
-  m_Layer: 0
-  m_Name: WestAuto7
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &206216615
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 418072, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 206216614}
-  m_LocalRotation: {x: 0, y: -.67203486, z: 0, w: .740519583}
-  m_LocalPosition: {x: 100.290001, y: -2.29999995, z: 66.7799988}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 24
---- !u!65 &206216616
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6580220, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 206216614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &206216617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11481862, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 206216614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 4
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1001 &207461711
 Prefab:
   m_ObjectHideFlags: 0
@@ -5201,66 +4736,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 240297294}
     _serializedCustomData: []
---- !u!1 &241825148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 134714, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 241825149}
-  - 114: {fileID: 241825151}
-  - 65: {fileID: 241825150}
-  m_Layer: 0
-  m_Name: WestAuto0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &241825149
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 436152, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241825148}
-  m_LocalRotation: {x: 0, y: -.672034681, z: 0, w: .740519702}
-  m_LocalPosition: {x: 79.0500107, y: -2.29999995, z: 63.9800034}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 5
---- !u!65 &241825150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6547714, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241825148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &241825151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476180, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 241825148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 1
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &245308297
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,7 +8728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb283b1dbf5e2941937845c78ea8846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipaddress: 172.16.1.103
+  ipaddress: 127.0.0.1
   WaypointCollection: {fileID: 1604560133}
   Auto: {fileID: 128192, guid: 7479d51a513c17c488eb8ad0ae2d2c97, type: 2}
   Voetganger: {fileID: 672517398}
@@ -15674,66 +15149,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 735323886}
     _serializedCustomData: []
---- !u!1 &736754811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 186938, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 736754812}
-  - 114: {fileID: 736754814}
-  - 65: {fileID: 736754813}
-  m_Layer: 0
-  m_Name: OostAuto2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &736754812
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 451496, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736754811}
-  m_LocalRotation: {x: 0, y: .754916966, z: 0, w: .655820429}
-  m_LocalPosition: {x: -322.634979, y: -2.29999995, z: 93.8099976}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 15
---- !u!65 &736754813
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6588884, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736754811}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &736754814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11452986, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 736754811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 1
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &739918312
 GameObject:
   m_ObjectHideFlags: 0
@@ -15958,7 +15373,7 @@ Transform:
 --- !u!1 &744980767
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 102820, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
@@ -15975,7 +15390,7 @@ GameObject:
 --- !u!4 &744980768
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 489710, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744980767}
   m_LocalRotation: {x: 0, y: .0427194387, z: 0, w: .999087095}
@@ -15987,8 +15402,7 @@ Transform:
 --- !u!65 &744980769
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6552452, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744980767}
   m_Material: {fileID: 0}
@@ -16000,8 +15414,7 @@ BoxCollider:
 --- !u!114 &744980770
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11439832, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744980767}
   m_Enabled: 1
@@ -16013,66 +15426,6 @@ MonoBehaviour:
   end: 5
   vehicle: 3
   StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
---- !u!1 &746060909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 125262, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 746060910}
-  - 114: {fileID: 746060912}
-  - 65: {fileID: 746060911}
-  m_Layer: 0
-  m_Name: OostAuto5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &746060910
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 434360, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746060909}
-  m_LocalRotation: {x: 0, y: .754916966, z: 0, w: .655820429}
-  m_LocalPosition: {x: -331.700012, y: -2.29999995, z: 99.8399963}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 26
---- !u!65 &746060911
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6585940, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746060909}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &746060912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11489438, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 746060909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 1
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 1
   available: 1
   carsInside: 0
 --- !u!1001 &748685476
@@ -17603,66 +16956,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2146619668}
   m_RootOrder: 17
---- !u!1 &842667087
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 155336, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 842667088}
-  - 114: {fileID: 842667090}
-  - 65: {fileID: 842667089}
-  m_Layer: 0
-  m_Name: ZuidAuto3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &842667088
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 440262, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 842667087}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -16.8549995, y: -2.28499985, z: 155.580002}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 1
---- !u!65 &842667089
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6502816, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 842667087}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &842667090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11411692, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 842667087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &846249220
 GameObject:
   m_ObjectHideFlags: 0
@@ -18392,6 +17685,48 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
   m_PrefabInternal: {fileID: 1528869530}
+--- !u!1001 &869744644
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1711265560}
+    m_Modifications:
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &873955861
 GameObject:
   m_ObjectHideFlags: 0
@@ -19367,66 +18702,6 @@ MonoBehaviour:
   LightState: 01010101
   bikersInLane: 00000000000000000000000000000000
   bikersMaxLane: 00000000000000000000000000000000
---- !u!1 &904897437
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 172838, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 904897438}
-  - 114: {fileID: 904897440}
-  - 65: {fileID: 904897439}
-  m_Layer: 0
-  m_Name: WestAuto5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &904897438
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 414718, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 904897437}
-  m_LocalRotation: {x: 0, y: -.672034681, z: 0, w: .740519702}
-  m_LocalPosition: {x: 88.1699982, y: -2.29999995, z: 63.2299995}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 22
---- !u!65 &904897439
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6583714, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 904897437}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &904897440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11415328, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 904897437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &906208356 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 163322, guid: 904f253c0447c004780a68e1cfc10431, type: 2}
@@ -21639,66 +20914,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 997436449}
   m_Mesh: {fileID: 4300008, guid: abd9cf4e735cd5b4eac31c16ec75bd0b, type: 3}
---- !u!1 &997966181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 195418, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 997966182}
-  - 114: {fileID: 997966184}
-  - 65: {fileID: 997966183}
-  m_Layer: 0
-  m_Name: OostAuto3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &997966182
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 476116, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 997966181}
-  m_LocalRotation: {x: 0, y: .754916966, z: 0, w: .655820429}
-  m_LocalPosition: {x: -322.634979, y: -2.29999995, z: 98.6149979}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 16
---- !u!65 &997966183
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6530174, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 997966181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &997966184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11428832, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 997966181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 1
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &1000152177
 GameObject:
   m_ObjectHideFlags: 0
@@ -23130,66 +22345,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1061826234}
   m_Mesh: {fileID: 4300006, guid: ec3b63af0974caf4bb8288836f176d06, type: 3}
---- !u!1 &1063282465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 149878, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1063282466}
-  - 114: {fileID: 1063282468}
-  - 65: {fileID: 1063282467}
-  m_Layer: 0
-  m_Name: OostAuto4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1063282466
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 459828, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063282465}
-  m_LocalRotation: {x: 0, y: .754916966, z: 0, w: .655820429}
-  m_LocalPosition: {x: -331.700012, y: -2.29999995, z: 95.0299988}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 25
---- !u!65 &1063282467
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6598518, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063282465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1063282468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11477504, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1063282465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 1
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1063317222
 GameObject:
   m_ObjectHideFlags: 0
@@ -26564,66 +25719,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 1196941972}
     _serializedCustomData: []
---- !u!1 &1198562786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 130518, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1198562787}
-  - 114: {fileID: 1198562789}
-  - 65: {fileID: 1198562788}
-  m_Layer: 0
-  m_Name: NoordAuto4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1198562787
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 470440, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1198562786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -229.330002, y: -2.29999995, z: -31.2099991}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 28
---- !u!65 &1198562788
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6575036, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1198562786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1198562789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11451970, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1198562786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &1198711815
 GameObject:
   m_ObjectHideFlags: 0
@@ -27027,7 +26122,7 @@ MonoBehaviour:
 --- !u!1 &1209081348
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 134150, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
@@ -27044,7 +26139,7 @@ GameObject:
 --- !u!4 &1209081349
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 471576, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209081348}
   m_LocalRotation: {x: 0, y: .00654108077, z: 0, w: .999978602}
@@ -27056,8 +26151,7 @@ Transform:
 --- !u!65 &1209081350
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6572108, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209081348}
   m_Material: {fileID: 0}
@@ -27069,8 +26163,7 @@ BoxCollider:
 --- !u!114 &1209081351
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11478292, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1209081348}
   m_Enabled: 1
@@ -28659,66 +27752,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 1298850253}
     _serializedCustomData: []
---- !u!1 &1299039298
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 104102, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1299039299}
-  - 114: {fileID: 1299039301}
-  - 65: {fileID: 1299039300}
-  m_Layer: 0
-  m_Name: WestAuto2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1299039299
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 469830, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1299039298}
-  m_LocalRotation: {x: 0, y: -.67203486, z: 0, w: .740519583}
-  m_LocalPosition: {x: 79.0500031, y: -2.29999995, z: 72.7249985}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 7
---- !u!65 &1299039300
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6516434, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1299039298}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1299039301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11490182, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1299039298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &1301879107
 GameObject:
   m_ObjectHideFlags: 0
@@ -28882,66 +27915,6 @@ MonoBehaviour:
   LightState: 01010101
   bikersInLane: 00000000000000000000000000000000
   bikersMaxLane: 00000000000000000000000000000000
---- !u!1 &1305039734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 190844, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1305039735}
-  - 114: {fileID: 1305039737}
-  - 65: {fileID: 1305039736}
-  m_Layer: 0
-  m_Name: ZuidBus0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1305039735
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 408094, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1305039734}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.4799995, y: -2.28499985, z: 155.580002}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 0
---- !u!65 &1305039736
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6564392, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1305039734}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1305039737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11484754, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1305039734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 0
-  vehicle: 2
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1307336936
 GameObject:
   m_ObjectHideFlags: 0
@@ -29004,66 +27977,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1307336936}
   m_Mesh: {fileID: 4300022, guid: abd9cf4e735cd5b4eac31c16ec75bd0b, type: 3}
---- !u!1 &1309478336
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 116604, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1309478337}
-  - 114: {fileID: 1309478339}
-  - 65: {fileID: 1309478338}
-  m_Layer: 0
-  m_Name: NoordAuto3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1309478337
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 463386, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1309478336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -224.460007, y: -2.29999995, z: -31.2099991}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 27
---- !u!65 &1309478338
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500428, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1309478336}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1309478339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11453106, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1309478336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 3
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!4 &1312886404 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
@@ -29376,101 +28289,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2146619668}
   m_RootOrder: 20
---- !u!1 &1322159987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 171960, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1322159988}
-  - 114: {fileID: 1322159992}
-  - 23: {fileID: 1322159991}
-  - 33: {fileID: 1322159990}
-  - 65: {fileID: 1322159989}
-  m_Layer: 0
-  m_Name: ZuidAuto6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1322159988
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 427220, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322159987}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -16.7000008, y: -2.29999995, z: 169.720001}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 19
---- !u!65 &1322159989
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6598808, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322159987}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1322159990
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3303274, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322159987}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1322159991
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2311126, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322159987}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &1322159992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11417244, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1322159987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 4
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1328358527 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 163322, guid: 904f253c0447c004780a68e1cfc10431, type: 2}
@@ -31695,66 +30513,6 @@ Transform:
   - {fileID: 2084029871}
   m_Father: {fileID: 1376277083}
   m_RootOrder: 0
---- !u!1 &1448844575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 145826, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1448844576}
-  - 114: {fileID: 1448844578}
-  - 65: {fileID: 1448844577}
-  m_Layer: 0
-  m_Name: VentwegAuto1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1448844576
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 419530, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448844575}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -163.149994, y: -2.29999995, z: 159.339996}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 9
---- !u!65 &1448844577
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6531446, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448844575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1448844578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11429466, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1448844575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1 &1449940571 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 163322, guid: 904f253c0447c004780a68e1cfc10431, type: 2}
@@ -32211,7 +30969,7 @@ MeshFilter:
 --- !u!1 &1465822372
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 180384, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
@@ -32228,7 +30986,7 @@ GameObject:
 --- !u!4 &1465822373
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 483312, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465822372}
   m_LocalRotation: {x: 0, y: .042186752, z: 0, w: .999109805}
@@ -32240,8 +30998,7 @@ Transform:
 --- !u!65 &1465822374
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6534202, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465822372}
   m_Material: {fileID: 0}
@@ -32253,8 +31010,7 @@ BoxCollider:
 --- !u!114 &1465822375
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11406478, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465822372}
   m_Enabled: 1
@@ -33634,66 +32390,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 1533030466}
     _serializedCustomData: []
---- !u!1 &1534418569
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 105344, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1534418570}
-  - 114: {fileID: 1534418572}
-  - 65: {fileID: 1534418571}
-  m_Layer: 0
-  m_Name: WestAuto3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1534418570
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 420894, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1534418569}
-  m_LocalRotation: {x: 0, y: -.67203486, z: 0, w: .740519583}
-  m_LocalPosition: {x: 79.0500031, y: -2.29999995, z: 76.7299957}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 8
---- !u!65 &1534418571
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6577712, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1534418569}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1534418572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11491148, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1534418569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1537323726
 GameObject:
   m_ObjectHideFlags: 0
@@ -33764,66 +32460,6 @@ MonoBehaviour:
     _serializedGameObjects:
     - {fileID: 1537323727}
     _serializedCustomData: []
---- !u!1 &1537886497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 175334, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1537886498}
-  - 114: {fileID: 1537886500}
-  - 65: {fileID: 1537886499}
-  m_Layer: 0
-  m_Name: WestAuto4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1537886498
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 479020, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1537886497}
-  m_LocalRotation: {x: 0, y: -.67203486, z: 0, w: .740519583}
-  m_LocalPosition: {x: 88.1699982, y: -2.29999995, z: 67.7200012}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 21
---- !u!65 &1537886499
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6567322, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1537886497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1537886500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11492508, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1537886497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1538138520
 GameObject:
   m_ObjectHideFlags: 0
@@ -38320,101 +36956,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1754661156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 153146, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1754661157}
-  - 114: {fileID: 1754661161}
-  - 23: {fileID: 1754661160}
-  - 33: {fileID: 1754661159}
-  - 65: {fileID: 1754661158}
-  m_Layer: 0
-  m_Name: ZuidAuto0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1754661157
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 476944, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754661156}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -12, y: -2.27999997, z: 162.860001}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 4
---- !u!65 &1754661158
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6587958, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754661156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1754661159
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3385708, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754661156}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1754661160
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2349272, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754661156}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &1754661161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11496616, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1754661156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 1
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!4 &1756455688 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 53fb7f8aa3c86f74aad67916472ee785, type: 3}
@@ -39690,66 +38231,6 @@ MonoBehaviour:
   LightState: 01010101
   bikersInLane: 00000000000000000000000000000000
   bikersMaxLane: 00000000000000000000000000000000
---- !u!1 &1817457393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 175972, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1817457394}
-  - 114: {fileID: 1817457396}
-  - 65: {fileID: 1817457395}
-  m_Layer: 0
-  m_Name: NoordAuto2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1817457394
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 430734, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1817457393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -234.38501, y: -2.29999995, z: -21.3699951}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 12
---- !u!65 &1817457395
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6565208, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1817457393}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1817457396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11429986, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1817457393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 1
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1817565762
 GameObject:
   m_ObjectHideFlags: 0
@@ -40075,66 +38556,6 @@ Transform:
   - {fileID: 1217526656}
   m_Father: {fileID: 1687536455}
   m_RootOrder: 0
---- !u!1 &1835121171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 183816, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1835121172}
-  - 114: {fileID: 1835121174}
-  - 65: {fileID: 1835121173}
-  m_Layer: 0
-  m_Name: WestAuto6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1835121172
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 419866, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1835121171}
-  m_LocalRotation: {x: 0, y: -.672034681, z: 0, w: .740519702}
-  m_LocalPosition: {x: 100.290001, y: -2.29999995, z: 62.2900009}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 23
---- !u!65 &1835121173
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6555790, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1835121171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1835121174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11408524, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1835121171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 4
-  vehicle: 0
-  StartWaypointCollection: 1
-  available: 1
-  carsInside: 0
 --- !u!1001 &1836286382
 Prefab:
   m_ObjectHideFlags: 0
@@ -40260,66 +38681,6 @@ MonoBehaviour:
   LightState: 01010101
   bikersInLane: 00000000000000000000000000000000
   bikersMaxLane: 00000000000000000000000000000000
---- !u!1 &1838202667
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 109230, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1838202668}
-  - 114: {fileID: 1838202670}
-  - 65: {fileID: 1838202669}
-  m_Layer: 0
-  m_Name: NoordAuto0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1838202668
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 437292, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838202667}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -224.455002, y: -2.29999995, z: -21.3699951}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 10
---- !u!65 &1838202669
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6586150, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838202667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1838202670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11481046, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838202667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 2
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1838607338
 GameObject:
   m_ObjectHideFlags: 0
@@ -40934,66 +39295,6 @@ MonoBehaviour:
   groenlicht: {fileID: 1433206540}
   uitshader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 3}
   aanshader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 3}
---- !u!1 &1857495773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 182184, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1857495774}
-  - 114: {fileID: 1857495776}
-  - 65: {fileID: 1857495775}
-  m_Layer: 0
-  m_Name: OostAuto1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1857495774
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 420608, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857495773}
-  m_LocalRotation: {x: 0, y: .754916966, z: 0, w: .655820429}
-  m_LocalPosition: {x: -322.634979, y: -2.29999995, z: 89.1949997}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 14
---- !u!65 &1857495775
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6562614, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857495773}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1857495776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11497498, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857495773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 1
-  end: 0
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1862346262
 GameObject:
   m_ObjectHideFlags: 0
@@ -42337,62 +40638,14 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcaa74aa682f2084ebea5267794391e6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1910900764
+--- !u!1 &1910900764 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 110654, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1910900765}
-  m_Layer: 0
-  m_Name: SpawnPoints
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1910900765
+  m_PrefabInternal: {fileID: 869744644}
+--- !u!4 &1910900765 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 471962, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1910900764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1305039735}
-  - {fileID: 842667088}
-  - {fileID: 104246488}
-  - {fileID: 2108702707}
-  - {fileID: 1754661157}
-  - {fileID: 241825149}
-  - {fileID: 2017910208}
-  - {fileID: 1299039299}
-  - {fileID: 1534418570}
-  - {fileID: 1448844576}
-  - {fileID: 1838202668}
-  - {fileID: 155298390}
-  - {fileID: 1817457394}
-  - {fileID: 1913677060}
-  - {fileID: 1857495774}
-  - {fileID: 736754812}
-  - {fileID: 997966182}
-  - {fileID: 2824241}
-  - {fileID: 152017377}
-  - {fileID: 1322159988}
-  - {fileID: 176088551}
-  - {fileID: 1537886498}
-  - {fileID: 904897438}
-  - {fileID: 1835121172}
-  - {fileID: 206216615}
-  - {fileID: 1063282466}
-  - {fileID: 746060910}
-  - {fileID: 1309478337}
-  - {fileID: 1198562787}
-  m_Father: {fileID: 1711265560}
-  m_RootOrder: 8
+  m_PrefabInternal: {fileID: 869744644}
 --- !u!1 &1912390993
 GameObject:
   m_ObjectHideFlags: 0
@@ -42530,66 +40783,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 430918, guid: 57bb7f267d193c043b9aec8797a3375f, type: 2}
   m_PrefabInternal: {fileID: 1134261328}
---- !u!1 &1913677059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 102740, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1913677060}
-  - 114: {fileID: 1913677062}
-  - 65: {fileID: 1913677061}
-  m_Layer: 0
-  m_Name: NoordBus0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1913677060
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 468470, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913677059}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -239.220001, y: -2.29999995, z: -21.3699951}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 13
---- !u!65 &1913677061
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6549542, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913677059}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1913677062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11455608, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1913677059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 0
-  end: 0
-  vehicle: 2
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &1914121945
 GameObject:
   m_ObjectHideFlags: 0
@@ -44347,7 +42540,7 @@ MonoBehaviour:
 --- !u!1 &2010701563
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 180384, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
@@ -44364,7 +42557,7 @@ GameObject:
 --- !u!4 &2010701564
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 483312, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2010701563}
   m_LocalRotation: {x: 0, y: .0310754813, z: 0, w: .999517024}
@@ -44376,8 +42569,7 @@ Transform:
 --- !u!65 &2010701565
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6534202, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2010701563}
   m_Material: {fileID: 0}
@@ -44389,8 +42581,7 @@ BoxCollider:
 --- !u!114 &2010701566
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11406478, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2010701563}
   m_Enabled: 1
@@ -44491,66 +42682,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2146619668}
   m_RootOrder: 50
---- !u!1 &2017910207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 130654, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2017910208}
-  - 114: {fileID: 2017910210}
-  - 65: {fileID: 2017910209}
-  m_Layer: 0
-  m_Name: WestAuto1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2017910208
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 449742, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2017910207}
-  m_LocalRotation: {x: 0, y: -.67203486, z: 0, w: .740519583}
-  m_LocalPosition: {x: 79.0500031, y: -2.29999995, z: 68.4700012}
-  m_LocalScale: {x: 5, y: 5, z: 15}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 6
---- !u!65 &2017910209
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6588940, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2017910207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2017910210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11483616, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2017910207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 3
-  end: 1
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &2018043139
 GameObject:
   m_ObjectHideFlags: 0
@@ -46839,101 +44970,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 430918, guid: 57bb7f267d193c043b9aec8797a3375f, type: 2}
   m_PrefabInternal: {fileID: 1937020639}
---- !u!1 &2108702706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 139188, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 2108702707}
-  - 114: {fileID: 2108702711}
-  - 23: {fileID: 2108702710}
-  - 33: {fileID: 2108702709}
-  - 65: {fileID: 2108702708}
-  m_Layer: 0
-  m_Name: ZuidAuto1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2108702707
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 456144, guid: 8278925429797e24e82cdd0957b833b8, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108702706}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -16.7700005, y: -2.27999997, z: 162.860001}
-  m_LocalScale: {x: 5, y: 5, z: 11}
-  m_Children: []
-  m_Father: {fileID: 1910900765}
-  m_RootOrder: 3
---- !u!65 &2108702708
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6593324, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108702706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: .5, y: .5, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &2108702709
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3398294, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108702706}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2108702710
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2394030, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108702706}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: f54ab928ba6b7a64387cc1c06398ee08, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!114 &2108702711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11444004, guid: 8278925429797e24e82cdd0957b833b8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108702706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01171e05273f48749aaee72b003cc62b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  begin: 2
-  end: 1
-  vehicle: 0
-  StartWaypointCollection: 0
-  available: 1
-  carsInside: 0
 --- !u!1 &2111951109
 GameObject:
   m_ObjectHideFlags: 0

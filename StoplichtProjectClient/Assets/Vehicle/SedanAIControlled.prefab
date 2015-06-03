@@ -1679,10 +1679,10 @@ MonoBehaviour:
   Target: {fileID: 0}
   timeBetweenSteps: .5
   go: 1
-  drawDebuglines: 0
+  drawDebuglines: 1
   RightOriginPoint: {fileID: 171526}
   LeftOriginPoint: {fileID: 140330}
-  topMotorTorque: 600
+  topMotorTorque: 400
   topBrakeTorque: 2147483647
 --- !u!114 &11458766
 MonoBehaviour:
