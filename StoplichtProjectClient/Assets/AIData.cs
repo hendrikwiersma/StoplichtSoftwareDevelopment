@@ -18,6 +18,7 @@ public class AIData : MonoBehaviour {
 			case "Oost": Direction = "East"; break;
 			case "Zuid": Direction = "South"; break;
 			case "West": Direction = "West"; break;
+			case "Ventweg": Direction = "Ventweg"; break;
 			default: Debug.Log("Illegal direction: " + direction); break;
 
 		}

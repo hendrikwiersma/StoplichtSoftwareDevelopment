@@ -215,12 +215,14 @@ public class ClientConnect : MonoBehaviour {
 		switch (state)
 		{
 		case 0:
+			Debug.Log("Red");
 			State = "Rood";
 			break;
 		case 1:
 			State = "Oranje";
 			break;
 		case 2:
+			Debug.Log("Green");
 			State = "Groen";
 			break;
 		default:
