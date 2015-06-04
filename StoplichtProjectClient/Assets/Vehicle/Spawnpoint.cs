@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class Spawnpoint : MonoBehaviour {
-	public enum Begin{Noord,Oost,Zuid,West,Ventweg}
-	public enum End{Noord,Oost,Zuid,West,Ventweg,SelfSearching}
-	public enum Vehicle{Auto,Fiets,Bus,Voetganger}
-	public Begin begin;
-	public End end;
-	public Vehicle vehicle;
+
+	public Data.DIRECTION begin;
+	public Data.DIRECTION end;
+	public Data.VEHICLE_TYPE vehicle;
 	public int StartWaypointCollection;
 	public bool available = true;
 	public int carsInside = 0;

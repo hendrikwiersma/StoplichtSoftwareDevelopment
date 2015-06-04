@@ -18,6 +18,10 @@ public class ClientConnect : MonoBehaviour {
 	public GameObject TrafficLightStopGoBoxes;
 	private List<GameObject> spawnpoints_ = new List<GameObject>();
 	private List<Trafficlight> trafficlights_ = new List<Trafficlight>();
+
+	private const byte SEND_VEHICLE_ID = 0x03;
+	private const byte FILLER = 0x00;
+
 	System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
 	NetworkStream serverStream;
 	
@@ -47,7 +51,9 @@ public class ClientConnect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (serverStream.DataAvailable) {
+
 			byte[] inStream = new byte[4];
 
 			int bytesRead = serverStream.Read (inStream, 0, inStream.Length);
@@ -57,200 +63,104 @@ public class ClientConnect : MonoBehaviour {
 				SpawnVehicle (inStream [1], inStream [2], inStream [3]);
 				break;
 			case 2:
-				ChangeTrafficLight (inStream [1], inStream [2]);
-				break;
-			case 3:
+				ChangeTrafficLight (inStream [1], getLightState(inStream[2]));
 				break;
 			default:
+				Debug.LogError("Incorrect message id:" + inStream[0]);
 				break;
 			}
+
 		}
+
 	}
-	void SpawnVehicle(byte startpoint, byte endpoint, byte type){
-		string StartingPoint = null;
-		switch (startpoint)
-        {
-        case 0:
-                StartingPoint = "Noord";
-                break;
-        case 1:
-                StartingPoint = "Oost";
-                break;
-        case 2:
-                StartingPoint = "Zuid";
-                break;
-        case 3:
-                StartingPoint = "West";
-                break;
-        case 4:
-                StartingPoint = "Ventweg";
-                break;
-        default:
-                print("Invalid startingpoint.");
-                break;
-        }
-		string EndPoint = null;
-		switch (endpoint)
-		{
-		case 0:
-			EndPoint = "Noord";
-			break;
-		case 1:
-			EndPoint = "Oost";
-			break;
-		case 2:
-			EndPoint = "Zuid";
-			break;
-		case 3:
-			EndPoint = "West";
-			break;
-		case 4:
-			EndPoint = "Ventweg";
-			break;
-		default:
-			print("Invalid endpoint.");
-			break;
-		}
-		string VehicleType = null;
-		switch (type)
-		{
-		case 0:
-			VehicleType = "Auto";
-			break;
-		case 1:
-			VehicleType = "Fiets";
-			break;
-		case 2:
-			VehicleType = "Bus";
-			break;
-		case 3:
-			VehicleType = "Voetganger";
-			break;
-		default:
-			print("Invalid VehicleType.");
-			break;
-		}
-//		print ("Received packet: Spawning a " + VehicleType + " at " + StartingPoint + " that is heading to " + EndPoint);
+
+	public void SpawnVehicle(byte startpoint, byte endpoint, byte type){
+
+		Data.DIRECTION StartingPoint = getDirection (startpoint);
+		Data.DIRECTION EndPoint = getDirection (endpoint);
+		Data.VEHICLE_TYPE VehicleType = getVehicleType (type);
+
 		List<Spawnpoint> possibleSpawnpoints = new List<Spawnpoint>();
 		foreach(GameObject gameObj in spawnpoints_)
 		{
 			Spawnpoint spawnpoint = gameObj.GetComponent<Spawnpoint>();
 
-			if(spawnpoint.begin.ToString() == StartingPoint && spawnpoint.vehicle.ToString() == VehicleType && (spawnpoint.end.ToString() == EndPoint || spawnpoint.end == Spawnpoint.End.SelfSearching)){
+			if(spawnpoint.begin == StartingPoint && spawnpoint.vehicle == VehicleType && (spawnpoint.end == EndPoint || spawnpoint.end == Data.DIRECTION.AUTO)){
 
 				possibleSpawnpoints.Add(spawnpoint);
 
 			}
 
 		}
-		foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
 
-			if(currentspawnpoint.spawnpointAvailable() == true){
+		if (verifyDirection(StartingPoint, EndPoint, VehicleType)) {
 
-				switch(VehicleType) {
-				case "Auto": 
-					GameObject car = Instantiate(Auto, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
-					int counter = 0;
-					AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
-					foreach(Transform gameObj in WaypointCollection.transform)
-					{
-						if(gameObj.transform.name == StartingPoint+EndPoint){
-							
-							if(counter == 0){
-								aiscript.WaypointCollection1 = gameObj.gameObject;
-								counter++;
-							}
-							else if(counter == 1){
-								aiscript.WaypointCollection2 = gameObj.gameObject;
-								counter++;
-							}
-							else{
-								print("Not more than two waypoint collections possible.");
-							}
-						}
-					}
-					if(aiscript.WaypointCollection2 == null){
-						aiscript.WaypointCollection2 = aiscript.WaypointCollection1;
-					}
-					if(currentspawnpoint.StartWaypointCollection == 0){
-						aiscript.CurrentWaypoints = aiscript.WaypointCollection1;
-					}
-					else if(currentspawnpoint.StartWaypointCollection == 1){
-						aiscript.CurrentWaypoints = aiscript.WaypointCollection2;
-					}
-					else{
-						print("Wrong start waypointNumber set in spawncube.");
+			foreach(Spawnpoint currentspawnpoint in possibleSpawnpoints){
+
+				if(currentspawnpoint.spawnpointAvailable() == true){
+
+					switch(VehicleType) {
+					case Data.VEHICLE_TYPE.CAR: 
+						spawnCar(currentspawnpoint, StartingPoint, EndPoint);
+						break;
+						
+					case Data.VEHICLE_TYPE.BIKE:
+						spawnBicycle(currentspawnpoint, EndPoint);
+						break;
+
+					case Data.VEHICLE_TYPE.BUS:
+						spawnBus(currentspawnpoint, EndPoint);
+						break;
+						
+					case Data.VEHICLE_TYPE.PEDESTRIAN:
+						spawnPedestrian(currentspawnpoint, EndPoint);		
+						break;
+
 					}
 					break;
 
-				case "Voetganger":
-					GameObject Pedestrian = Instantiate(Voetganger, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
-					AIData AIP = Pedestrian.GetComponent<AIData>();
-					AIP.Init(currentspawnpoint.gameObject, EndPoint);
-					Pedestrian.SetActive(true);			
-					break;
-
-				case "Fiets":
-					GameObject Bicycle = Instantiate(Fiets, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation) as GameObject;
-					AIData AIB = Bicycle.GetComponent<AIData>();
-					AIB.Init(currentspawnpoint.gameObject, EndPoint);
-					Bicycle.SetActive(true);
-					break;
-
-				case "Bus":
-					Instantiate(Bus, currentspawnpoint.transform.position, currentspawnpoint.transform.rotation);
-					break;
-				
 				}
-				break;
+
 			}
+
 		}
 		
 	}
 
-	void ChangeTrafficLight(byte id, byte state){
-		string State = null;
-		switch (state)
-		{
-		case 0:
-			State = "Rood";
-			break;
-		case 1:
-			State = "Oranje";
-			break;
-		case 2:
-			State = "Groen";
-			break;
-		default:
-			print("Invalid Trafficlight state.");
-			break;
-		}
-		//print ("Received packet: Turning the trafficlight with id " + id + " " + State);
+	void ChangeTrafficLight(byte id, Data.LIGHT_STATE State){
 
-		foreach(Trafficlight light in trafficlights_) {
+		if (verifyLight(id, State)) {
 
-			if(light.id == id){
+			foreach(Trafficlight light in trafficlights_) {
 
-				light.setNewState(State);
+				if(light.id == id){
 
-			}
+					light.setNewState(State);
 
-		}
-
-		foreach(Transform gameObj in TrafficLightStopGoBoxes.transform)
-		{
-			WaitingScript hotspot = gameObj.GetComponent<WaitingScript>();
-			if(hotspot.TrafficLightID == id){
-				{
-					if(State == "Groen"){
-						hotspot.SetGoBool(true);
-					}
-					else{
-						hotspot.SetGoBool(false);
-					}
 				}
+
 			}
+
+			foreach(Transform gameObj in TrafficLightStopGoBoxes.transform) {
+
+				WaitingScript hotspot = gameObj.GetComponent<WaitingScript>();
+				if(hotspot.TrafficLightID == id){
+					{
+						if(State == Data.LIGHT_STATE.GREEN){
+							hotspot.SetGoBool(true);
+						}
+						else{
+							hotspot.SetGoBool(false);
+						}
+
+					}
+
+				}
+
+			}
+
 		}
+
 	}
 
 	public void SendVehicleSignal(int trafficlightid, int state){
@@ -258,19 +168,9 @@ public class ClientConnect : MonoBehaviour {
 		// dont send if not connected
 		if (serverStream != null) {
 
-			byte[] outStream = {0x03, (byte)trafficlightid, (byte)state, 0x00};
-
-			if (state == 0) {
-
-				//print ("Sending packet: A car is logging in at trafficlight id " + trafficlightid);
-
-			} else {
-
-				//print ("Sending packet: A car is logging out at trafficlight id " + trafficlightid);
-
-			}
-
+			byte[] outStream = {SEND_VEHICLE_ID, (byte)trafficlightid, (byte)state, FILLER};
 			serverStream.Write (outStream, 0, outStream.Length);
+
 		}
 
 	}
@@ -284,6 +184,191 @@ public class ClientConnect : MonoBehaviour {
 	public void registerLight(Trafficlight light) {
 
 		trafficlights_.Add (light);
+
+	}
+
+	public Data.DIRECTION getDirection(byte dir) {
+
+		switch(dir) {
+
+			case 0: return Data.DIRECTION.NORTH;
+			case 1: return Data.DIRECTION.EAST;
+			case 2: return Data.DIRECTION.SOUTH;
+			case 3: return Data.DIRECTION.WEST;
+			case 4: return Data.DIRECTION.VENTWEG;
+			default:
+				Debug.Log("Received incorrect direction");
+				return Data.DIRECTION.NULL;
+
+		}
+
+	}
+
+	public Data.VEHICLE_TYPE getVehicleType(byte dir) {
+		
+		switch(dir) {
+			
+		case 0: return Data.VEHICLE_TYPE.CAR;
+		case 1: return Data.VEHICLE_TYPE.BIKE;
+		case 2: return Data.VEHICLE_TYPE.BUS;
+		case 3: return Data.VEHICLE_TYPE.PEDESTRIAN;
+		default:
+			Debug.Log("Received incorrect vehicle type");
+			return Data.VEHICLE_TYPE.NULL;
+			
+		}
+		
+	}
+
+	public Data.LIGHT_STATE getLightState(byte dir) {
+		
+		switch(dir) {
+			
+		case 0: return Data.LIGHT_STATE.RED;
+		case 1: return Data.LIGHT_STATE.ORANGE;
+		case 2: return Data.LIGHT_STATE.GREEN;
+		default:
+			Debug.Log("Received incorrect light state");
+			return Data.LIGHT_STATE.NULL;
+			
+		}
+		
+	}
+
+	public void spawnCar(Spawnpoint Spawn, Data.DIRECTION Begin, Data.DIRECTION End) {
+
+		GameObject car = Instantiate(Auto, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+		int counter = 0;
+		AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
+		foreach(Transform gameObj in WaypointCollection.transform)
+		{
+			if(gameObj.transform.name == EnumToString(Begin) + EnumToString(End)){
+				
+				if(counter == 0){
+					aiscript.WaypointCollection1 = gameObj.gameObject;
+					counter++;
+				}
+				else if(counter == 1){
+					aiscript.WaypointCollection2 = gameObj.gameObject;
+					counter++;
+				}
+				else{
+					print("Not more than two waypoint collections possible.");
+				}
+			}
+		}
+		if(aiscript.WaypointCollection2 == null){
+			aiscript.WaypointCollection2 = aiscript.WaypointCollection1;
+		}
+		if(Spawn.StartWaypointCollection == 0){
+			aiscript.CurrentWaypoints = aiscript.WaypointCollection1;
+		}
+		else if(Spawn.StartWaypointCollection == 1){
+			aiscript.CurrentWaypoints = aiscript.WaypointCollection2;
+		}
+		else{
+			print("Wrong start waypointNumber set in spawncube.");
+		}
+
+		car.SetActive (true);
+
+	}
+
+	public void spawnBicycle(Spawnpoint Spawn, Data.DIRECTION End) {
+
+		GameObject Bicycle = Instantiate(Fiets, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+		AIData AIB = Bicycle.GetComponent<AIData>();
+		AIB.Init(Spawn.gameObject, End);
+		Bicycle.SetActive(true);
+
+	}
+
+	public void spawnBus(Spawnpoint Spawn, Data.DIRECTION End) {
+
+		Instantiate(Bus, Spawn.transform.position, Spawn.transform.rotation);
+
+	}
+
+	public void spawnPedestrian(Spawnpoint Spawn, Data.DIRECTION End) {
+
+		GameObject Pedestrian = Instantiate(Voetganger, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+		AIData AIP = Pedestrian.GetComponent<AIData>();
+		AIP.Init(Spawn.gameObject, End);
+		Pedestrian.SetActive(true);	
+
+	}
+
+	public Boolean verifyDirection(Data.DIRECTION Begin, Data.DIRECTION End, Data.VEHICLE_TYPE Vehicle) {
+
+		if (Begin == Data.DIRECTION.NULL || End == Data.DIRECTION.NULL || Vehicle == Data.VEHICLE_TYPE.NULL) {
+
+			Debug.LogWarning("Found spawn attempt with uninitiallized data");
+			return false;
+
+		}
+
+		if (Begin == End) {
+
+			Debug.LogWarning("Received vehicle with the same Start and Destination");
+			return false;
+
+		}
+
+		if (Vehicle == Data.VEHICLE_TYPE.CAR || Vehicle == Data.VEHICLE_TYPE.BUS) {
+
+			if (Begin == Data.DIRECTION.VENTWEG && (End == Data.DIRECTION.SOUTH || End == Data.DIRECTION.WEST)) {
+
+				Debug.LogWarning ("Received vehicle with impossible route from Ventweg");
+				return false;
+
+			}
+
+			if (End == Data.DIRECTION.VENTWEG && (Begin == Data.DIRECTION.NORTH || Begin == Data.DIRECTION.EAST)) {
+				
+				Debug.LogWarning ("Received vehicle with impossible route to Ventweg");
+				return false;
+				
+			}
+
+		}
+	
+		return true;
+
+	}
+
+	public Boolean verifyLight(byte Id, Data.LIGHT_STATE State) {
+
+		if (State == Data.LIGHT_STATE.NULL) {
+			
+			Debug.LogWarning("Found set light attempt with uninitiallized data");
+			return false;
+			
+		}
+
+		if (Id < 0 || Id > 50|| Id == 28 || Id == 29 || Id == 31 || Id == 33 || Id == 41 || Id == 42 || Id == 44 || Id == 45) {
+
+			Debug.LogWarning("Received light state with unknown ID:" + Id);
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	private String EnumToString(Data.DIRECTION Direction) {
+
+		switch (Direction) {
+
+			case Data.DIRECTION.NORTH: return "Noord";
+			case Data.DIRECTION.EAST: return "Oost";
+			case Data.DIRECTION.SOUTH: return "Zuid";
+			case Data.DIRECTION.WEST: return "West";
+			case Data.DIRECTION.VENTWEG: return "Ventweg";
+
+		}
+
+		return null;
 
 	}
 

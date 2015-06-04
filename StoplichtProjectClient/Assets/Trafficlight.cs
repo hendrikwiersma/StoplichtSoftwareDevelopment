@@ -3,10 +3,9 @@ using System.Collections;
 
 public abstract class Trafficlight : MonoBehaviour {
 
-	public enum Direction{Noord,Oost,Zuid,West}
-	public Direction direction;
+	public Data.DIRECTION Direction;
 	public int id = 0;
-	public string State = "Rood";
+	public Data.LIGHT_STATE State;
 	
 	public void _Start () {
 	
@@ -20,12 +19,12 @@ public abstract class Trafficlight : MonoBehaviour {
 	}
 
 	// Set new trafficlight state
-	public void setNewState(string newState) {
+	public void setNewState(Data.LIGHT_STATE newState) {
 
 		// Check for unknow state
-		if (newState != "Rood" && newState != "Oranje" && newState != "Groen") {
+		if (newState == Data.LIGHT_STATE.NULL) {
 			
-			Debug.Log ("Incorrect colour");
+			Debug.Log ("Incorrect color");
 			return;
 			
 		}

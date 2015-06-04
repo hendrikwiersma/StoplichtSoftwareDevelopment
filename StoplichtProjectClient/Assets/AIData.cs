@@ -9,16 +9,16 @@ public class AIData : MonoBehaviour {
 	public string Direction;
 
 	// Set new data at start
-	public void Init(GameObject spawnpoint, string direction) {
+	public void Init(GameObject spawnpoint, Data.DIRECTION direction) {
 
 		Spawnpoint = spawnpoint;
 		switch (direction) {
 
-			case "Noord": Direction = "North"; break;
-			case "Oost": Direction = "East"; break;
-			case "Zuid": Direction = "South"; break;
-			case "West": Direction = "West"; break;
-			case "Ventweg": Direction = "Ventweg"; break;
+			case Data.DIRECTION.NORTH: Direction = "North"; break;
+			case Data.DIRECTION.EAST: Direction = "East"; break;
+			case Data.DIRECTION.SOUTH: Direction = "South"; break;
+			case Data.DIRECTION.WEST: Direction = "West"; break;
+			case Data.DIRECTION.VENTWEG: Direction = "Ventweg"; break;
 			default: Debug.Log("Illegal direction: " + direction); break;
 
 		}

@@ -13,7 +13,7 @@ public class TrafficlighPedestrian : Trafficlight {
 		protected override void SetState() {
 			
 			Intersection intersection = transform.parent.GetComponent<Intersection>();
-			intersection.SetLightState(direction.ToString(), State.ToString());
+			intersection.SetLightState(Direction, State);
 			
 		}
 		

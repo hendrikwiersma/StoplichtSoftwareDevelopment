@@ -20,10 +20,10 @@ public class Intersection : MonoBehaviour {
 	public bool[] LightState = {true, true, true, true};
 
 	// Amount of bikers currently in this lane
-	public int[] bikersInLane = {0, 0, 0, 0};
+	public int[] bikersInLane = {0, 0, 0, 0, 0};
 
 	// Limit of bikers in this lane (0) = unlimited
-	public int[] bikersMaxLane = {0, 0, 0, 0};
+	public int[] bikersMaxLane = {0, 0, 0, 0, 0};
 
 	// standing at this intersection with 'direction' in mind
 	// wich route should I take
@@ -147,24 +147,25 @@ public class Intersection : MonoBehaviour {
 	}
 
 	// Apply new lightstate, for incomming vehicles
-	public void SetLightState(string Direction, string Newstate) {
+	public void SetLightState(Data.DIRECTION Direction, Data.LIGHT_STATE Newstate) {
 
 		int direction = 0;
 
 		switch (Direction) {
 
-			case "Noord": direction = 0; break;
-			case "Oost": direction = 1; break;
-			case "Zuid": direction = 2; break;
-			case "West": direction = 3; break;
+			case Data.DIRECTION.NORTH: direction = 0; break;
+			case Data.DIRECTION.EAST: direction = 1; break;
+			case Data.DIRECTION.SOUTH: direction = 2; break;
+			case Data.DIRECTION.WEST: direction = 3; break;
+			case Data.DIRECTION.VENTWEG: direction = 4; break;
 
 		}
-		LightState [0] = false;
+		LightState [direction] = false;
 
 		switch (Newstate) {
 
-			case "Rood": LightState[direction] = false; break;
-			case "Groen": LightState[direction] = true; break;
+			case Data.LIGHT_STATE.RED: LightState[direction] = false; break;
+			case Data.LIGHT_STATE.GREEN: LightState[direction] = true; break;
 
 		}
 
@@ -177,9 +178,9 @@ public class Intersection : MonoBehaviour {
 			
 			case "North": return LightState[0];
 			case "East": return LightState[1];
-			case "Ventweg": // dir for ventweg
 			case "South": return LightState[2];
 			case "West": return LightState[3];
+			case "Ventweg": return LightState[4];
 			
 		}
 

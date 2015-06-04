@@ -15,23 +15,34 @@ public class trafficlightscript : MonoBehaviour {
 
 	}
 
-	public void switchlight(string lightcolor){
-		//print ("Received the color: " + lightcolor + " on the id " + ID);
-		if (lightcolor == "Rood") {
+	public void switchlight(Data.LIGHT_STATE state){
+
+		switch(state) {
+
+		case Data.LIGHT_STATE.RED:
 			roodlicht.GetComponent<Renderer> ().material.shader = aanshader;
 			oranjelicht.GetComponent<Renderer> ().material.shader = uitshader;
 			groenlicht.GetComponent<Renderer> ().material.shader = uitshader;
-		} else if (lightcolor == "Oranje") {
+			break;
+
+		case Data.LIGHT_STATE.ORANGE:
 			roodlicht.GetComponent<Renderer> ().material.shader = uitshader;
 			oranjelicht.GetComponent<Renderer> ().material.shader = aanshader;
 			groenlicht.GetComponent<Renderer> ().material.shader = uitshader;
-		} else if (lightcolor == "Groen") {
+			break;
+
+		case Data.LIGHT_STATE.GREEN:
 			roodlicht.GetComponent<Renderer> ().material.shader = uitshader;
 			oranjelicht.GetComponent<Renderer> ().material.shader = uitshader;
 			groenlicht.GetComponent<Renderer> ().material.shader = aanshader;
-		} else {
+			break;
+
+		default:
 			print ("Invalid traffic light color.");
+			break;
+
 		}
+
 	}
 
 }

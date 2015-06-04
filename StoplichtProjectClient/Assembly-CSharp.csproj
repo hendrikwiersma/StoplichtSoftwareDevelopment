@@ -55,6 +55,7 @@
      <Compile Include="Assets\AIData.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
+     <Compile Include="Assets\Data.cs" />
      <Compile Include="Assets\Destructive.cs" />
      <Compile Include="Assets\Environment\SkyboxController.cs" />
      <Compile Include="Assets\GenerateWorld.cs" />
