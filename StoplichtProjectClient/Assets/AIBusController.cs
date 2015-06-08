@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-public class AIControllerWheelCol : MonoBehaviour {
-	
+public class AIBusController : MonoBehaviour {
+	public string vehicleType;
 	public WheelCollider RightFront;
 	public WheelCollider LeftFront;
 	public WheelCollider RightBack;
@@ -80,10 +80,10 @@ public class AIControllerWheelCol : MonoBehaviour {
 
 			float Magnitude = carRigidbody.velocity.magnitude;
 
-			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
-			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude, 10, 400));
-			right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 2);
-			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude, 10, 200));
+			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude*2, 10, 400));
+			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude*2, 10, 400));
+			right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 3.7f);
+			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude*3, 10, 200));
 
 
 
@@ -111,7 +111,7 @@ public class AIControllerWheelCol : MonoBehaviour {
 			
 			for (int i = 0; i < forward_hits.Length; i++) {
 				RaycastHit hit = forward_hits[i];
-				if(hit.collider.gameObject.tag == "Car"){
+				if(hit.collider.gameObject.tag == "Vehicle"){
 					car_in_front = true;
 					//print(hit.collider);
 				}
