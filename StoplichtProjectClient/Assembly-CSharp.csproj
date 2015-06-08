@@ -52,6 +52,7 @@
      <Compile Include="Assets\AI\Actions\FreezeObjectFailure.cs" />
      <Compile Include="Assets\AI\Actions\RoadIsFree.cs" />
      <Compile Include="Assets\AI\Actions\UpdateRoad.cs" />
+     <Compile Include="Assets\AIBusController.cs" />
      <Compile Include="Assets\AIData.cs" />
      <Compile Include="Assets\CameraSwitcher.cs" />
      <Compile Include="Assets\ClientConnect.cs" />
@@ -108,8 +109,7 @@
      <Compile Include="Assets\TrafficlighPedestrian.cs" />
      <Compile Include="Assets\Trafficlight.cs" />
      <Compile Include="Assets\TrafficlightCar.cs" />
-     <Compile Include="Assets\Vehicle\AIController.cs" />
-     <Compile Include="Assets\Vehicle\AIControllerWheelCol.cs" />
+     <Compile Include="Assets\Vehicle\AICarController.cs" />
      <Compile Include="Assets\Vehicle\CarController\CarController.cs" />
      <Compile Include="Assets\Vehicle\CarController\JointSpringSource.cs" />
      <Compile Include="Assets\Vehicle\CarController\Stabiliser.cs" />
