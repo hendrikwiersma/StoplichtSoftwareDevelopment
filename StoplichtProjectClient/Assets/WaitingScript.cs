@@ -11,7 +11,7 @@ public class WaitingScript : MonoBehaviour {
 		Go = boolean;
 	}
 	void OnTriggerEnter(Collider other) {
-		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
+		AICarController controller = other.gameObject.GetComponent<AICarController>();
 
 		if (controller != null) {
 
@@ -21,7 +21,7 @@ public class WaitingScript : MonoBehaviour {
 
 	}
 	void OnTriggerExit(Collider other) {
-		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
+		AICarController controller = other.gameObject.GetComponent<AICarController>();
 
 		if (controller != null) {
 

@@ -9,6 +9,7 @@ using RAIN;
 public class ClientConnect : MonoBehaviour {
 	public string ipaddress;
 	public GameObject WaypointCollection;
+	public GameObject BusWaypointCollection;
 	public GameObject Auto;
 	public GameObject Voetganger;
 	public GameObject Bus;
@@ -109,7 +110,7 @@ public class ClientConnect : MonoBehaviour {
 						break;
 
 					case Data.VEHICLE_TYPE.BUS:
-						spawnBus(currentspawnpoint, EndPoint);
+						spawnBus(currentspawnpoint, StartingPoint, EndPoint);
 						break;
 						
 					case Data.VEHICLE_TYPE.PEDESTRIAN:
@@ -239,7 +240,7 @@ public class ClientConnect : MonoBehaviour {
 
 		GameObject car = Instantiate(Auto, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
 		int counter = 0;
-		AIControllerWheelCol aiscript = car.GetComponent<AIControllerWheelCol>();
+		AICarController aiscript = car.GetComponent<AICarController>();
 		foreach(Transform gameObj in WaypointCollection.transform)
 		{
 			if(gameObj.transform.name == EnumToString(Begin) + EnumToString(End)){
@@ -283,9 +284,39 @@ public class ClientConnect : MonoBehaviour {
 
 	}
 
-	public void spawnBus(Spawnpoint Spawn, Data.DIRECTION End) {
-
-		Instantiate(Bus, Spawn.transform.position, Spawn.transform.rotation);
+	public void spawnBus(Spawnpoint Spawn, Data.DIRECTION Begin, Data.DIRECTION End) {
+		GameObject bus = Instantiate(Bus, Spawn.transform.position, Spawn.transform.rotation) as GameObject;
+		int counter = 0;
+		AIBusController aiscript = bus.GetComponent<AIBusController>();
+		foreach(Transform gameObj in BusWaypointCollection.transform)
+		{
+			print(EnumToString(Begin) + EnumToString(End));
+			if(gameObj.transform.name == EnumToString(Begin) + EnumToString(End)){
+				if(counter == 0){
+					aiscript.WaypointCollection1 = gameObj.gameObject;
+					counter++;
+				}
+				else if(counter == 1){
+					aiscript.WaypointCollection2 = gameObj.gameObject;
+					counter++;
+				}
+				else{
+					print("Not more than two waypoint collections possible.");
+				}
+			}
+		}
+		if(aiscript.WaypointCollection2 == null){
+			aiscript.WaypointCollection2 = aiscript.WaypointCollection1;
+		}
+		if(Spawn.StartWaypointCollection == 0){
+			aiscript.CurrentWaypoints = aiscript.WaypointCollection1;
+		}
+		else if(Spawn.StartWaypointCollection == 1){
+			aiscript.CurrentWaypoints = aiscript.WaypointCollection2;
+		}
+		else{
+			print("Wrong start waypointNumber set in spawncube.");
+		}
 
 	}
 

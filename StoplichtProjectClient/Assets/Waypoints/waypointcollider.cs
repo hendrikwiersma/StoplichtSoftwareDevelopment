@@ -2,32 +2,32 @@
 using System.Collections;
 
 public class waypointcollider : MonoBehaviour {
+	private Road roadObject;
+	private string waypointName;
+	private string vehicleType;
 
 	// Use this for initialization
 	void Start () {
-	
+		roadObject = transform.parent.parent.GetComponent<Road>();
+		waypointName = transform.parent.parent.name;
+		vehicleType = transform.parent.parent.parent.name;
 	}
 	void OnTriggerEnter(Collider other) {
 
-
-
-		AIControllerWheelCol controller = other.gameObject.GetComponent<AIControllerWheelCol>();
-
-		if (controller == null) {
-
-			return;
-
+		AICarController carController = other.gameObject.GetComponent<AICarController>();
+		if (carController != null) {
+			Road roadScript = carController.CurrentWaypoints.GetComponent<Road>();
+			if(carController.CurrentWaypoints.transform.name == waypointName && roadScript.number == roadObject.number && vehicleType == carController.vehicleType){
+				carController.nextWaypoint();
+			}
 		}
-
-		Road roadScript = controller.CurrentWaypoints.GetComponent<Road>();
-		Road parent = transform.parent.parent.GetComponent<Road>();
-
-		if(controller.CurrentWaypoints.transform.name == transform.parent.parent.name && roadScript.number == parent.number){
-
-			controller.nextWaypoint();
-
+		AIBusController busController = other.gameObject.GetComponent<AIBusController>();
+		if (busController != null) {
+			Road roadScript = busController.CurrentWaypoints.GetComponent<Road>();
+			if(busController.CurrentWaypoints.transform.name == waypointName && roadScript.number == roadObject.number && vehicleType == busController.vehicleType){
+				busController.nextWaypoint();
+			}
 		}
-
 	}
 	
 	// Update is called once per frame
