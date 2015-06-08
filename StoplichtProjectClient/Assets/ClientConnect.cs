@@ -290,7 +290,7 @@ public class ClientConnect : MonoBehaviour {
 		AIBusController aiscript = bus.GetComponent<AIBusController>();
 		foreach(Transform gameObj in BusWaypointCollection.transform)
 		{
-			print(EnumToString(Begin) + EnumToString(End));
+
 			if(gameObj.transform.name == EnumToString(Begin) + EnumToString(End)){
 				if(counter == 0){
 					aiscript.WaypointCollection1 = gameObj.gameObject;
@@ -329,8 +329,10 @@ public class ClientConnect : MonoBehaviour {
 
 	}
 
+	// check if data for spawning vehicle is correct
 	public Boolean verifyDirection(Data.DIRECTION Begin, Data.DIRECTION End, Data.VEHICLE_TYPE Vehicle) {
 
+		// check for null
 		if (Begin == Data.DIRECTION.NULL || End == Data.DIRECTION.NULL || Vehicle == Data.VEHICLE_TYPE.NULL) {
 
 			Debug.LogWarning("Found spawn attempt with uninitiallized data");
@@ -338,6 +340,7 @@ public class ClientConnect : MonoBehaviour {
 
 		}
 
+		// check if begin and end are at the same location
 		if (Begin == End) {
 
 			Debug.LogWarning("Received vehicle with the same Start and Destination");
@@ -345,7 +348,8 @@ public class ClientConnect : MonoBehaviour {
 
 		}
 
-		if (Vehicle == Data.VEHICLE_TYPE.CAR || Vehicle == Data.VEHICLE_TYPE.BUS) {
+		// check if route is possible (ventweg)
+		if (Vehicle == Data.VEHICLE_TYPE.CAR) {
 
 			if (Begin == Data.DIRECTION.VENTWEG && (End == Data.DIRECTION.SOUTH || End == Data.DIRECTION.WEST)) {
 
@@ -362,13 +366,26 @@ public class ClientConnect : MonoBehaviour {
 			}
 
 		}
+
+		// check if busses are spawned on the ventweg
+		if (Vehicle == Data.VEHICLE_TYPE.BUS) {
+
+			if (Begin == Data.DIRECTION.VENTWEG || End == Data.DIRECTION.VENTWEG) {
+
+				return false;
+
+			}
+
+		}
 	
 		return true;
 
 	}
 
+	// check if data for setting the lightstate is correct
 	public Boolean verifyLight(byte Id, Data.LIGHT_STATE State) {
 
+		// check for null
 		if (State == Data.LIGHT_STATE.NULL) {
 			
 			Debug.LogWarning("Found set light attempt with uninitiallized data");
@@ -376,6 +393,7 @@ public class ClientConnect : MonoBehaviour {
 			
 		}
 
+		// check for the correct light id
 		if (Id < 0 || Id > 50|| Id == 28 || Id == 29 || Id == 31 || Id == 33 || Id == 41 || Id == 42 || Id == 44 || Id == 45) {
 
 			Debug.LogWarning("Received light state with unknown ID:" + Id);
@@ -387,6 +405,7 @@ public class ClientConnect : MonoBehaviour {
 
 	}
 
+	// for finding the objectname in the scene from enum values
 	private String EnumToString(Data.DIRECTION Direction) {
 
 		switch (Direction) {

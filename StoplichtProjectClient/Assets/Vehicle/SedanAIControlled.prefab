@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &128576
 GameObject:
   m_ObjectHideFlags: 1
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8e531c229f0840893c6da065ebf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 0}
+  vehicle: {fileID: 11458766}
 --- !u!114 &11429426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8e531c229f0840893c6da065ebf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 0}
+  vehicle: {fileID: 11458766}
 --- !u!114 &11438166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2200,7 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8e531c229f0840893c6da065ebf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 0}
+  vehicle: {fileID: 11458766}
 --- !u!114 &11454154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db8e531c229f0840893c6da065ebf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 0}
+  vehicle: {fileID: 11458766}
 --- !u!114 &11458766
 MonoBehaviour:
   m_ObjectHideFlags: 1
