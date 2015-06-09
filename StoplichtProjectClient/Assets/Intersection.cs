@@ -224,6 +224,7 @@ public class Intersection : MonoBehaviour {
 		case "East": return bikersMaxLane[1];
 		case "South": return bikersMaxLane[2];
 		case "West": return bikersMaxLane[3];
+		case "Ventweg": return bikersMaxLane[4];
 		default: Debug.LogError ("Unknown direction"); return 0;
 			
 		}
@@ -238,6 +239,7 @@ public class Intersection : MonoBehaviour {
 		case "East": return bikersInLane[1];
 		case "South": return bikersInLane[2];
 		case "West": return bikersInLane[3];
+		case "Ventweg": return bikersInLane[4];
 		default: Debug.LogError ("Unknown direction"); return 0;
 			
 		}
