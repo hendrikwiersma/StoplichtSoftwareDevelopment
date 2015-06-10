@@ -83,7 +83,7 @@ public class AIBusController : MonoBehaviour {
 			left_forward_hits = Physics.RaycastAll(LeftOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude*2, 10, 400));
 			right_forward_hits = Physics.RaycastAll(RightOriginPoint.transform.position, forward, Mathf.Clamp(Magnitude*2, 10, 400));
 			right_hits = Physics.RaycastAll(RightOriginPoint.transform.position, right, 3.7f);
-			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude*3, 10, 200));
+			stoplights_check_hits = Physics.RaycastAll(transform.position, forward, Mathf.Clamp(Magnitude*4, 10, 200));
 
 
 
@@ -99,6 +99,7 @@ public class AIBusController : MonoBehaviour {
 				if(hit.collider.gameObject.tag == "Trafficlight"){
 				WaitingScript controller = hit.collider.gameObject.GetComponent<WaitingScript>();
 					if(controller.waypointSystem.ToString() == CurrentWaypoints.transform.name){
+						Debug.Log(controller.waypointSystem.ToString());
 						if(controller.Go == true){
 							go = true;
 						}

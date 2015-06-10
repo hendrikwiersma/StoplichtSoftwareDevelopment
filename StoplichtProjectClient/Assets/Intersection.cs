@@ -180,7 +180,7 @@ public class Intersection : MonoBehaviour {
 			case "East": return LightState[1];
 			case "South": return LightState[2];
 			case "West": return LightState[3];
-			case "Ventweg": return LightState[4];
+			case "Ventweg": return LightState[2];
 			
 		}
 
@@ -224,7 +224,7 @@ public class Intersection : MonoBehaviour {
 		case "East": return bikersMaxLane[1];
 		case "South": return bikersMaxLane[2];
 		case "West": return bikersMaxLane[3];
-		case "Ventweg": return bikersMaxLane[4];
+		case "Ventweg": return bikersMaxLane[2];
 		default: Debug.LogError ("Unknown direction"); return 0;
 			
 		}
